@@ -87,26 +87,26 @@ Because of this I would recommend using REPL from your IDE.
 
 ## REPL in VSC
 
-When opening a file from Clojure project with VSC,
-the IDE automatically opens a REPL connection for you.
-This is quite convenient and not super well documented in the clojure plugin, 
-so lets test it out together in our sandbox project.
+First launch REPL in terminal with Leiningen as we did previously.
 
 Open the sandbox project in your VSC.
 Not just the file, but the whole project.
 
-In the VSC navigate to the file sandbox/src/sandbox/core.clj.
+Open VSC Command Pallet.
+Command pallet can be accessed with **cmd+shift+p** (or **ctrl+shift+p** depending on your computer).
+From Command Pallet select **Calva: Connect to a running REPL**.
+The editor will now ask you few questions, which should be easy to answer (just press enter).
 
-Here write following code at the bottom of the file:
+After the connection is made navigate to the file sandbox/src/sandbox/core.clj,
+and write following code at the bottom of the file:
 
 ```clojure
 (str "hello" "-" "parens")
 ```
 
-Now move your cursor to this line and select
-**"Clojure: Eval and show the result"**
+Now move your cursor to end of this line and select
+**"Calva: Evaluate current top level form, and pretty print"**
 from the the command pallet.
-Command pallet can be accessed with **cmd+shift+p** (or **ctrl+shift+p** depending on your computer).
 
 Now the results should be visible in the output tab at the bottom of the editor.
 
@@ -114,8 +114,11 @@ Now the results should be visible in the output tab at the bottom of the editor.
 => "hello-parens!"
 ```
 
-If you are going to be using VSC as recommended,
-it is higly recommended to setup a convenient keyboard shortcut for this operation.
+Calva provides plenty of REPL options and this is only one of them.
+Feel free to toy around with different options if you feel like trying them out.
+
+Calva provides plenty of keyboard shortcuts, explore is they are suitable for you,
+if not VSC enables easy modification of keyboard shortcuts.
 Keyboard shortcuts can easily be accessed via command pallet.
 Just open the pallet and search for the work shortcut.
 
