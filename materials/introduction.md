@@ -1,4 +1,4 @@
-# Close your brackets: a Practical guide to Clojure
+# Close your parens: a Practical guide to Clojure
 
 ## Who is this guide for
 
