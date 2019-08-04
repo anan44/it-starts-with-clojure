@@ -9,7 +9,32 @@ as a dialect of Lisp (stands for List Processor) Clojure's REPL is quite powerfu
 and thus it is used constantly in Clojure development.
 
 There are many ways to use REPL in Clojure.
-Here we are going through two of them.
+In a moment we are going through two of them.
+
+## What is REPL actually
+
+Before we spoke about REPL but we did not really cover what it is or why it used.
+So typically in Clojure the development cycle slightly differs from many other languages,
+especially Object Oriented Programming (OOP) languages.
+I won't go to the details of the difference here,
+but one of the main reasons why Clojure's REPL is so powerful is because FP applications have very little [state](https://en.wikipedia.org/wiki/State_(computer_science)).
+
+In typical a OOP application the development cycle is often Test Driven Development (TDD).
+In TDD we often write a test call for the functionality we aim to create,
+and then create the functionality so that the test passes.
+Or it is sometimes possible write the functionality first and see if it works by manual testing.
+This often involves running the whole application,
+which may be quite time consuming.
+
+REPL allows the us to evaluate individual functions without running the whole application.
+When the application does not really have state,
+or most of the code base does not heavily rely on the said state,
+it is possible to develop functions *in a void*.
+FP programming relies on so called [Pure Functions](https://en.wikipedia.org/wiki/Pure_function),
+which always return the same output with same inputs.
+I am not going to go into the details of Functional Programming or Pure Functions here.
+In case you are interested to learn more,
+read the article above.
 
 ## REPL in command line
 
