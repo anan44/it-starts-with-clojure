@@ -105,7 +105,7 @@ and write following code at the bottom of the file:
 ```
 
 Now move your cursor to end of this line and select
-**"Calva: Evaluate current top level form, and pretty print"**
+**": Evaluate current top level form, and print to output"**
 from the the command pallet.
 
 Now the results should be visible in the output tab at the bottom of the editor.
