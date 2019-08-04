@@ -45,7 +45,7 @@ brew update
 brew install leiningen
 ```
 
-### Install jEnv (obligatory)
+### Install jEnv (non-obligatory)
 
 Many of us need newer Java versions for our other projects.
 To handle multiple Java versions I recommend using jEnv.
