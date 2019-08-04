@@ -7,7 +7,7 @@ No one should give up on Clojure due to poor IDE as I did in 2015.
 
 For programming in general there is a ton of great editors available.
 Some of them are better suited for some languages than others.
-As an example of this, writing Java without IntelliJ IDEA is quite much easier than doing the said task with [Atom](https://atom.io/). 
+As an example of this, writing Java without IntelliJ IDEA is quite much easier than doing the said task with [Atom](https://atom.io/).
 In other words different tools are suitable for different tasks.
 Due to the fact that Clojure is a LISP it requires an editor with a bit different capabilities than most other languages.
 Also due to the fact that it is not Object Oriented Programming (OOP) language,
@@ -23,19 +23,20 @@ but I recommend it because it very easy to setup and get started with.
 
 ### How to install Visual Studio Code
 
-1) Easiest way to install VSC is to download it from their website:
-https://code.visualstudio.com/
+1. Easiest way to install VSC is to download it from their website:
+   https://code.visualstudio.com/
 
-2) After this you have to install Clojure plugin. This will provide linting and easy access to REPL. Clojure plugin can be installed from VSC Marketplace.
+2. After this you have to install Clojure plugin. This will provide linting and easy access to REPL. Clojure plugin can be installed from VSC Marketplace.
 
-3) With Clojure plugin correctly installed your VSC should automatically connect to REPL when opening a file in clojure project.
+3. With Clojure plugin correctly installed your VSC should automatically connect to REPL when opening a file in clojure project.
 
-4) To Evaluate a form:
-    1) Move cursor to form you with to evaluate
-    2) Open VSC Command Pallet and search for "Clojure: Eval and show the result".
-    3) See the results in VSC output
+4. To Evaluate a form:
 
-5) When developing Clojure you will be Evaluating forms all the time, so I would suggest that you will create a short cut for Eval and show the result. This can be done from VSC Keyboard Shortcuts.
+   1. Move cursor to form you with to evaluate
+   2. Open VSC Command Pallet and search for "Clojure: Eval and show the result".
+   3. See the results in VSC output
+
+5. When developing Clojure you will be Evaluating forms all the time, so I would suggest that you will create a short cut for Eval and show the result. This can be done from VSC Keyboard Shortcuts.
 
 ## [Intellij IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/) (recommended for future usage)
 
@@ -61,7 +62,7 @@ With that being said I cannot with good conscience recommend it for a new born C
 While being a powerful editor, Emacs has a bit nasty learning curve.
 Clojure requires a rather different way of thinking than many other languages.
 While getting used to this new way of thinking,
-I would not recommend trying to learn a new kind of editor  at the same time.
+I would not recommend trying to learn a new kind of editor at the same time.
 
 ### [Vim](https://www.vim.org/) + [Fireplace](https://github.com/tpope/vim-fireplace)
 

@@ -3,9 +3,9 @@
 Installing Clojure can be sometimes be more difficult than it should be.
 In general you always need three basic parts.
 
-1) Java
-2) Clojure
-3) Leiningen (build automation and dependency management tool)
+1. Java
+2. Clojure
+3. Leiningen (build automation and dependency management tool)
 
 Even though Clojure itself supports latest version of Java,
 many libraries still do not.
@@ -27,7 +27,7 @@ Feel welcome to write non-brew part of Mac installations here.
 
 ```bash
 brew update
-brew tap adoptopenjdk/openjdk 
+brew tap adoptopenjdk/openjdk
 brew cask install adoptopenjdk8
 ```
 
