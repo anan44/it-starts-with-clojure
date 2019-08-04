@@ -15,7 +15,7 @@ IntelliSense is not going to provide as much help as it does inother languages.
 
 Below is rather opinionated guide to IDEs for those who aim to get their hands dirty with Clojure.
 
-## [Visual Studio Code](https://code.visualstudio.com/) (recommended for getting started)
+## [Visual Studio Code](https://code.visualstudio.com/) + [Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva) (recommended for getting started)
 
 Visual Studio Code (VSC) is a great editor in general.
 It might not be the ideal editor for Clojure,
@@ -26,17 +26,10 @@ but I recommend it because it very easy to setup and get started with.
 1. Easiest way to install VSC is to download it from their website:
    https://code.visualstudio.com/
 
-2. After this you have to install Clojure plugin. This will provide linting and easy access to REPL. Clojure plugin can be installed from VSC Marketplace.
+2. After this you have to install [Calva plugin](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva).
+   This will provide linting and easy access to REPL. Calva plugin can be installed from VSC Marketplace.
 
-3. With Clojure plugin correctly installed your VSC should automatically connect to REPL when opening a file in clojure project.
-
-4. To Evaluate a form:
-
-   1. Move cursor to form you with to evaluate
-   2. Open VSC Command Pallet and search for "Clojure: Eval and show the result".
-   3. See the results in VSC output
-
-5. When developing Clojure you will be Evaluating forms all the time, so I would suggest that you will create a short cut for Eval and show the result. This can be done from VSC Keyboard Shortcuts.
+3. With Calva plugin correctly installed we can connect VSC to running REPL
 
 ## [Intellij IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/) (recommended for future usage)
 
