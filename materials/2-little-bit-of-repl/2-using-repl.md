@@ -122,6 +122,14 @@ if not VSC enables easy modification of keyboard shortcuts.
 Keyboard shortcuts can easily be accessed via command pallet.
 Just open the pallet and search for the work shortcut.
 
+### WARNING for Vim mode users
+
+In case you are using Vim mode in VSC,
+you need to remap Calva's "Clear all inline display evaluations" shortcut,
+which is set to ESC by default.
+
+If you are not using Vim mode in VSC, you don't have to worry about this.
+
 ## REPL in Cursive
 
 TODO - Write instructions for using REPL in Cursive
