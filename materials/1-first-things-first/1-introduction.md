@@ -42,4 +42,9 @@ to which others are welcome to commit to and be part of.
 
 ## How to read this guide
 
-TODO: WRITE THIS PART
+Each sub folder of **./materials/** can be considered as a chapter,
+and each .md file inside a folder can be considered sub-chapter (subs).
+
+While reading this guide it is recommended writing all the parts on your own,
+not just copying what is written here.
+No one ever learned anything from copy-pasting.
