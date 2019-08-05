@@ -11,7 +11,7 @@ and thus it is used constantly in Clojure development.
 There are many ways to use REPL in Clojure.
 In a moment we are going through two of them.
 
-## What is REPL actually
+## [What is REPL actually](https://clojure.org/guides/repl/introduction)
 
 Before we spoke about REPL but we did not really cover what it is or why it used.
 So typically in Clojure the development cycle slightly differs from many other languages,
@@ -36,7 +36,7 @@ I am not going to go into the details of Functional Programming or Pure Function
 In case you are interested to learn more,
 read the article above.
 
-## REPL in command line
+## [REPL in command line](https://clojure.org/guides/repl/launching_a_basic_repl#_leiningen)
 
 Using REPL from command line is perhaps the easiest way to use REPL,
 but it is not very convenient.
