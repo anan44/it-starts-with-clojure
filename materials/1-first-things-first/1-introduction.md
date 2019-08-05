@@ -48,3 +48,20 @@ and each .md file inside a folder can be considered sub-chapter (subs).
 While reading this guide it is recommended writing all the parts on your own,
 not just copying what is written here.
 No one ever learned anything from copy-pasting.
+
+In the context of evaluating code or using REPL,
+we will be using symbol => to express the output of the code.
+
+Like this:
+
+```clojure
+(+ 1 2 3)
+=> 6
+```
+
+Many of the headings in these documents are actually hyperlinks,
+and in most of the cases they lead to a section of official Clojure documentation.
+If the explanations of this guide feel vague or too brief,
+or you simply wish to know more about the topic at hand,
+it is encouraged to browse through these documentations.
+(IDE section makes an exception here. Links there lead to god knows where.)
