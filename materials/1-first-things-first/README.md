@@ -12,7 +12,7 @@ TODO: Write summary
 
 TODO: Write summary
 
-## [3. Clojure and IDE](./2-clojure-and-IDE.md)
+## [3. Clojure and IDE](./3-clojure-and-IDE.md)
 
 TODO: Write summary
 
