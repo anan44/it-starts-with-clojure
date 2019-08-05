@@ -31,6 +31,8 @@ but I recommend it because it very easy to setup and get started with.
 
 3. With Calva plugin correctly installed we can connect VSC to running REPL
 
+TODO: Something about structural editing in calva
+
 ## [Intellij IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/) (recommended for future usage)
 
 Even though IDEA is superb editor for Java and many other langauges,
