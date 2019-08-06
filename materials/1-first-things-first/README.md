@@ -20,3 +20,13 @@ Includes easy step by step installation guides that you need.
 In previous section we went through necessary Clojure installations.
 In this one we install proper Intelligent Development Enviornment (IDE) for you,
 so your development experience will be enjoyable and productive.
+
+## Recap
+
+After this chapter you should have:
+
+- Understanding what this course is and how to read it
+
+- Installed Clojure, Java and Leiningen
+
+- Installed a suitable IDE for writing Clojure
