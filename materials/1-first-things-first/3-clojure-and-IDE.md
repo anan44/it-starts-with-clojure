@@ -33,7 +33,9 @@ but I recommend it because it very easy to setup and get started with.
 
 TODO: Something about structural editing in calva
 
-## [Intellij IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/) (recommended for future usage)
+## Other options
+
+### [Intellij IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/)
 
 Even though IDEA is superb editor for Java and many other langauges,
 it does not really do well with Clojure without some additional help.
@@ -44,7 +46,6 @@ Neither IDEA or Cursive is free, even though there is free options available fro
 If you decide to use this combination, please make sure that you either purchase the required
 licenses or only work in projects that are suitable for the free licenses of both of the products.
 
-## Other options
 
 As I mentioned there are plenty of editors out there.
 As usual [Slant](https://www.slant.co/topics/11929/~ide-for-clojure) provides a nice comparison between the options.
