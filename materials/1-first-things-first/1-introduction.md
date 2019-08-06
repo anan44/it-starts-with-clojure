@@ -43,7 +43,7 @@ to which others are welcome to commit to and be part of.
 ## How to read this guide
 
 Each sub folder of **./materials/** can be considered as a chapter,
-and each .md file inside a folder can be considered sub-chapter (subs).
+and each .md file inside a folder can be considered a section.
 
 While reading this guide it is recommended writing all the parts on your own,
 not just copying what is written here.
