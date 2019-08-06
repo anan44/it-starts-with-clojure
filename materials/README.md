@@ -12,3 +12,8 @@ All of this should be very brief.
 
 Introduction to Clojure's arguably most powerful feature in Clojure.
 Learn it first and learn it well and it will guide you through all sorts of adventures.
+
+## [3. Your first Project](./3-first-project)
+
+We will learn how to create functions and build simple Clojure applications.
+In the progress we will learn how perform basic I/O operations with Clojure.
