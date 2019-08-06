@@ -45,6 +45,8 @@ This will help you to get comfortable with your programming environment.
 
 ### [str](https://clojuredocs.org/clojure.core/str)
 
+[comment]: # (TODO: There is too much detail here. Needs to be leaned down)
+
 I might have guessed it.
 _str_ turns given arguments into string and concatenates them.
 str takes n number of arguments and always returns a single string.
@@ -78,7 +80,7 @@ Lets try outputting the string to stdout with println function.
 ```clojure
 (println "Tim \"tpope\" Pope")
 Tim "tpope" Pope
-nil
+=> nil
 ```
 
 Notice how clojure returns _nil_ after printing Tim "tpope" Pope?
@@ -253,6 +255,219 @@ Additionally clojure also offers BigInt and BigDecimal numerics that can be spec
 
 But you are unlikely to need these in near future,
 nevertheless it is good to know that they are there.
+
+## [Other notable data structures](https://clojure.org/reference/data_structures)
+
+Clojure has few other key data types that you should be aware of.
+The list does obviously not cover all the data types,
+but these are few you should know that exists.
+There is not need to have a proper understanding of all of them,
+but it is good to know what their key features are and the they exist.
+Do not stress if you have trouble wrapping your head around them,
+we will visit all of them in greater detail in near future.
+
+Incase you wish to learn more about given data structures before we cover them in this guide,
+just follow the links to the official documentation.
+
+### [nil](https://clojure.org/reference/data_structures#nil)
+
+nil is Clojure's equivalent of None type in python or Null type in Java, C# or Javascript.
+It is the representation of lack of data.
+
+You can check if piece of data is nil with function _nil?_
+
+```clojure
+(type nil)
+=> nil
+
+(nil? nil)
+=> true
+```
+
+### Booleans
+
+Like almost all the other languages Clojure has two boolean values,
+namely true and false.
+If the value in question is true or false can be checked with functions true? and false?.
+
+```clojure
+(true? false)
+=> false
+
+(true? true)
+=> true
+
+(false? false)
+=> true
+
+(true? 10)
+=> false
+```
+
+Additionally it might be interesting to know that evaluates all values except nil and false as true.
+This is especially handy when playing with [boolean logics](https://en.wikipedia.org/wiki/Boolean_algebra).
+We will of course cover this in greater detail later,
+so there is again no need to stress over it.
+
+### [Keywords](https://clojure.org/reference/data_structures#Keywords)
+
+Clojure has an interesting data type known as Keywords,
+which is missing from most of the other languages.
+For now you can think of keywords mostly as weird cousin of string.
+It is popular especially as key values in maps,
+but it has also other usages.
+
+```clojure
+(type :keyword)
+=> clojure.lang.Keyword
+```
+
+Don't worry too much about keywords for now.
+Their usefulness will become clear for you in time.
+
+### [Lists](https://clojure.org/reference/data_structures#Lists)
+
+Lists are as the name says lists of things.
+The things in question can be rather much anything.
+I am sure you have run to similar structure in the past with you other programming languages.
+
+The [Syntax](https://en.wikipedia.org/wiki/Syntax) for lists in Clojure can be a bit confusing for new comers.
+Even though list in Clojure does actually look like this (1 2 3),
+when you refer to it in your code you need lead it with a single quote '(1 2 3).
+This is due the fact that all the code in Clojure is in form of lists (remember it is a [Lisp](https://en.wikipedia.org/wiki/Lisp)).
+So by default the language tries to evaluate the list as it would a function.
+But since number 1 is not a function in fact, without the single quote you would get an error.
+
+```clojure
+'(1 2 3)
+=> (1 2 3)
+
+(1 2 3)
+=> Execution error (ClassCastException) ...
+java.lang.Long cannot be cast to clojure.lang.IFn
+
+(type '(1 2 3))
+=> clojure.lang.PersistentList
+```
+
+You might also have noticed that we did not use commas to separate the values from each other.
+Unlike other languages Clojure's compiler does not require such separators.
+In fact Clojure's compiler will just ignore such commas even if you would provide them.
+Even though using commas works,
+it is generally considered idiomatic to leave them out.
+
+```clojure
+'(1, 2, 3)
+=> (1 2 3)
+```
+
+To recap:
+When writing lists in to your code, use a leading singe quote.
+
+### [Vectors](https://clojure.org/reference/data_structures#Vectors)
+
+Vectors is a data type that is not a very common in most of other programming languages.
+You may think of Vectors as sibling of lists.
+Just like lists the vectors take multiple pieces of data to them and are extremely convenient ways to store and handle data.
+Now you might think,
+_Why does Clojure have two similar structures for list like structures?_
+Well there is kinda significant difference in the performance of lists and vectors under different circumstances.
+Then you might ask, _"Well which one should i use?"_
+The rule of thump is:
+When in doubt, use vectors.
+
+We will later explain in better detail the performance differences between the two,
+but until then (and probably afterwards too) you should prefer vectors over lists.
+This should come naturally to you,
+since the syntax for vectors is the same as for lists or arrays in most other languages.
+
+```clojure
+(type [1 2 3])
+=> clojure.lang.PersistentVector
+```
+
+Just like with lists it is idiomatic not to use separator commas with vectors.
+
+### [Maps](https://clojure.org/reference/data_structures#Maps)
+
+You have probably come across maps before in your previous programming adventures with your old favorite language.
+In some languages like Python this marvelous data structure is known as Dict or Dictionary.
+(In Javascript it is known as Object).
+But do not let this fool you since essentially all of these are more or less the same thing.
+
+Maps are collections of key-value-pairs.
+In such pairs the first value is called a key and the second one a value.
+There is no limitations regarding the types of values or keys in a single map.
+Feel free experiment with any kind of combinations.
+You may even try using different data types as all of keys,
+Clojure won't care.
+
+Like in lists and vectors it is idiomatic not to use commas as separators,
+but it is acceptable if it makes code more readable.
+It is also idiomatic to use keywords as keys when possible.
+
+```clojure
+(type {:name "Venkat" :age 51})
+
+(type {:numbers [1 2 3] :chars [\a \b \c] :name "Rich Hickey" 3 "is a number"})
+clojure.lang.PersistentArrayMap
+```
+
+It is also good to note that Maps do not guarantee any specific order of the key-value-pairs in them.
+
+### [Sets](https://clojure.org/reference/data_structures#Sets)
+
+Sets are much like maps but without value part.
+They are convenient for making sure you have only single entity of each piece of data in your collection.
+
+```clojure
+(type #{"Mars" "Jupiter" "Saturn"})
+```
+
+Like with lists and vectors it is idiomatic to leave separator commas out of sets.
+
+Also like maps sets wont guarantee any specific order with them.
+
+### [Collections](https://clojure.org/reference/data_structures#Collections)
+
+For now think of collections as an umbrella data type for all sets, lists, maps and vectors.
+If it fits many things,
+it is a collection.
+Simple as that.
+
+You can check if something is in dead a collection with the function _coll?_
+
+```clojure
+(coll? [1 2 3])
+=> true
+
+(coll? #{:a :b :c})
+=> true
+
+(coll? 3)
+=> false
+
+(coll? "Rich Hickey")
+=> false
+```
+
+This is I want you to be familiar with mostly because I will be using this term a lot,
+and I don't what you to get confused.
+You will master collections shortly,
+so again: No need to lose sleep over them.
+
+### [Characters](https://clojure.org/reference/data_structures#Characters)
+
+A single character in Clojure is represented like this
+
+```clojure
+\j
+
+(type \j)
+=> java.lang.Character
+```
+
+Notice lack of any kind of quotes. There is not much else to say about characters.
 
 ## Finishing with REPL
 
