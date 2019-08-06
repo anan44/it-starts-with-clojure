@@ -31,7 +31,7 @@ After this chapter you should:
 
 - Be able to create Clojure Projects with Leiningen
 
-- Be familiar with to use REPL from both Command Line and IDE
+- Be familiar with the use of REPL from both Command Line and IDE
 
 - Be able to call existing Clojure functions
 
