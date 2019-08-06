@@ -11,7 +11,7 @@ As an example of this, writing Java without IntelliJ IDEA is quite much easier t
 In other words different tools are suitable for different tasks.
 Due to the fact that Clojure is a LISP it requires an editor with a bit different capabilities than most other languages.
 Also due to the fact that it is not Object Oriented Programming (OOP) language,
-IntelliSense is not going to provide as much help as it does inother languages.
+IntelliSense is not going to provide as much help as it does in other languages.
 
 Below is rather opinionated guide to IDEs for those who aim to get their hands dirty with Clojure.
 
@@ -35,17 +35,17 @@ TODO: Something about structural editing in calva
 
 ## Other options
 
-### [Intellij IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/)
+### [IntelliJ IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/)
 
-Even though IDEA is superb editor for Java and many other langauges,
+Even though IDEA is superb editor for Java and many other languages,
 it does not really do well with Clojure without some additional help.
 This additional help is a magnificent plugin known as Cursive.
 Together these two create a programming environment loved by many.
 The unfortunately this requires a bit of configuring and is not completely free.
 Neither IDEA or Cursive is free, even though there is free options available from both.
-If you decide to use this combination, please make sure that you either purchase the required
-licenses or only work in projects that are suitable for the free licenses of both of the products.
-
+If you decide to use this combination,
+please make sure that you either purchase the required licenses,
+or only work in projects that are suitable for the free licenses of both of the products.
 
 As I mentioned there are plenty of editors out there.
 As usual [Slant](https://www.slant.co/topics/11929/~ide-for-clojure) provides a nice comparison between the options.
@@ -68,4 +68,5 @@ But some people are really passionate about Vim so this option has to be pointed
 ### [NightCode](https://sekao.net/nightcode/)
 
 Editor especially made for Clojure. Worth testing out.
+
 TODO: write more about NightCode

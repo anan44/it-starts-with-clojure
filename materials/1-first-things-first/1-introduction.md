@@ -14,8 +14,8 @@ While getting started with clojure myself I noticed that there was relatively li
 materials available in comparison to many other languages.
 This is obviously expected,
 since Clojure is not as mainstream as Python, Java or JavaScript.
-But the other thing I noticed was that most of the material available is rather academic on their approach and focus strongly on Function Programming (FP),
-instead of how to build things on Clojure.
+But the other thing I noticed was that most of the material available is rather academic on their approach,
+and they tended to focus strongly on Function Programming (FP) instead of how to build things on Clojure.
 
 I found this quite annoying since even though I was interested in FP,
 my primary interest was to start building actual things with Clojure.

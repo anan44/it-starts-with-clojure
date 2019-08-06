@@ -17,7 +17,7 @@ Before we spoke about REPL but we did not really cover what it is or why it used
 So typically in Clojure the development cycle slightly differs from many other languages,
 especially Object Oriented Programming (OOP) languages.
 I won't go to the details of the difference here,
-but one of the main reasons why Clojure's REPL is so powerful is because FP applications have very little [state](https://en.wikipedia.org/wiki/State_(computer_science)).
+but the main reasons why Clojure's REPL is so powerful is because FP applications have very little [state](https://en.wikipedia.org/wiki/State_(computer_science)).
 
 In typical a OOP application the development cycle is often Test Driven Development (TDD).
 In TDD we often write a test call for the functionality we aim to create,
@@ -104,8 +104,8 @@ and write following code at the bottom of the file:
 (str "hello" "-" "parens")
 ```
 
-Now move your cursor to end of this line and select
-**": Evaluate current top level form, and print to output"**
+Now move your cursor to end of this line and select:
+**"Evaluate current top level form, and print to output"**
 from the the command pallet.
 
 Now the results should be visible in the output tab at the bottom of the editor.

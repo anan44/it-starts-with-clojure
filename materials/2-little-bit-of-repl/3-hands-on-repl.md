@@ -95,7 +95,7 @@ This alone is a super interesting topic and many books have written whole chapte
 but we won't let it sidetrack us any more than this now.
 
 If you are interested connection between Java and Clojure, read more from Clojure docs [Hosted on the JVM](https://clojure.org/about/jvm_hosted)
-and  [Java Interop](https://clojure.org/reference/java_interop).
+and [Java Interop](https://clojure.org/reference/java_interop).
 As before, there are both things I suggest you leave for later.
 
 ## [+](http://clojuredocs.org/clojure.core/+)
@@ -211,7 +211,7 @@ This can be proven by evaluating following form in REPL:
 => java.lang.Long
 ```
 
-([type](https://clojuredocs.org/clojure.core/type) is a helpful function that return a type of given argument)
+([type](https://clojuredocs.org/clojure.core/type) is a helpful function that return a type of given argument.)
 
 If the number is too large to fit to Long (>9223372036854775807),
 then BigInteger data type is used.
@@ -228,14 +228,14 @@ Decimal numbers on the other hand are stored in Java doubles.
 => java.lang.Double
 ```
 
-Convenient ratio type you already saw previously
+Convenient ratio type you already saw previously.
 
 ```clojure
 (type 1/3)
 => clojure.lang.Ratio
 ```
 
-It is possible to force ratios into decimals to [floating points](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) with function double,
+It is possible to force ratios into decimals to [floating points](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) with the function double,
 but is is recommended to operate with ratios if possible for enhanced precision.
 
 ```clojure

@@ -49,7 +49,8 @@ brew install leiningen
 
 Many of us need newer Java versions for our other projects.
 To handle multiple Java versions I recommend using jEnv.
-jEnv is wonderful little tool for deciding which Java version you wish to use in each project.
+jEnv is wonderful little tool for deciding,
+which Java version you wish to use in each project.
 
 ```bash
 brew update
