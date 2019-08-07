@@ -22,6 +22,8 @@ Among other things after this chapter you:
 
 - Know how to create (a.k.a. define) new functions.
 
+- Perform basic operations in Clojure
+
 - Are able to perform basic I/O operations with Clojure
 
 - Can build a runnable Clojure application
