@@ -7,10 +7,8 @@ or you can fork the repo to your own computer and make notes while reading.
 When you come across a section that you feel has issues or could be somehow better,
 feel free to make pull requests or issues out of them.
 
-
 The goal is to add materials, projects and exercises to this project,
 so it can be used as perfect getting started point for to-be-clojurists.
-
 
 To get started with the guide click link below
 
