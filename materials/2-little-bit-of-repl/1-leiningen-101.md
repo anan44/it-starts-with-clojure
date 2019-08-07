@@ -26,7 +26,7 @@ lein new [template-name] [project-name]
 ```
 **Template-name** is non-obligatory.
 If left empty a default template is used.
-**Project-name** is will be the name of the project that is being created.
+**Project-name** will be the name of the project that is being created.
 
 Now navigate to your desired location in your terminal and there write following command:
 
