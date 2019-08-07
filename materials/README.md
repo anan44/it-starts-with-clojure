@@ -1,4 +1,4 @@
-# Welcome to the It Starts With Clojure -guide
+# Welcome to the It starts with Clojure -guide
 
 Currently available chapters are:
 

@@ -1,4 +1,4 @@
-# It Starts With Clojure: a Practical guide to Clojure
+# It starts with Clojure: a practical guide to Clojure
 
 ## Who is this guide for
 

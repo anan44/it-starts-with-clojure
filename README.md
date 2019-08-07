@@ -1,4 +1,4 @@
-# It Starts With Clojure: a Practical guide to Clojure
+# It starts with Clojure: a practical guide to Clojure
 
 This a guide (something between a tiny book and a course) how to get started with Clojure.
 The actual reading materials are under **./materials/** where they are grouped by sections.
