@@ -1,4 +1,4 @@
-# Close your parens: a Practical guide to Clojure
+# It Starts With Clojure: a Practical guide to Clojure
 
 ## Who is this guide for
 

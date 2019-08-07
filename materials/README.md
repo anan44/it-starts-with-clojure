@@ -1,4 +1,4 @@
-# Welcome to the Close Your Parens -guide
+# Welcome to the It Starts With Clojure -guide
 
 Currently available chapters are:
 
