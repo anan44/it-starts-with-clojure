@@ -9,7 +9,7 @@ For more details visit [Leiningen tutorial](https://github.com/technomancy/leini
 
 ## Your very own project
 
-Lets create you a very real Clojure project,
+Let's create you a very real Clojure project,
 where you can mess around as much as you want.
 We call this project **sandbox**.
 For the rest of the guide feel free to use this project for anything you wish to try out.

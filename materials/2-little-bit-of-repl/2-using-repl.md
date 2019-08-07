@@ -43,7 +43,7 @@ but it is not very convenient.
 Nevertheless, we are going to quickly go through it,
 since it is definitely useful skill sometimes.
 
-Lets navigate to the sandbox project we created previously.
+Let's navigate to the sandbox project we created previously.
 
 ```bash
 cd sandbox
@@ -73,7 +73,7 @@ sandbox.core=>
 ```
 
 Now that we have our REPL open,
-lets try if it works with a simple form:
+let's try if it works with a simple form:
 
 ```clojure
 (+ 1 1)

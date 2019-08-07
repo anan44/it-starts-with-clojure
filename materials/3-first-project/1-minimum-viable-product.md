@@ -1,6 +1,6 @@
 # [Minimum viable product (MVP)](https://en.wikipedia.org/wiki/Minimum_viable_product)
 
-Lets get started with your first Clojure project.
+Let's get started with your first Clojure project.
 When building a software it is a good idea to get started with small,
 in many cases the "small" refers to smallest thing that we can consider a working solution.
 If the code is well written,
@@ -58,7 +58,7 @@ The project you created should look something like this:
         └── core_test.clj
 ```
 
-## Lets start coding
+## Let's start coding
 
 Now that we have successfully created our project,
 we may actually get our hands dirty with some code.
@@ -149,4 +149,4 @@ Instead of such statement,
 Clojure functions return the output of the last thing evaluated.
 
 Ok thats again enough babbling and academics.
-Lets take the practical approach and write some functions.
+Let's take the practical approach and write some functions.

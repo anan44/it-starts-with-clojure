@@ -4,7 +4,7 @@ Now that we have successfully learned how to start REPL and evaluate code in it,
 it is good to get familiar with some core functions from Clojure.
 
 But before we get started,
-lets get tiny bit of terminology sorted out.
+let's get tiny bit of terminology sorted out.
 In Lisps we evaluate _forms_.
 Form is a data object to be evaluate as a program.
 In most of the cases in Clojure this means something like this
@@ -75,7 +75,7 @@ Like this:
 Notice how the escape characters are still there in the return value.
 You will always see them in the string presentation of Clojure,
 but they will be gone when we output the data to somewhere.
-Lets try outputting the string to stdout with println function.
+Let's try outputting the string to stdout with println function.
 
 ```clojure
 (println "Tim \"tpope\" Pope")
