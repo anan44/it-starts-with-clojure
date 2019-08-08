@@ -81,7 +81,7 @@ For now we are going to ignore the part with ns and :gen-class.
 Don't worry, you we will get comfortable with them too in some while.
 That being said,
 I believe that it is time to address the elephant in the room.
-You might have noticed some kind of __defn__ form in sandbox project previously.
+You might have noticed some kind of **defn** form in sandbox project previously.
 Then we ignored it because we had more pressing matters,
 and it is not possible to cover everything at once.
 
@@ -102,10 +102,10 @@ In the official documentation defn might look a bit intimidating:
 
 And the explanation does not make it much easier:
 
->Same as (def name (fn [params* ] exprs*)) or (def
->name (fn ([params* ] exprs*)+)) with any doc-string or attrs added
->to the var metadata. prepost-map defines a map with optional keys
->:pre and :post that contain collections of pre or post conditions.
+> Same as (def name (fn [params* ] exprs*)) or (def
+> name (fn ([params* ] exprs\*)+)) with any doc-string or attrs added
+> to the var metadata. prepost-map defines a map with optional keys
+> :pre and :post that contain collections of pre or post conditions.
 
 So instead of trying to make sens of this explanation,
 we are going to simple it down quite a bit.
@@ -126,15 +126,18 @@ I also took the liberty to re-organize this form for the sake of clarity.
 So now that is done, we can walk through all the parts of the form.
 
 - name
+
   - Name of the function you are about to create.
 
 - doc-string?
+
   - This part is non-obligatory, but it is recommended to use it for clarity.
     It is string where you explain what this function actually does.
     The compiler will ignore this string,
     so it is written for humans yourself and other programmers.
 
 - [params*]
+
   - This is a vector of parameters that our function expects.
     Even if function will no expect parameters,
     an empty vector must be provided in definition.
@@ -145,8 +148,260 @@ So now that is done, we can walk through all the parts of the form.
 
 You might wonder where the return part is?
 Most other programming languages have explicit return statement.
-Instead of such statement,
+Instead of such a statement,
 Clojure functions return the output of the last thing evaluated.
 
 Ok thats again enough babbling and academics.
 Let's take the practical approach and write some functions.
+
+### Defining sum function
+
+So if we would have a vector of numbers,
+how would we sum them up?
+In many other languages the obvious solution would be a for-loop.
+In Clojure we do also have similar structures,
+but we will not use them now.
+Instead we are going to be using [apply](https://clojuredocs.org/clojure.core/apply) function.
+
+Let's define the following function:
+
+```clojure
+(defn sum
+  "Sums a vector of numbers"
+  [a-vec]
+  (apply + a-vec)`
+```
+
+Apply takes a function and a [sequence](https://clojure.org/reference/sequences) as parameters,
+and it calls the function using contents of that sequence as parameters.
+
+This is easier to understand when you see it like this:
+
+```clojure
+;; these are practically the same
+(apply + [1 2 3])
+=> 6
+(+ 1 2 3)
+=> 6
+```
+
+Sequence is an interface for many kind of collections in clojure.
+Vectors, Lists and many others are sequenceable.
+This means that they implement sequence interface,
+which is something majority of Clojure's functions rely on.
+
+We can check if something sequenceable with function _sequential?_
+
+```clojure
+(sequential? [1 2 3])
+=> true
+```
+
+Now that we got that out of the way we can try if our function actually works.
+It is a common development pattern in Clojure to define a function,
+and then try it out in REPL.
+If it works,
+we can move forward.
+If it wont,
+we will redefine and try again.
+
+Le's call our function to try it out.
+
+```clojure
+(sum [1 2 3])
+=> Syntax error compiling at (core.clj:9:1).
+Unable to resolve symbol: sum in this context
+```
+
+WHAT!! Didn't we just define sum?
+Why is REPL unable resolve the [symbol](https://stackoverflow.com/questions/2320348/symbols-in-clojure)?
+(symbol refers to an identifier).
+Well the answer is simple,
+we need to evaluate the defn form before REPL knows about it.
+You might have written it to your file,
+but it won't be loaded to your REPL session before you explicitly evaluate it.
+
+Now proceed to evaluate the defn sum form,
+just like you did with all the other forms in
+[2.2. Using REPL](../2-little-bit-of-repl/2-using-repl.md)
+and [2.3. Hands on REPL](../2-little-bit-of-repl/3-hands-on-repl.md).
+After this you can try calling sum again.
+
+```clojure
+(sum [1 2 3])
+=> 6
+```
+
+Great!
+Our function works exactly as intended.
+And congratulations for writing your first function.
+It is definitely the most important step towards becoming an actual Clojurist.
+
+**This pattern of writing and testing our functions is something you should always do when writing Clojure.**
+Always keep your REPL open and ready.
+Later on in this book we wont explicitly tell you to try out the functions we do,
+but you should do so anyway.
+Build up the habit of doing so.
+Not only will it help you to understand what we are doing,
+but having the habit will effectively make you a better Clojurista.
+It is also a good idea to try different kinds of inputs for your functions,
+to make sure they actually work as you intended.
+
+With that being said,
+let's get back to our project.
+
+As you recently learned that apply works actually on all sequences (seq for short).
+This means that our defn sum code is a bit misleading.
+We state that it takes in a vector,
+but it clearly works with many kinds of seqs.
+
+```clojure
+(sum '(1 2 3)) ;; This is a List if you have forgotten
+=> 6
+(sum #{1 2 3}) ;; and this is a Set
+=> 6
+```
+
+Let's change our code a bit to make it more clear what our function is able to do.
+
+```clojure
+(defn sum
+  "Sums a vector of numbers"
+  [a-seq]
+  (apply + a-seq)`
+```
+
+This wont actually change the functionality of our function at all,
+but it makes it more clear that it can take other things than Vectors as well.
+Also notice that we are calling the parameter _a-seq_ instead of _seq_.
+This is because we don't want to [shadow](https://en.wikipedia.org/wiki/Variable_shadowing)
+ an existing function [seq](https://clojuredocs.org/clojure.core/seq) and cause unnecessary confusion.
+For the very same reason called the previous parameter a-vec (there is also a function called [vec](https://clojuredocs.org/clojure.core/vec)).
+Alternatively,
+we could call the parameter _coll_,
+that would be suitable too and it is often seen in Clojure code.
+
+Now that we have written a perfectly amazing sum function,
+it is time to move onwards.
+
+### Reading from a file: meeting with slurp
+
+Reading from a file in Clojure is much easier than for example in Java or Python.
+It is actually hilarious how easy it is.
+
+Clojure provides us with a magnificent function known as a [slurp](https://clojuredocs.org/clojure.core/slurp).
+The power of slurp is rivaled only buy the playfulness of its name.
+So shall we give it a try?
+
+Slurp file path as its sole parameter.
+We will try it on the README file of your sum-em-up project.
+
+```clojure
+(slurp "README.md")
+=> "# sum-em-up2
+
+FIXME: description
+
+## Installation..." ;; this actually goes on way more
+```
+
+As you can see from your own REPL,
+slurp returns the whole file as a string.
+Depending on the language you come from,
+this might or might not be weird for you.
+Returning the whole thing as a single string leaves a lot of responsibility for the programmer.
+It is completely up to you to parse and process this file now as you please.
+
+Before we move on to with our project,
+I really have to demonstrate another cool feature of slurp to you.
+slurp is not limited to reading files.
+Among many other things it can be used for reading websites.
+
+```clojure
+(slurp "https://clojuredocs.org/")
+=> "<!DOCTYPE html>
+ <html><head><meta ..." ;; again I shortened this
+```
+
+If you need to read something from somewhere,
+slurp is usually your best pal.
+
+Ok. Now we know slurp and know how to use it too.
+Since our plan is to read bunch of numbers from file,
+it is fair enough to think that we need the said file.
+
+Lets create a text file with some numbers to the root of our project.
+If you are in the root of your project, you can just run this command on your terminal:
+
+```bash
+echo 1 2 3 4 5 10 300 > numbers.txt
+```
+
+(This won't work on windows,
+so if you are a windows user you will have to create the file by hand.
+Just create a file to root of the project with numbers 1 2 3 4 5 10 300 in it.
+Don't separate numbers with any thing else than spaces.)
+
+Now that we have our number file we can start move on.
+Try reading the numbers.txt file with slurp from your REPL.
+
+```clojure
+(slurp "numbers.txt")
+=> "1 2 3 4 5 10 300\n" ;; your file might or might not have \n in the end.
+```
+
+### Parsing string
+
+So since you probably done some programming your life before this,
+I believe you see an issue in summing single string of numbers.
+To solve this we need to somehow turn this string of numbers into vector of numbers.
+
+So we need a function that is able to perform this:
+
+```clojure
+(parse-numbers "1 2 3 4 5 10 300\n")
+=> [1 2 3 4 5 10 300]
+```
+
+So lets try defining such a function.
+
+First thing we want to do is to be able to somehow split this single string into many tiny strings.
+Luckily Clojure's [string namespace](https://clojure.github.io/clojure/clojure.string-api.html)
+has just the tool for us.
+We won't dive deeper with [namespaces](https://clojure.org/reference/namespaces) just yet,
+but if you are eager you can read about them from the link.
+
+```clojure
+(clojure.string/split "1 2 3 4 5 10 300\n" #"\s+")
+=> ["1" "2" "3" "4" "5" "10" "300"]
+```
+
+So what does actually happen here?
+Since split is not from clojure.core or from our namespace sum-em-up.core,
+we have to specify to clojure where exactly is it located.
+That is done with **clojure.string/** .
+After that we just write the name of the function we are calling.
+Next weird thing is **#"\s+"**.
+This something known as [Regex](https://en.wikipedia.org/wiki/Regular_expression) pattern.
+In clojure we can specify regex patterns by adding # in front of a string.
+As you might know,
+Regex is not Clojure specific thing,
+but a handy tool found in one form or another from almost all modern programming languages.
+If you are not familiar with Regex yet,
+I strongly suggest you complete a short course on the topic at [RegexOne](https://regexone.com/) some time soon.
+It should not take you more than an hour.
+
+For those who are not familiar with Regex i will quickly explain what the Regex pattern \s+ means.
+**\s** stands for any white space character,
+those being space, tab (\t), carriage return (\r) and new lines (\n).
+\+ on the other hand means that here may be 1 or more of characters/elements described before it.
+
+In other words **#"\s+"** is a Clojure's way of describing a Regex pattern that says:
+
+"Match as many whitespace characters as you please,
+as long as there is at least one of them"
+
+So our function call above is asking split the string "1 2 3 4 5 10 300\n"
+from where ever there is any sorts of whitespaces, no matter how many there is.
+This will nicely leave us with a vector of strings all representing numbers.
+Nice right.

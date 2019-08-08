@@ -16,6 +16,12 @@ but in the progress we will learn plenty of useful skills.
 Further more we will immediately connect Clojure to real world,
 which might often feel hard to get started with.
 
+## [1. Minimum Viable Product](./1-minimum-viable-product.md)
+
+Here we will create the version that barely meets standards of our software.
+Aim is to make just some thing that works,
+so we can improve it later.
+
 ## Recap
 
 Among other things after this chapter you:
