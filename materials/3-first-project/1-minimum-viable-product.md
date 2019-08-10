@@ -330,7 +330,7 @@ Ok. Now we know slurp and know how to use it too.
 Since our plan is to read bunch of numbers from file,
 it is fair enough to think that we need the said file.
 
-Lets create a text file with some numbers to the root of our project.
+Let's create a text file with some numbers to the root of our project.
 If you are in the root of your project, you can just run this command on your terminal:
 
 ```bash
@@ -363,7 +363,7 @@ So we need a function that is able to perform this:
 => [1 2 3 4 5 10 300]
 ```
 
-So lets try defining such a function.
+So let's try defining such a function.
 
 First thing we want to do is to be able to somehow split this single string into many tiny strings.
 Luckily Clojure's [string namespace](https://clojure.github.io/clojure/clojure.string-api.html)
@@ -405,3 +405,114 @@ So our function call above is asking split the string "1 2 3 4 5 10 300\n"
 from where ever there is any sorts of whitespaces, no matter how many there is.
 This will nicely leave us with a vector of strings all representing numbers.
 Nice right.
+
+We are not done yet though.
+If we would try to sum the numbers in this vector,
+we would get an error.
+
+```clojure
+(sum ["1" "2" "3" "4" "5" "10" "300"])
+=> Syntax error (ClassCastException) compiling at (core.clj:13:1).
+class java.lang.
+String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+```
+
+This is because for obvious reasons strings cannot be summed up.
+
+This takes us to the next two problems.
+
+1. How do we parse a single string into a number?
+
+2. How do we parse vector of strings to vector of numbers?
+
+Let's get started with the first problem.
+
+### String to Long
+
+In Clojure we often utilize the power of underlying JVM.
+This is known as [Java interop](https://www.braveclojure.com/java/).
+Thanks to the fact that Clojure is built on top of JVM,
+we can often utilize the [Java classes, objects and methods directly from Clojure code](https://clojure.org/reference/java_interop#_the_dot_special_form).
+This also gives Clojure to harvest the power of Java ecosystem and its many packages.
+This itself is a complex topic,
+So I recommend that you only dive deeper into it when you need it.
+
+For now we are just going through the bare minimum to get the job done.
+
+Clojure's whole numbers are most commonly Java's Long type,
+so to parse those it is natural to dip our toes into the world of Java interop to parse such a number from string.
+
+In case you are not familiar with how this is done in java,
+would look something like this.
+
+```java
+string numberInText = "100";
+Long ourLong = Long.valueOf(numberInText);
+```
+
+To achieve this in Clojure we will use special syntax for Java interop.
+
+```clojure
+(Long/valueOf "303")
+=> 303
+```
+
+Great! It worked!
+So here we call a static method valueOf from class Long using a parameter "303".
+
+That solves our first problem.
+Let's take a shot at the second problem.
+How do we apply this to a whole list of strings?
+
+For this the tool would be our good friend [map](https://clojuredocs.org/clojure.core/map) function.
+Map is a very flexible function that can be used in many ways,
+but here we are going to use the simplest and most common way.
+
+We will give map 2 parameters:
+A function and collection.
+What map will do is that it will apply the given function to each of the members of the collections,
+and then returns us the collection of those results.
+Let's give it a shot.
+
+```clojure
+(map Long/valueOf ["1" "2" "3" "4" "5" "10" "300"])
+=> Syntax error compiling at (core.clj:17:1).
+Unable to find static field: valueOf in class java.lang.Long
+```
+
+WHAT!?!?
+This was not supposed to happen!
+Well actually it kinda was.
+map can only take Clojure functions as as parameters,
+thus Java static methods are not accepted.
+Well how will we solve this?
+
+Luckily there is an easy way out of this ditch.
+We can just simply wrap the static method call into a Clojure function and map will have no complaints.
+
+```clojure
+(defn str->long
+  [x]
+  (Long/valueOf x))
+
+(str->long "1337")
+=> 1337
+```
+
+So lets try our newly defined function with map.
+
+```clojure
+(map str->long ["1" "2" "3" "4" "5" "10" "300"])
+=> (1 2 3 4 5 10 300)
+```
+
+YES!
+Our solution worked.
+Now we have all the necessary parts to complete our program.
+
+In order to make the program complete,
+as the next step we will build all the logic into main function,
+so Leiningen will know in which order it should run our code.
+
+
+
