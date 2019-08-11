@@ -22,14 +22,24 @@ Here we will create the version that barely meets standards of our software.
 Aim is to make just some thing that works,
 so we can improve it later.
 
+## [2. Running and Building with Leiningen](./2-running-and-building-with-leiningen.md)
+
+This part will teach us how to run code from command line with Leiningen.
+After that we will look into building and running runnables.
+
 ## Recap
 
 Among other things after this chapter you:
 
 - Know how to create (a.k.a. define) new functions.
 
-- Perform basic operations in Clojure
+- Are able to perform basic operations in Clojure. Such as:
+  - Reading from file.
+  - Parsing text.
+  - Parsing numbers from a text.
+  - Operations to whole collection with map and apply
+  - Basic Java interop
 
-- Are able to perform basic I/O operations with Clojure
+- Can run Clojure applications from command line
 
 - Can build a runnable Clojure application
