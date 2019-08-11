@@ -27,6 +27,8 @@ so we can improve it later.
 This part will teach us how to run code from command line with Leiningen.
 After that we will look into building and running runnables.
 
+## [3. Refactoring the Project](./3-refactoring-project.md)
+
 ## Recap
 
 Among other things after this chapter you:
