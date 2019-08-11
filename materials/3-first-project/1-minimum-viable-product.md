@@ -406,6 +406,8 @@ from where ever there is any sorts of whitespaces, no matter how many there is.
 This will nicely leave us with a vector of strings all representing numbers.
 Nice right.
 
+So let's define this into a function:
+
 We are not done yet though.
 If we would try to sum the numbers in this vector,
 we would get an error.
@@ -514,5 +516,54 @@ In order to make the program complete,
 as the next step we will build all the logic into main function,
 so Leiningen will know in which order it should run our code.
 
+## Building the main logic
 
+When we created the project with Leiningen using the app template,
+Leiningen created a function -main to our project.
+This is the starting point of our Clojure application.
+When we start running the project,
+it starts from the beginning of the main function.
+When the end of -main function is reached the program completes.
+You might be familiar with this concept from other programming languages,
+since it is rather common pattern.
 
+Before we will now gather all the parts we have prepared under the main function:
+
+```clojure
+(defn -main
+  [& args]
+  (println (sum (map str->long (clojure.string/split (slurp "numbers.txt") #"\s+")))))
+```
+
+This is what we came up with.
+It is not pretty but it works.
+You can try calling this the main function from REPL
+
+```clojure
+(-main)
+=> 325
+```
+
+This covers our minimum viable product.
+Don't worry,
+we won't leave our code in such an ugly state for very long.
+
+The whole code should look like this at the end of this part:
+
+```clojure
+(ns sum-em-up.core
+  (:gen-class)
+
+(defn sum
+  "Sums a vector of numbers"
+  [a-seq]
+  (apply + a-seq))
+
+(defn str->long
+  [x]
+  (Long/valueOf x))
+
+(defn -main
+  [& args]
+  (println (sum (map str->long (clojure.string/split (slurp "numbers.txt") #"\s+")))))
+```
