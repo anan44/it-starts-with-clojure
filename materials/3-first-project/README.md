@@ -29,6 +29,15 @@ After that we will look into building and running runnables.
 
 ## [3. Refactoring the Project](./3-refactoring-project.md)
 
+Here we will refactor our project,
+so it won't be just MVP anymore.
+The code will be nicer and some improvements will be made
+
+## [4. Testing in Clojure](./4-testing-in-clojure.md)
+
+This part teaches you about testing in Clojure.
+We will also be building some tests for our project.
+
 ## Recap
 
 Among other things after this chapter you:
@@ -45,3 +54,5 @@ Among other things after this chapter you:
 - Can run Clojure applications from command line
 
 - Can build a runnable Clojure application
+
+- Are able to write and run tests in Clojure
