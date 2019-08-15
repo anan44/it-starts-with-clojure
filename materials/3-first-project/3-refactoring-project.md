@@ -203,7 +203,35 @@ Like this:
 ```bash
 lein run ourFileName
 
-# forexample like this
+# for example like this
 lein run numbers.txt
 ```
 
+That should cover our refactorings for now.
+There would for sure be room for more improvements,
+but for now this should be enough.
+
+In the end of this part your project should look something like this:
+
+```clojure
+(ns sum-em-up.core
+  (:gen-class))
+
+(defn sum
+  "Sums a vector of numbers"
+  [a-seq]
+  (apply + a-seq))
+
+(defn str->long
+  [x]
+  (Long/valueOf x))
+
+(defn -main
+  [& args]
+  (let [file-name (first args)
+        text (slurp file-name)
+        str-coll (clojure.string/split text #"\s+")
+        long-coll (map str->long str-coll)
+        total (sum long-coll)]
+    (println total)))
+```
