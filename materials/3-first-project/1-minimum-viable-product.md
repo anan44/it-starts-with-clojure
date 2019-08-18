@@ -501,7 +501,7 @@ We can just simply wrap the static method call into a Clojure function and map w
 => 1337
 ```
 
-So let'ss try our newly defined function with map.
+So let's try our newly defined function with map.
 
 ```clojure
 (map str->long ["1" "2" "3" "4" "5" "10" "300"])
