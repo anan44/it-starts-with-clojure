@@ -17,3 +17,8 @@ Learn it first and learn it well and it will guide you through all sorts of adve
 
 We will learn how to create functions and build simple Clojure applications.
 In the progress we will learn how perform basic I/O operations with Clojure.
+
+## [4. State in Clojure](./4-state-in-clojure)
+
+We will build a super simple application for writing down a shopping list in command line.
+While doing so we'll learn about state, loops, and few other things.
