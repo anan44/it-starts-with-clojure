@@ -25,9 +25,9 @@ The application will have following requirements.
 
 2. Saves user inputs to data structure
 
-3. It will keep prompting the user until empty line is provided
+3. Keep prompting user until user tells she is finished with the shopping-list
 
-4. In the end the shopping list is saved to a text file
+4. In the end the shopping list is saved to a text file in human readable form
 
 Requirements for this are quite simple.
 But some of these things are not as simple in functional paradigm,
