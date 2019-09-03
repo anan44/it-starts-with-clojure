@@ -121,12 +121,13 @@ Atom is definitely a handy tool,
 but it is good to acknowledge that is not needed that often.
 Clojure's functional approach to programming is able to solve issues without using any mutable state.
 I simply wanted to introduce this tool to you,
-so you wont waste your time wondering how certain things can be accomplished with clojure (as I did when I was learning the basics).
+so you won't waste your time wondering how certain things can be accomplished with Clojure (as I did when I was learning the basics).
 Try not to over use atom.
 It is there for you if you need it,
 but it is a power that you should not overuse.
 
-Another thing that you should know about atom is that it might perform the same function more than once to your value.
+Another thing that you should know about atom,
+is that it might perform the same function more than once to your value.
 Thus you should never use functions with any side effects with atoms,
 since those side effects might take place multiple times.
 This is because of the internals of the atom that make sure that no race conditions occur.
