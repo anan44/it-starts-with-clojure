@@ -22,3 +22,14 @@ In the progress we will learn how perform basic I/O operations with Clojure.
 
 We will build a super simple application for writing down a shopping list in command line.
 While doing so we'll learn about state, loops, and few other things.
+
+### Additional reading suggestions
+
+- [Living Clojure](https://www.oreilly.com/library/view/living-clojure/9781491909270/)
+  - Easy to understand and approach hands on Clojure book that starts from very beginning
+- [Clojure for the Brave and True](https://www.braveclojure.com/)
+  - A Classic Clojure book.
+- [Programming Clojure, Third Edition](https://pragprog.com/book/shcloj3/programming-clojure-third-edition)
+  - More in depth book about Clojure.
+- [Web Development With Clojure](https://pragprog.com/book/dswdcloj3/web-development-with-clojure-third-edition)
+  - Domain specific book for Web Development
