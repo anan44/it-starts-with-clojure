@@ -20,12 +20,27 @@ There simply was not suitable place to slide it in earlier.
 Back to the topic.
 
 if in Clojure is rather different from if statements in other programming languages.
-This is mostly due to the fact that in Clojure if is like a function,
+In face if is something called a [_special form_](https://clojure.org/reference/special_forms).
+if in Clojure is kinda like a function,
 just like almost everything else is.
-So how can if be  like a function?
+Only difference to actual functions is that you cannot pass if around,
+in other words it is not a 1st class citizen.
+So how can if be like a function?
 That makes no sense.
 Well actually it does and it is rather simple really.
 
 if takes 3 parameters.
 Those being test, then, else?
-Question mark in the end of else indicates that is is non-obligatory
+Question mark in the end of else indicates that is is non-obligatory.
+So what does this mean?
+
+```clojure
+(if true "yes" "no")
+=> "yes"
+
+(if false "yes" "no")
+=> "no"
+
+(if false "yes")
+=> nil
+```

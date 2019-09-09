@@ -60,6 +60,10 @@ To see the value in an atom we need to use a special operator @.
 => 1
 ```
 
+@ is actually a short hand for the function [deref](https://clojuredocs.org/clojure.core/deref),
+but you will almost never use deref since @ is so clear.
+Nevertheless it is something you should know of.
+
 Altering a value in an atom might feel a bit tricky,
 in the beginning but it is quite simple actually.
 To alter a value we need to provide the atom a function that will take the current value as a parameter,

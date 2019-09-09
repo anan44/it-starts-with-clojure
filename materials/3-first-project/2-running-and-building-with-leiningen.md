@@ -60,4 +60,8 @@ java -jar target/uberjar/sum-em-up2-0.1.0-SNAPSHOT-standalone.jar
 Remember that there has to be the numbers.txt file in the project root folder when you execute this.
 (assuming that you execute it from project root folder)
 
+Since at the very core Clojure is just another Library,
+it will be able to build normal jar files.
+At their core these files are just like any other Java program you might come across.
+
 With this we have covered running and building projects with Leiningen.

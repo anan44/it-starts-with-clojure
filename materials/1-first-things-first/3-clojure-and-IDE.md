@@ -31,8 +31,6 @@ but I recommend it because it very easy to setup and get started with.
 
 3. With Calva plugin correctly installed we can connect VSC to running REPL
 
-TODO: Something about structural editing in calva
-
 ## Other options
 
 ### [IntelliJ IDEA](https://www.jetbrains.com/idea/) + [Cursive](https://cursive-ide.com/)
@@ -67,6 +65,6 @@ But some people are really passionate about Vim so this option has to be pointed
 
 ### [NightCode](https://sekao.net/nightcode/)
 
-Editor especially made for Clojure. Worth testing out.
-
-TODO: write more about NightCode
+Editor especially made for Clojure.
+Worth testing out.
+It  provides instant REPL and is especially nice for learning the language. 

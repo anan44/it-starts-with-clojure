@@ -81,6 +81,13 @@ let's try if it works with a simple form:
 
 After pressing enter the result (2) should be shown in terminal.
 
+If this notation (+ 1 1) confuses you,
+don't be worried.
+It is something called [Polish Notation](https://en.wikipedia.org/wiki/Polish_notation).
+It is something Clojure uses,
+and you will get used to it way faster than you would think.
+We will discuss arithmetics and how they work in clojure in near future.
+
 Using REPL like this is easy,
 but you don't necessarily be typing your whole function in constantly.
 Because of this I would recommend using REPL from your IDE.

@@ -181,6 +181,7 @@ This is easier to understand when you see it like this:
 ;; these are practically the same
 (apply + [1 2 3])
 => 6
+
 (+ 1 2 3)
 => 6
 ```
@@ -214,6 +215,7 @@ Unable to resolve symbol: sum in this context
 ```
 
 WHAT!! Didn't we just define sum?
+
 Why is REPL unable resolve the [symbol](https://stackoverflow.com/questions/2320348/symbols-in-clojure)?
 (symbol refers to an identifier).
 Well the answer is simple,
@@ -258,6 +260,7 @@ but it clearly works with many kinds of seqs.
 ```clojure
 (sum '(1 2 3)) ;; This is a List if you have forgotten
 => 6
+
 (sum #{1 2 3}) ;; and this is a Set
 => 6
 ```
@@ -275,7 +278,7 @@ This wont actually change the functionality of our function at all,
 but it makes it more clear that it can take other things than Vectors as well.
 Also notice that we are calling the parameter _a-seq_ instead of _seq_.
 This is because we don't want to [shadow](https://en.wikipedia.org/wiki/Variable_shadowing)
- an existing function [seq](https://clojuredocs.org/clojure.core/seq) and cause unnecessary confusion.
+an existing function [seq](https://clojuredocs.org/clojure.core/seq) and cause unnecessary confusion.
 For the very same reason called the previous parameter a-vec (there is also a function called [vec](https://clojuredocs.org/clojure.core/vec)).
 Alternatively,
 we could call the parameter _coll_,
@@ -377,6 +380,7 @@ but if you are eager you can read about them from the link.
 ```
 
 So what does actually happen here?
+
 Since split is not from clojure.core or from our namespace sum-em-up.core,
 we have to specify to clojure where exactly is it located.
 That is done with **clojure.string/** .
@@ -470,6 +474,10 @@ For this the tool would be our good friend [map](https://clojuredocs.org/clojure
 Map is a very flexible function that can be used in many ways,
 but here we are going to use the simplest and most common way.
 
+You should not confuse map function to the map data structure.
+Even though the two share a name,
+they play rather different roles in the Language.
+
 We will give map 2 parameters:
 A function and collection.
 What map will do is that it will apply the given function to each of the members of the collections,
@@ -535,8 +543,12 @@ Before we will now gather all the parts we have prepared under the main function
   (println (sum (map str->long (clojure.string/split (slurp "numbers.txt") #"\s+")))))
 ```
 
+
 This is what we came up with.
+This is a great example of how Clojure (and all LISPs) are read from right to left.
+This can be a bit uncomfortable especially with longer one-liners such as this.
 It is not pretty but it works.
+Later we will see into ways of making this more readable.
 You can try calling this the main function from REPL
 
 ```clojure

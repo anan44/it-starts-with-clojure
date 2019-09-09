@@ -86,8 +86,11 @@ Tim "tpope" Pope
 Notice how clojure returns _nil_ after printing Tim "tpope" Pope?
 This is because in clojure every form evaluates into something.
 Functions evaluate into their return values.
-println function (like print function) has no return value,
-thus _nil_ is returned.
+println function (like print function) always return nil regardless of what is being printed.
+Unlike in Java or many other languages,
+Clojure does not support returning void.
+Many places that would in other langauges return void return _nil_ instead.
+It is good to keep in mind that nil is also a return value nevertheless.
 
 Clojure's strings are actually Java strings.
 Much of Clojure code is closely connected to Java.
@@ -97,6 +100,16 @@ but we won't let it sidetrack us any more than this now.
 If you are interested connection between Java and Clojure, read more from Clojure docs [Hosted on the JVM](https://clojure.org/about/jvm_hosted)
 and [Java Interop](https://clojure.org/reference/java_interop).
 As before, there are both things I suggest you leave for later.
+
+In addition to println Clojure also provides handy function [prn](https://clojuredocs.org/clojure.core/prn).
+prn is much like print, but it prints everything in machine readable format.
+
+```clojure
+(prn "Tim \"tpope\" Pope")
+"Tim \"tpope\" Pope"
+=> nil
+
+This can be especially handy while debugging.
 
 ## [+](http://clojuredocs.org/clojure.core/+)
 
@@ -350,6 +363,7 @@ java.lang.Long cannot be cast to clojure.lang.IFn
 => clojure.lang.PersistentList
 ```
 
+
 You might also have noticed that we did not use commas to separate the values from each other.
 Unlike other languages Clojure's compiler does not require such separators.
 In fact Clojure's compiler will just ignore such commas even if you would provide them.
@@ -362,7 +376,25 @@ it is generally considered idiomatic to leave them out.
 ```
 
 To recap:
-When writing lists in to your code, use a leading singe quote.
+When writing lists in to your code, use a leading single quote.
+
+The error we had before:
+
+```text
+SOMETHING cannot be cast to clojure.lang.IFn
+```
+
+is rather common sight in Clojure.
+It might seem cryptic at first,
+but what it is trying to say is rather simple.
+
+The thing SOMETHING could not be casted to clojure.lang.IFn,
+which is short for **Interface Function**.
+IFn is Clojure interface that all functions share and is required from the in order to be callable.
+
+So in short: *SOMETHING was not a function*.
+
+With this knowledge in your pocket you will avoid a lot of beginner's Clojure frustration.
 
 ### [Vectors](https://clojure.org/reference/data_structures#Vectors)
 
@@ -412,6 +444,10 @@ It is also idiomatic to use keywords as keys when possible.
 (type {:numbers [1 2 3] :chars [\a \b \c] :name "Rich Hickey" 3 "is a number"})
 clojure.lang.PersistentArrayMap
 ```
+
+If you have hard time wrapping your head around Clojure's map structure,
+think of them as cooler cousin of JSON format.
+They share a lot in common and are used for storing data in similar manner.
 
 It is also good to note that Maps do not guarantee any specific order of the key-value-pairs in them.
 

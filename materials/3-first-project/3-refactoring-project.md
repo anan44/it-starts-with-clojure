@@ -154,6 +154,14 @@ In the end you will be the judge of what is the right amount of binding for read
 Experiment with different approaches while writing Clojure,
 and in time you will find the balance between too little and too much let.
 
+In addition to let Clojure also offers something called [Threading Macros](https://clojure.org/guides/threading_macros).
+They can be used to achieve similar results in code clarity.
+They might not be the most beginner friendly tool,
+but they are very popular and effective.
+
+We won't dive into details with them now,
+but we will be getting comfortable with them as well in the future.
+
 ## Using args
 
 Currently our project is always dependent on file _numbers.txt_,
