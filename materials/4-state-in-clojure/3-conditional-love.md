@@ -26,8 +26,8 @@ just like almost everything else is.
 Only difference to actual functions is that you cannot pass if around,
 in other words it is not a 1st class citizen.
 So how can if be like a function?
-That makes no sense.
-Well actually it does and it is rather simple really.
+"That makes no sense."
+Well actually it does, and it is rather simple really.
 
 if takes 3 parameters.
 Those being test, then, else?
@@ -44,3 +44,31 @@ So what does this mean?
 (if false "yes")
 => nil
 ```
+
+So unlike in so many programming languages Clojure does not provide if statement,
+which allows us to take different paths in our programs.
+This would be rather imperative manner.
+Instead if in Clojure returns one of two values.
+Yet nothing stops us from returning results of completely different functions,
+which will effectively lead to more functional style solutions.
+
+This would look like something like this:
+
+```clojure
+(if (is-sold? product)
+  (ship-to-customer product customer)
+  (hype-on-marketplace product marketplace))
+```
+
+You might also have noticed how I split the if statement to three lines.
+This is an idiomatic way especially with any longer than super short if statements.
+For more idiomatic Clojure code remember to visit [the style guide](https://guide.clojure.style/).
+
+When handling boolean operations in Clojure,
+it is good to note that almost all values are what we would consider truthy.
+Like in many languages the value does not have to be explicitly true to be considered truthy.
+In fact only nil and false are considered falsy.
+Everything else will always evaluate to truthy in boolean terms.
+
+Obviously Clojure as a mature language offers many alternatives for if,
+but we will leave them for later for now.
