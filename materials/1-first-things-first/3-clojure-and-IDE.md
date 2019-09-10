@@ -68,3 +68,8 @@ But some people are really passionate about Vim so this option has to be pointed
 Editor especially made for Clojure.
 Worth testing out.
 It  provides instant REPL and is especially nice for learning the language. 
+
+### [Atom](https://atom.io/)
+
+Jacek Schae has written a [nice article](https://medium.com/@jacekschae/slick-clojure-editor-setup-with-atom-a3c1b528b722) about using Atom in Clojure development.
+In case you interested read follow his suggestions.
