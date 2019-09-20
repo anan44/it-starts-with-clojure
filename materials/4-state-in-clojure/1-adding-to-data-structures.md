@@ -14,7 +14,7 @@ We will play a bit in REPL first to learn few new tricks,
 and after wards we will use them in our project.
 
 In the previous project we made an acquaintance with some data structures.
-No we will learn more about them.
+Now we will learn more about them.
 As we will progress on this guide,
 you will learn that most of our work with Clojure is more or less playing with those basic data structures.
 
