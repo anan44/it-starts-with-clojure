@@ -21,7 +21,7 @@ defs are really simple actually:
 
 There is not much more to say about defs for now.
 Almost anything can be stored to them.
-Not only values and objects but functions too.
+Not only values, collections, and objects but functions too.
 This is because Clojure's functions are [first class citizens](https://en.wikipedia.org/wiki/First-class_function),
 which means that they can be treated as any other values.
 They can be passed as arguments or used as return values.
@@ -37,9 +37,9 @@ That something is atom.
 ## [atom](https://clojuredocs.org/clojure.core/atom)
 
 Atom is a special object that we can define and later modify with functions.
-With atoms Clojure applications can take care of state in concurrent applications with out much hustle.
+With atoms Clojure applications can take care of state in concurrent applications with out much of a hustle.
 If you have tried doing this in other languages like Java or Python,
-might know that it is not completely trivial task usually.
+might know that it is not entirely trivial task usually.
 [Race condition](https://en.wikipedia.org/wiki/Race_condition) is a good example of an issue caused by poorly managed state.
 We won't be doing concurrency on this guide,
 since it is way out of our scope.
@@ -62,7 +62,7 @@ To see the value in an atom we need to use a special operator @.
 
 @ is actually a short hand for the function [deref](https://clojuredocs.org/clojure.core/deref),
 but you will almost never use deref since @ is so clear.
-Nevertheless it is something you should know of.
+Nevertheless deref is something you should know of.
 
 Altering a value in an atom might feel a bit tricky,
 in the beginning but it is quite simple actually.
@@ -123,7 +123,7 @@ is usually better to use swap!
 
 Atom is definitely a handy tool,
 but it is good to acknowledge that is not needed that often.
-Clojure's functional approach to programming is able to solve issues without using any mutable state.
+Clojure's functional approach to programming is most of the time able to solve issues without using any mutable state.
 I simply wanted to introduce this tool to you,
 so you won't waste your time wondering how certain things can be accomplished with Clojure (as I did when I was learning the basics).
 Try not to over use atom.

@@ -16,10 +16,10 @@ and after wards we will use them in our project.
 In the previous project we made an acquaintance with some data structures.
 Now we will learn more about them.
 As we will progress on this guide,
-you will learn that most of our work with Clojure is more or less playing with those basic data structures.
+you will learn that most of our work with Clojure is more or less about playing with those basic data structures.
 
 The structures that we will be using in this chapter are vectors and maps,
-both of which you have seen already previously.
+both of which you have met previously already.
 Let's get to know them a bit better.
 
 So vectors are a structure similar to lists in many other languages.
@@ -28,6 +28,8 @@ Clojure's collections are not necessarily separated by commas,
 but they can be if it adds clarity to the code.
 In case the commas are being used,
 the compiler will ignore them.
+In other words,
+commas in collections are just syntax sugar.
 
 Previously we have been just seeing collections that we either got from somewhere,
 or we created them from some other data.
@@ -50,7 +52,7 @@ There is few ways to add additional elements to the vectors,
 and these same methods work with other collections as well.
 
 It is also important to note that these functions DO NOT actually add items to the existing collection.
-Clojure's data structures [immutable](https://en.wikipedia.org/wiki/Immutable_object) and cannot be changed after their creation.
+Clojure's data structures are always [immutable](https://en.wikipedia.org/wiki/Immutable_object) and cannot be changed after their creation.
 Instead actually adding items to existing structures,
 Clojure returns a new collection with based on the input values.
 Depending on your background this might feel odd or slow,
@@ -102,14 +104,14 @@ if that is necessary.
 
 concat is very useful,
 but it is good to be aware that it might be a bit slower than conj.
-BUT in the most cases the speed should not be an issue to your application.
+Yet in the most cases the speed should not be an issue to your application.
 
 ## [cons](https://clojuredocs.org/clojure.core/cons)
 
 cons adds an element to the front of the collection and returns it as a seq.
-cons is rather popular and it definitely has its uses,
-but unless you really want to deal with seqs,
-and want the items added to beginning of that collection
+cons is rather popular and it definitely has its uses.
+But unless you really want to deal with seqs,
+AND you want the items added to beginning of a collection then you should consider other options.
 
 ```clojure
 (cons 1 [2 3 4])
