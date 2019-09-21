@@ -52,3 +52,16 @@ You will learn about conj, concat and cons.
 
 You get familiar with Atom and learn to mutate state in Clojure.
 We'll also learn about def for saving variables.
+
+## [3. Conditional Love](./3-conditional-love.md)
+
+We will learn about boolean logic in Clojure.
+
+## [4. Terminal Interface](./4-terminal-interface.md)
+
+We will make new friends with loop and recur functions,
+as well as with read-line and do functions.
+
+## [5. Creating MVP](./5-creating-mvp.md)
+
+We will create a first functional minumum viable product of our application
