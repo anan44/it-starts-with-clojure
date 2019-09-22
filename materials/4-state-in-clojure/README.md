@@ -66,7 +66,7 @@ as well as with read-line and do functions.
 
 We will create a first functional minimum viable product of our application.
 
-##  [6. Not So MVP](./6-not-so-mvp.md)
+## [6. Not So MVP](./6-not-so-mvp.md)
 
 We will improve the functionality of the previous application,
 and do some refactoring to enhance the quality of the code.
