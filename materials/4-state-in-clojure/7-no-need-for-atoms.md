@@ -130,3 +130,21 @@ All in all the final solution looks something like this:
           (recur shoppings
                  (prompt options))))))
 ```
+
+## Last words on the topic
+
+I am sure some authors would disagree with me telling you about the atom this early.
+I indeed did have few deep conversations regarding the decision with my colleagues,
+since they too doubted it a bit.
+
+I truly hope that I have managed to convince you to not use atoms when not needed.
+It can be very tempting but is not necessary very often.
+
+New programmers sometimes feel tempted to create atoms inside functions to create a state inside the lexical scope.
+This is something I would strongly advice against.
+I have never met or heard about a situation where that would be a good idea.
+
+As a rule of thump always try solving your state issues with recursion if that fails,
+then look for other options such as atoms or databases or etc.
+
+With these final warning we finalize the section on atoms and state in Clojure.
