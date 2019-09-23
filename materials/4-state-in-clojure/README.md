@@ -70,3 +70,8 @@ We will create a first functional minimum viable product of our application.
 
 We will improve the functionality of the previous application,
 and do some refactoring to enhance the quality of the code.
+
+## [7. No Need for Atoms](./7-no-need-for-atoms.md)
+
+We'll majorly refactor our application,
+and discover how atoms are not necessary for managing state in Clojure.
