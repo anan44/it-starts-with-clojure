@@ -1,0 +1,3 @@
+Milk * 2
+Juice * 10
+Beer * 5

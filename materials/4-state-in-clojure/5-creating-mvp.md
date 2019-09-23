@@ -61,7 +61,7 @@ This function will wrap prompt's and our add-shopping function to single functio
 (defn add-product-to-shoppings
   []
   (let [product (prompt "What to buy?")
-        amount (prompt "How many")]
+        amount (prompt "How many?")]
     (add-shopping {:product product
                    :amount  amount}))
 ```
