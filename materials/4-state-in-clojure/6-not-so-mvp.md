@@ -371,3 +371,5 @@ Don't you think so too?
 That concludes this section of refactoring.
 There is a bit more I wish to talk about,
 so lets move to the next part.
+
+Next: [No Need for Atoms](7-no-need-for-atoms.md)
