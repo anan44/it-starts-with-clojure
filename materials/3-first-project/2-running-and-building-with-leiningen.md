@@ -65,3 +65,5 @@ it will be able to build normal jar files.
 At their core these files are just like any other Java program you might come across.
 
 With this we have covered running and building projects with Leiningen.
+
+Next: [Refactoring The Project](3-refactoring-project.md)
