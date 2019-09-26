@@ -64,3 +64,5 @@ It is really easy, so there is no reason to worry.
 ## Windows
 
 TODO
+
+Next: [Clojure and IDEs](3-clojure-and-IDE.md)
