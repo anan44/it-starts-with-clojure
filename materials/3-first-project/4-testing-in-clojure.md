@@ -401,3 +401,5 @@ If you feel like there is more that should be tested in the code,
 feel free to do so and add those tests to the project.
 
 Congratulations on completing your very first Clojure project!
+
+Next: [Chapter 4 - State in Clojure](../4-state-in-clojure)
