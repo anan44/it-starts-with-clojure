@@ -74,4 +74,4 @@ It  provides instant REPL and is especially nice for learning the language.
 Jacek Schae has written a [nice article](https://medium.com/@jacekschae/slick-clojure-editor-setup-with-atom-a3c1b528b722) about using Atom in Clojure development.
 In case you interested read follow his suggestions.
 
-Next: [Little Bit of REPL](../2-little-bit-of-repl)
+Next: [Chapter 2 - Little Bit of REPL](../2-little-bit-of-repl)
