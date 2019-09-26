@@ -168,3 +168,5 @@ I am sure you have seen similar solutions in other languages,
 since they are rather popular when learning to program.
 
 So now we should know enough to build an actual MVP.
+
+Next: [Creating MVP](5-creating-mvp.md)
