@@ -143,3 +143,5 @@ So how will we add items to the shopping list vector?
 
 I would suggest that you will try playing around with adding elements to collections in REPL.
 This will help you to get comfortable with the collections modifying them.
+
+Next: [Storing State with Atom](2-storing-state-with-atom.md)
