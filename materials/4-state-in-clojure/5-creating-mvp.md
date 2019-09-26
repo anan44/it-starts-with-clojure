@@ -208,3 +208,5 @@ thus it meets the requirements of MVP.
 
 In the next section we will refactor the code a bit.
 We will also improve the functionality so that it is no longer MVP
+
+Next: [Not so MVP](6-not-so-mvp.md)
