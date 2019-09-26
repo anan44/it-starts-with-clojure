@@ -9,7 +9,7 @@ Additionally, if you come up with other helpful ways, don't be afraid to suggest
 ### Easy way: Fixing issues
 
 The easiest way to contribute to the project is by solving issues.
-There are many kinds of issues avialble in the project ranging from:
+There are many kinds of issues available in the project ranging from:
 "I don't have time for this for now" to "I can't do this by myself".
 Feel free to choose any of the open issues and get your hands dirty.
 
@@ -30,18 +30,18 @@ If you think we are generally missing an important topic. Create an issue.
 
 I sometimes have hard time coming up with interesting and educational case projects.
 If you think you have a cool idea for a project that the course could cover in order to learn valuable lessons,
-you can create pull request of such a project. 
+you can create pull request of such a project.
 
 Place your project idea into *it-starts-with-clojure/projects/*
 
 If the project fits the course, I will try to embed it into the materials and write chapters around it.
 
-Please note that writing instructions for the code takes much more time than writting the code,
-thus i might not be able to do this immediatelly.
+Please note that writing instructions for the code takes much more time than writing the code,
+thus i might not be able to do this immediately.
 
 ### Punctual way: Fixing typos and proof reading
 
-This is a bit personal, but I have light dyslexia. Even though I use pluggins to check for typos,
+This is a bit personal, but I have light dyslexia. Even though I use plugins to check for typos,
 they still sometimes slip in.
 
 Secondly, I am not a native speaker and I write rather fast,
@@ -50,10 +50,8 @@ thus I make mistakes and/or just write weirdly.
 In both of these cases I invite you to help me to make this guide better by fixing my mistakes.
 If you see issues like this, feel free to fix the and make pull request.
 
+## All help is always welcome
 
-## All help is good
-
-Regardless how you contribute, I welcome your assistance. 
+Regardless how you contribute, I welcome your assistance.
 I never intended this guide to be a solo project,
 thus I really hope there is others who are interested in this sort of projects.
-
