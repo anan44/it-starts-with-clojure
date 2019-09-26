@@ -140,3 +140,5 @@ If you are not using Vim mode in VSC, you don't have to worry about this.
 ## REPL in Cursive
 
 TODO - Write instructions for using REPL in Cursive
+
+Next: [Hands on REPL](3-hands-on-repl.md)

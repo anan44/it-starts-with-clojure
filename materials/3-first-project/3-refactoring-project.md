@@ -243,3 +243,5 @@ In the end of this part your project should look something like this:
         total (sum long-coll)]
     (println total)))
 ```
+
+Next: [Testing in Clojure](4-testing-in-clojure.md)
