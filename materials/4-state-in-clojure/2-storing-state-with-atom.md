@@ -188,3 +188,5 @@ Now with this being done we will have few more steps to complete the program.
 We still need to create some kind of terminal interface that will prompts for values from user.
 Also we need to somehow save our list to a file (and hopefully in human readable format).
 These are the tasks that we will struggle with in next parts.
+
+Next: [Conditional Love](3-conditional-love.md)
