@@ -527,3 +527,5 @@ Use REPL as often as you can and you will quickly turn it into a formidable tool
 - [Clojure for Brave and True](https://www.braveclojure.com/writing-macros/)
 - [Programming Clojure](https://pragprog.com/book/shcloj3/programming-clojure-third-edition)
 - [Living Clojure](https://www.oreilly.com/library/view/living-clojure/9781491909270/)
+
+Next: [Chapter 3 - Your First Project](../3-first-project)
