@@ -65,3 +65,5 @@ If the explanations of this guide feel vague or too brief,
 or you simply wish to know more about the topic at hand,
 it is encouraged to browse through these documentations.
 (IDE section makes an exception here. Links there lead to god knows where.)
+
+Next: [Installation](2-installation.md)
