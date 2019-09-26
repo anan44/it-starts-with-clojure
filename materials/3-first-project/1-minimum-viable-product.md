@@ -579,3 +579,5 @@ The whole code should look like this at the end of this part:
   [& args]
   (println (sum (map str->long (clojure.string/split (slurp "numbers.txt") #"\s+")))))
 ```
+
+Next: [Running and Building with Leiningen](2-running-and-building-with-leiningen.md)
