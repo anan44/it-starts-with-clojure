@@ -67,3 +67,5 @@ you should end up with a project looking something like this:
 
 This is all that we are going to cover here at this point,
 but we will be returning to leiningen later when we will be building something.
+
+Next: [Using REPL](2-using-repl.md)
