@@ -72,3 +72,5 @@ Everything else will always evaluate to truthy in boolean terms.
 
 Obviously Clojure as a mature language offers many alternatives for if,
 but we will leave them for later for now.
+
+Next: [Terminal Interface](4-terminal-interface.md)
