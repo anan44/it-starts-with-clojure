@@ -15,6 +15,8 @@ If things stop working try changing your Java version.
 
 ## Linux
 
+### Installing Java 1.8 on Linux
+
 Installation of Java on Linux varies by distribution.
 On Fedora, the package names and even the package manager has changed over time.
 On Ubuntu there are similar complications.
@@ -25,30 +27,23 @@ On Ubuntu 18.04:
 
 ```sh
 sudo apt-get update
-sudo apt-get install openjdk-11-jdk
 ```
-
-Getting Java 12 on Ubuntu 18.04 requires a PPA and is probably more trouble than an intro guide needs to go into.
-Maybe Ubuntu 19.04 repositories have a later Java version. IDK.
 
 On Fedora 30 (and later):
 
 ```sh
 sudo dnf install java-1.8.0-openjdk-devel
-# OR:
-sudo dnf install java-11-openjdk-devel
-# OR:
-sudo dnf install java-latest-openjdk-devel # Currently, Java 12
 ```
 
-Clojure installation:
+### Installing Clojure on Linux
 
-On any Linux distribution, 
-you can get the latest Clojure by following the [instructions](https://clojure.org/guides/getting_started) on clojure.org.
+On any Linux distribution you can get the latest Clojure by following
+the [instructions](https://clojure.org/guides/getting_started#_installation_on_linux) on clojure.org.
 
-Ubuntu 18.04: you can get Clojure 1.9 with sudo apt-get install clojure
+### Installing Leiningen on Linux
 
-Fedora 30: sudo dnf install clojure gets you Clojure 1.7.0. 
+On any Linux distributionyou can get the latest Leiningen by following
+the [instructions](https://leiningen.org) on leiningen.org
 
 ## Mac
 
@@ -71,7 +66,7 @@ But really the only thing oyu need to do is to execute this:
 
 That being done you have brew installed ony your Mac.
 
-### Install Java 1.8
+### Install Java 1.8 on Mac
 
 ```bash
 brew update
@@ -79,14 +74,14 @@ brew tap adoptopenjdk/openjdk
 brew cask install adoptopenjdk8
 ```
 
-### Install Clojure
+### Install Clojure on Mac
 
 ```bash
 brew update
 brew install clojure
 ```
 
-### Install Leiningen
+### Install Leiningen on Mac
 
 ```bash
 brew update
