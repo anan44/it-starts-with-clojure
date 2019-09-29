@@ -50,13 +50,13 @@ Let's explore it a bit before we get back to our solution.
 
 ```clojure
 (:product {:product "Milk" :amount "3"})
-=> "Milk"
+;=> "Milk"
 
 ({:product "Milk" :amount "3"} :product)
-=> "Milk"
+;=> "Milk"
 
 (get {:product "Milk" :amount "3"} :product)
-=> "Milk"
+;=> "Milk"
 ```
 
 So keyword can be used as a function that takes a parameter of a map,
@@ -74,13 +74,13 @@ It just is very common due the practicality it provides.
 
 ```clojure
 ({"product" "Milk" "amount" "3"} "product")
-=> "Milk"
+;=> "Milk"
 
 (get {"product" "Milk" "amount" "3"} "product")
-=> "Milk"
+;=> "Milk"
 
 ("product" {"product" "Milk" "amount" "3"})
-=> Syntax error (ClassCastException) compiling at...
+;=> Syntax error (ClassCastException) compiling at...
 class java.lang.String cannot be cast to class clojure.lang.IFn...
 ```
 
@@ -91,10 +91,10 @@ Let's explore few more cases while we are at it.
 
 ```clojure
 (:price {:product "Milk" :amount "3"})
-=> nil
+;=> nil
 
 (:price {:product "Milk" :amount "3" :price nil})
-=> nil
+;=> nil
 ```
 
 You probably have some prior experience in programming,
@@ -111,10 +111,10 @@ if the key is not present in the given map.
 
 ```clojure
 (get :price {:product "Milk" :amount "3"} "NotFound")
-=> "NotFound"
+;=> "NotFound"
 
 (get :price {:product "Milk" :amount "3" :price nil} "NotFound")
-=> nil
+;=> nil
 ```
 
 ### Back to the topic
@@ -312,7 +312,7 @@ When run the case will execute the clause that matches the expression.
   "1" (str "not" "this" "one")
   "3" (str "this" " one")
   "6" (str "not " "here either"))
-=> "this one"
+;=> "this one"
 ```
 
 If no matching clause is provided,
@@ -323,7 +323,7 @@ an error is thrown:
   "1" (str "not" "this" "one")
   "3" (str "this" " one")
   "6" (str "not " "here either"))
-=> Syntax error (IllegalArgumentException) compiling at...
+;=> Syntax error (IllegalArgumentException) compiling at...
 No matching clause: 5
 ```
 
@@ -335,7 +335,7 @@ To avoid this we can provide a default clause:
   "3" (str "this" " one")
   "6" (str "not " "here either")
   "I am the default")
-=> "I am the default"
+;=> "I am the default"
 ```
 
 Note that default can be pretty much anything.

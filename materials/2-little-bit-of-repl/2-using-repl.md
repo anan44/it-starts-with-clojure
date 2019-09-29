@@ -118,7 +118,7 @@ from the the command pallet.
 Now the results should be visible in the output tab at the bottom of the editor.
 
 ```bash
-=> "hello-parens!"
+;=> "hello-parens!"
 ```
 
 Calva provides plenty of REPL options and this is only one of them.

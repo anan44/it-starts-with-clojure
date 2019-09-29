@@ -36,13 +36,13 @@ So what does this mean?
 
 ```clojure
 (if true "yes" "no")
-=> "yes"
+;=> "yes"
 
 (if false "yes" "no")
-=> "no"
+;=> "no"
 
 (if false "yes")
-=> nil
+;=> nil
 ```
 
 So unlike in so many programming languages Clojure does not provide if statement,

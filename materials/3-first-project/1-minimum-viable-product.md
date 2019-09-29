@@ -180,10 +180,10 @@ This is easier to understand when you see it like this:
 ```clojure
 ;; these are practically the same
 (apply + [1 2 3])
-=> 6
+;=> 6
 
 (+ 1 2 3)
-=> 6
+;=> 6
 ```
 
 Sequence is an interface for many kind of collections in clojure.
@@ -195,7 +195,7 @@ We can check if something sequenceable with function _sequential?_
 
 ```clojure
 (sequential? [1 2 3])
-=> true
+;=> true
 ```
 
 Now that we got that out of the way we can try if our function actually works.
@@ -210,7 +210,7 @@ Le's call our function to try it out.
 
 ```clojure
 (sum [1 2 3])
-=> Syntax error compiling at (core.clj:9:1).
+;=> Syntax error compiling at (core.clj:9:1).
 Unable to resolve symbol: sum in this context
 ```
 
@@ -231,7 +231,7 @@ After this you can try calling sum again.
 
 ```clojure
 (sum [1 2 3])
-=> 6
+;=> 6
 ```
 
 Great!
@@ -259,10 +259,10 @@ but it clearly works with many kinds of seqs.
 
 ```clojure
 (sum '(1 2 3)) ;; This is a List if you have forgotten
-=> 6
+;=> 6
 
 (sum #{1 2 3}) ;; and this is a Set
-=> 6
+;=> 6
 ```
 
 Let's change our code a bit to make it more clear what our function is able to do.
@@ -301,7 +301,7 @@ We will try it on the README file of your sum-em-up project.
 
 ```clojure
 (slurp "README.md")
-=> "# sum-em-up2
+;=> "# sum-em-up2
 
 FIXME: description
 
@@ -322,7 +322,7 @@ Among many other things it can be used for reading websites.
 
 ```clojure
 (slurp "https://clojuredocs.org/")
-=> "<!DOCTYPE html>
+;=> "<!DOCTYPE html>
  <html><head><meta ..." ;; again I shortened this
 ```
 
@@ -350,7 +350,7 @@ Try reading the numbers.txt file with slurp from your REPL.
 
 ```clojure
 (slurp "numbers.txt")
-=> "1 2 3 4 5 10 300\n" ;; your file might or might not have \n in the end.
+;=> "1 2 3 4 5 10 300\n" ;; your file might or might not have \n in the end.
 ```
 
 ### Parsing string
@@ -363,7 +363,7 @@ So we need a function that is able to perform this:
 
 ```clojure
 (parse-numbers "1 2 3 4 5 10 300\n")
-=> [1 2 3 4 5 10 300]
+;=> [1 2 3 4 5 10 300]
 ```
 
 So let's try defining such a function.
@@ -376,7 +376,7 @@ but if you are eager you can read about them from the link.
 
 ```clojure
 (clojure.string/split "1 2 3 4 5 10 300\n" #"\s+")
-=> ["1" "2" "3" "4" "5" "10" "300"]
+;=> ["1" "2" "3" "4" "5" "10" "300"]
 ```
 
 So what does actually happen here?
@@ -418,7 +418,7 @@ we would get an error.
 
 ```clojure
 (sum ["1" "2" "3" "4" "5" "10" "300"])
-=> Syntax error (ClassCastException) compiling at (core.clj:13:1).
+;=> Syntax error (ClassCastException) compiling at (core.clj:13:1).
 class java.lang.
 String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
 ```
@@ -460,7 +460,7 @@ To achieve this in Clojure we will use special syntax for Java interop.
 
 ```clojure
 (Long/valueOf "303")
-=> 303
+;=> 303
 ```
 
 Great! It worked!
@@ -486,7 +486,7 @@ Let's give it a shot.
 
 ```clojure
 (map Long/valueOf ["1" "2" "3" "4" "5" "10" "300"])
-=> Syntax error compiling at (core.clj:17:1).
+;=> Syntax error compiling at (core.clj:17:1).
 Unable to find static field: valueOf in class java.lang.Long
 ```
 
@@ -506,14 +506,14 @@ We can just simply wrap the static method call into a Clojure function and map w
   (Long/valueOf x))
 
 (str->long "1337")
-=> 1337
+;=> 1337
 ```
 
 So let's try our newly defined function with map.
 
 ```clojure
 (map str->long ["1" "2" "3" "4" "5" "10" "300"])
-=> (1 2 3 4 5 10 300)
+;=> (1 2 3 4 5 10 300)
 ```
 
 YES!
@@ -553,7 +553,7 @@ You can try calling this the main function from REPL
 
 ```clojure
 (-main)
-=> 325
+;=> 325
 ```
 
 This covers our minimum viable product.

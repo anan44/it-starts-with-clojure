@@ -16,7 +16,7 @@ defs are really simple actually:
 (def y 20)
 
 (+ y x)
-=> 30
+;=> 30
 ```
 
 There is not much more to say about defs for now.
@@ -57,7 +57,7 @@ To see the value in an atom we need to use a special operator @.
 
 ```clojure
 @number
-=> 1
+;=> 1
 ```
 
 @ is actually a short hand for the function [deref](https://clojuredocs.org/clojure.core/deref),
@@ -82,18 +82,18 @@ It is a function that takes a number and returns that number +1.
 
 ```clojure
 (swap! number inc)
-=> 2
+;=> 2
 (swap! number inc)
-=> 3
+;=> 3
 @number
-=> 3
+;=> 3
 ```
 
 The number can also be decreased by using inc's counterpart [dec](https://clojuredocs.org/clojure.core/dec)
 
 ```clojure
 (swap! number dec)
-=> 2
+;=> 2
 ```
 
 If we want to add number to our atom that is easy too.
@@ -102,7 +102,7 @@ swap! can also take additional arguments that will be passed to the function
 
 ```clojure
 (swap! number + 5)
-=> 7
+;=> 7
 ```
 
 ### [reset!](https://clojuredocs.org/clojure.core/reset!)
@@ -114,9 +114,9 @@ is usually better to use swap!
 
 ```clojure
 (reset! number 1)
-=> 1
+;=> 1
 @number
-=> 1
+;=> 1
 ```
 
 ### few words about atom
@@ -176,10 +176,10 @@ Remember to try it from REPL.
 
 ```clojure
 (add-shopping {:product "Milk" :amount "1 bottle"})
-=> [{:product "Milk" :amount "1 bottle"}]
+;=> [{:product "Milk" :amount "1 bottle"}]
 
 (add-shopping {:product "Candies" :amount "1 bag"})
-=> [{:product "Milk", :amount "1 bottle"} {:product "Candies", :amount "1 bag"}]
+;=> [{:product "Milk", :amount "1 bottle"} {:product "Candies", :amount "1 bag"}]
 ```
 
 Great! It works.

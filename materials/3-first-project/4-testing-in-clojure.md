@@ -116,7 +116,7 @@ It should be easy and fast. Just run the following command in command line from 
 ```text
 lein test
 
-=> lein test sum-em-up.core-test
+;=> lein test sum-em-up.core-test
 
 lein test :only sum-em-up.core-test/a-test
 
@@ -150,7 +150,7 @@ we can run the tests again and see them pass with flying colors.
 
 ```text
 lein test
-=> lein test sum-em-up.core-test
+;=> lein test sum-em-up.core-test
 
 Ran 1 tests containing 1 assertions.
 0 failures, 0 errors.
@@ -235,7 +235,7 @@ After running the tests now we will be hit by the unforgiving reality that our f
 
 ```text
 lein test
-=> ein test sum-em-up.core-test
+;=> lein test sum-em-up.core-test
 
 lein test :only sum-em-up.core-test/str->long-test
 

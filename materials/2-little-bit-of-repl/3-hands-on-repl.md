@@ -57,7 +57,7 @@ Try str in your REPL.
 
 ```clojure
 (str "REPL" "is" "cool")
-=> "REPLiscool"
+;=> "REPLiscool"
 ```
 
 As you might have noticed we use double quotes to express a string.
@@ -69,7 +69,7 @@ Like this:
 
 ```clojure
 (str "Tim \"tpope\" Pope")
-=> "Tim \"tpope\" Pope"
+;=> "Tim \"tpope\" Pope"
 ```
 
 Notice how the escape characters are still there in the return value.
@@ -80,7 +80,7 @@ Let's try outputting the string to stdout with println function.
 ```clojure
 (println "Tim \"tpope\" Pope")
 Tim "tpope" Pope
-=> nil
+;=> nil
 ```
 
 Notice how clojure returns _nil_ after printing Tim "tpope" Pope?
@@ -107,7 +107,7 @@ prn is much like print, but it prints everything in machine readable format.
 ```clojure
 (prn "Tim \"tpope\" Pope")
 "Tim \"tpope\" Pope"
-=> nil
+;=> nil
 
 This can be especially handy while debugging.
 
@@ -122,16 +122,16 @@ Function + takes n arguments and returns the sum of those arguments.
 
 ```clojure
 (+ 10 10 5)
-=> 25
+;=> 25
 
 (+ 3)
-=> 3
+;=> 3
 
 (+)
-=> 0
+;=> 0
 
 (+ 10 5.5)
-=> 15.5
+;=> 15.5
 ```
 
 ## [-](http://clojuredocs.org/clojure.core/-)
@@ -145,13 +145,13 @@ or it throws an error.
 
 ```clojure
 (- 10 3 2)
-=> 5
+;=> 5
 
 (- 3 10)
-=> -7
+;=> -7
 
 (- 1)
-=> -1
+;=> -1
 ```
 
 ## [*](http://clojuredocs.org/clojure.core/*)
@@ -162,16 +162,16 @@ If called without arguments 1 is returned.
 
 ```clojure
 (* 10 5)
-=> 50
+;=> 50
 
 (* 5 5 100)
-=> 2500
+;=> 2500
 
 (* 0.02 300)
-=> 6.0
+;=> 6.0
 
 (*)
-=> 1
+;=> 1
 ```
 
 ## [/](https://clojuredocs.org/clojure.core/_fs)
@@ -187,14 +187,14 @@ What makes / interesting is the format of the return values.
 
 ```clojure
 (/ 10 5)
-=> 2
+;=> 2
 ```
 
 In case the division is even a full number is returned.
 
 ```clojure
 (/ 1 3)
-=> 1/3
+;=> 1/3
 ```
 
 But in the case where the division would lead to non-full number,
@@ -206,7 +206,7 @@ which has numeric system that enables nonsense like this:
 # Javascript code
 
 ((1 / 3) + 1 - 1) * 3
-=> 0.9999999999999998
+;=> 0.9999999999999998
 ```
 
 This will not happen in Clojure thanks to the ratio type.
@@ -221,7 +221,7 @@ This can be proven by evaluating following form in REPL:
 
 ```clojure
 (type 3)
-=> java.lang.Long
+;=> java.lang.Long
 ```
 
 ([type](https://clojuredocs.org/clojure.core/type) is a helpful function that return a type of given argument.)
@@ -231,21 +231,21 @@ then BigInteger data type is used.
 
 ```clojure
 (type 9223372036854775808)
-=> clojure.lang.BigInt
+;=> clojure.lang.BigInt
 ```
 
 Decimal numbers on the other hand are stored in Java doubles.
 
 ```clojure
 (type 1.3)
-=> java.lang.Double
+;=> java.lang.Double
 ```
 
 Convenient ratio type you already saw previously.
 
 ```clojure
 (type 1/3)
-=> clojure.lang.Ratio
+;=> clojure.lang.Ratio
 ```
 
 It is possible to force ratios into decimals to [floating points](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) with the function double,
@@ -253,17 +253,17 @@ but is is recommended to operate with ratios if possible for enhanced precision.
 
 ```clojure
 (double 1/4)
-=> 0.25
+;=> 0.25
 ```
 
 Additionally clojure also offers BigInt and BigDecimal numerics that can be specified with postfix N or M.
 
 ```clojure
 (type 10M)
-=> java.math.BigDecimal
+;=> java.math.BigDecimal
 
 (type 10N)
-=> clojure.lang.BigInt
+;=> clojure.lang.BigInt
 ```
 
 But you are unlikely to need these in near future,
@@ -291,10 +291,10 @@ You can check if piece of data is nil with function _nil?_
 
 ```clojure
 (type nil)
-=> nil
+;=> nil
 
 (nil? nil)
-=> true
+;=> true
 ```
 
 ### Booleans
@@ -305,16 +305,16 @@ If the value in question is true or false can be checked with functions true? an
 
 ```clojure
 (true? false)
-=> false
+;=> false
 
 (true? true)
-=> true
+;=> true
 
 (false? false)
-=> true
+;=> true
 
 (true? 10)
-=> false
+;=> false
 ```
 
 Additionally it might be interesting to know that evaluates all values except nil and false as true.
@@ -332,7 +332,7 @@ but it has also other usages.
 
 ```clojure
 (type :keyword)
-=> clojure.lang.Keyword
+;=> clojure.lang.Keyword
 ```
 
 Don't worry too much about keywords for now.
@@ -353,14 +353,14 @@ But since number 1 is not a function in fact, without the single quote you would
 
 ```clojure
 '(1 2 3)
-=> (1 2 3)
+;=> (1 2 3)
 
 (1 2 3)
-=> Execution error (ClassCastException) ...
+;=> Execution error (ClassCastException) ...
 java.lang.Long cannot be cast to clojure.lang.IFn
 
 (type '(1 2 3))
-=> clojure.lang.PersistentList
+;=> clojure.lang.PersistentList
 ```
 
 
@@ -372,7 +372,7 @@ it is generally considered idiomatic to leave them out.
 
 ```clojure
 '(1, 2, 3)
-=> (1 2 3)
+;=> (1 2 3)
 ```
 
 To recap:
@@ -415,7 +415,7 @@ since the syntax for vectors is the same as for lists or arrays in most other la
 
 ```clojure
 (type [1 2 3])
-=> clojure.lang.PersistentVector
+;=> clojure.lang.PersistentVector
 ```
 
 Just like with lists it is idiomatic not to use separator commas with vectors.
@@ -475,16 +475,16 @@ You can check if something is in dead a collection with the function _coll?_
 
 ```clojure
 (coll? [1 2 3])
-=> true
+;=> true
 
 (coll? #{:a :b :c})
-=> true
+;=> true
 
 (coll? 3)
-=> false
+;=> false
 
 (coll? "Rich Hickey")
-=> false
+;=> false
 ```
 
 This is I want you to be familiar with mostly because I will be using this term a lot,
@@ -500,7 +500,7 @@ A single character in Clojure is represented like this
 \j
 
 (type \j)
-=> java.lang.Character
+;=> java.lang.Character
 ```
 
 Notice lack of any kind of quotes. There is not much else to say about characters.

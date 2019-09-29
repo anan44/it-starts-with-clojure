@@ -13,7 +13,7 @@ Navigate to the root of our sum-em-up project and run the bellow command from th
 
 ```text
 lein run
-=> 325
+;=> 325
 ```
 
 If this won't work for some reason,
@@ -54,7 +54,7 @@ After this we can execute this with following command:
 
 ```text
 java -jar target/uberjar/sum-em-up2-0.1.0-SNAPSHOT-standalone.jar
-=> 325
+;=> 325
 ```
 
 Remember that there has to be the numbers.txt file in the project root folder when you execute this.

@@ -65,11 +65,11 @@ I think it is easier to show than to explain how this actually works.
 ```clojure
 (let [x 10]
   (+ x x))
-=> 20
+;=> 20
 
 (let [y 15]
   (+ y x))
-=> Syntax error compiling at (core.clj:17:3).
+;=> Syntax error compiling at (core.clj:17:3).
 Unable to resolve symbol: x in this context
 ```
 
@@ -82,7 +82,7 @@ much like functions in Clojure.
 (let [x 5
       y 20]
   (+ x y))
-=> 25
+;=> 25
 ```
 
 Let is not limited to single binding.
@@ -92,7 +92,7 @@ In fact we could bind as many values as we please.
 (let [x 5
       y (+ x 100)]
   y)
-=> 105
+;=> 105
 ```
 
 Also values that have been bind first are usable when binding following values.
@@ -186,7 +186,7 @@ The word used after & can be anything you wish.
   more)
 
 (all-but-first 1 2 3 4)
-=> (2 3 4)
+;=> (2 3 4)
 ```
 
 Main takes no mandatory arguments,

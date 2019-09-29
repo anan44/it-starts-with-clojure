@@ -39,13 +39,13 @@ That is about to change soon.
 ```clojure
 ;; vectors can be declared in two ways
 (vector 1 2 3)
-=> [1 2 3]
+;=> [1 2 3]
 ;; or
 [1 2 3]
-=> [1 2 3]
+;=> [1 2 3]
 ;;Both result in the same
 (= (vector 1 2 3) [1 2 3])
-=> true
+;=> true
 ```
 
 There is few ways to add additional elements to the vectors,
@@ -75,12 +75,12 @@ but it is always "cheapest"/fastest performance-wise to add the elements where C
 
 ```clojure
 (conj [1 2 3] 4)
-=> [1 2 3 4]
+;=> [1 2 3 4]
 (conj [1 2 3] 4 5)
-=> [1 2 3 4 5]
+;=> [1 2 3 4 5]
 
 (conj '(1 2 3) 4)
-=> '(4 1 2 3)
+;=> '(4 1 2 3)
 ```
 
 In most cases conj should be your goto tool for adding items to collections,
@@ -95,11 +95,11 @@ if that is necessary.
 
 ```clojure
 (concat [1] [2] [3] [4])
-=> (1 2 3 4)
+;=> (1 2 3 4)
 (concat [1 2 3] [4])
-=> (1 2 3 4)
+;=> (1 2 3 4)
 (concat [1] #{2} '(3) [4])
-=> (1 2 3 4)
+;=> (1 2 3 4)
 ```
 
 concat is very useful,
@@ -115,9 +115,9 @@ AND you want the items added to beginning of a collection then you should consid
 
 ```clojure
 (cons 1 [2 3 4])
-=> (1 2 3 4)
+;=> (1 2 3 4)
 (seq? (cons 1 [2 3 4]))
-=> true
+;=> true
 (cons [1 2 3] 4)
 ```
 
@@ -138,7 +138,7 @@ So how will we add items to the shopping list vector?
 
 ```clojure
 (conj [] {:product "milk" :amount "2 liters"})
-=> [{:product "milk" :amount "2 liters"}]
+;=> [{:product "milk" :amount "2 liters"}]
 ```
 
 I would suggest that you will try playing around with adding elements to collections in REPL.

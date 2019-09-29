@@ -11,7 +11,7 @@ read-line is fairly simple to use since it takes no arguments what so ever.
 
 ```clojure
 (read-line) ;; now write hello to your stdin
-=> "hello"
+;=> "hello"
 ```
 
 There is not much more to say about the read-line function,
@@ -96,10 +96,10 @@ first does exactly the opposite.
 
 ```clojure
 (first [:a :b :c])
-=> :a
+;=> :a
 
 (rest [:a :b :c]
-=> (:b :c))
+;=> (:b :c))
 ```
 
 Also notice that rest returns a seq regardless of the input type.

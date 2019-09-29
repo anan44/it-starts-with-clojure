@@ -46,7 +46,7 @@ it is not part of the final solution):
 
 ```clojure
 (prompt "Who are you?") ;; now write your name to terminal
-=> "John"
+;=> "John"
 ```
 
 Great! Our function seems to work as intended.
@@ -152,7 +152,7 @@ Let's give it a try:
 
 ```clojure
 (spit "./spit-test.txt" "Hello from the file")
-=> nil
+;=> nil
 ```
 
 You should now we able to find the file _spit-test.txt_ from your project root.
@@ -162,7 +162,7 @@ Another handy thing is that we can append to the file by providing option for th
 
 ```clojure
 (spit "./spit-test.txt" "\n second line" :append true)
-=> nil
+;=> nil
 ```
 
 If you look to the previous file you can see that a second line has appeared there.
