@@ -50,13 +50,13 @@ not just copying what is written here.
 No one ever learned anything from copy-pasting.
 
 In the context of evaluating code or using REPL,
-we will be using symbol => to express the output of the code.
+we will be using symbol `;=>` to express the output of the code.
 
 Like this:
 
 ```clojure
 (+ 1 2 3)
-=> 6
+;=> 6
 ```
 
 Many of the headings in these documents are actually hyperlinks,
