@@ -104,8 +104,29 @@ jEnv requires some configuring.
 Please see instructions from their [website](https://www.jenv.be/).
 It is really easy, so there is no reason to worry.
 
+If regardless of my advice or for absolute necessity you decide to pursue the Windows installation,
+follow the instructions below.
+I will not try to write exact instructions here,
+but instead I'll provide sources you should use.
+This is due to the fact that these things might change,
+and I don't use Windows,
+so I cannot guarantee that the instructions stay up-to-date.
+
 ## Windows
 
-TODO
+Clojure on Windows is not on very mature state,
+so if you have an option to use Linux or Mac I would advise you to do so.
+
+### Installing Java 1.8 on Windows
+
+Follow the instructions from [adoptopenjdk.net](https://adoptopenjdk.net/).
+
+### Installing Clojure on Windows
+
+Follow the instructions from official Clojure [documentation](https://clojure.org/guides/getting_started#_installation_on_windows).
+
+### Installing Leiningen on Windows
+
+Follow the instructions from official Leiningen [documentation](https://leiningen.org/)
 
 Next: [Clojure and IDEs](3-clojure-and-IDE.md)
