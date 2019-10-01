@@ -26,7 +26,8 @@ you can work out how to install Java.
 On Ubuntu 18.04:
 
 ```sh
-sudo apt-get update
+sudo apt update
+sudo apt install openjdk-8-jdk
 ```
 
 On Fedora 30 (and later):
