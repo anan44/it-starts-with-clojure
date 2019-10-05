@@ -1,15 +1,15 @@
 # 4.6 Not so MVP
 
-We previously made working MVP of the application.
+We previously made a working MVP of the application.
 It can currently build a shopping list to the memory,
 and save it on a file.
 Nevertheless our code is far from optimal.
 We have some unnecessary repetition in the code,
-and we currently save the shopping list in format known as [EDN](https://github.com/edn-format/edn).
+and we currently save the shopping list in a format known as [EDN](https://github.com/edn-format/edn).
 I won't go to details on EDN, but it stands for Extended Data Notation.
 It is like Clojure's version of JSON,
 and it is very handy since it allows us to dump and read data without much parsing.
-Regardless how awesome EDN is,
+Regardless of how awesome EDN is,
 it is not very human friendly.
 Sure you can read it,
 but it ain't very pretty.
@@ -29,7 +29,7 @@ Eggs * 12
 In order to achieve this,
 we need to process our vector a bit.
 
-Let's make a function for turning our shoppings into vector of strings.
+Let's make a function for turning our shoppings into a vector of strings.
 
 For this we will use two functions:
 
@@ -59,16 +59,16 @@ Let's explore it a bit before we get back to our solution.
 ;=> "Milk"
 ```
 
-So keyword can be used as a function that takes a parameter of a map,
-which will result in an output of corresponding value from the map.
+So a keyword can be used as a function that takes a parameter of a map,
+which will result in an output of the corresponding value from the map.
 
 Map can also be used as a function that takes a parameter of keyword,
-which will result in an output of corresponding value from the map.
+which will result in an output of the corresponding value from the map.
 
 Finally we have also explicit get function that takes parameters map and keyword,
-which will result in an output of corresponding value.
+which will result in an output of the corresponding value.
 
-But thats not all.
+But that's not all.
 We are not forced to use keywords as keys in maps.
 It just is very common due the practicality it provides.
 
@@ -84,7 +84,7 @@ It just is very common due the practicality it provides.
 class java.lang.String cannot be cast to class clojure.lang.IFn...
 ```
 
-So string cannot be used as a function,
+So a string cannot be used as a function,
 which is why we get an error that it cannot be cast to IFn (Interface Function).
 
 Let's explore few more cases while we are at it.
@@ -110,10 +110,10 @@ get function takes an optional 3rd parameter that will be returned,
 if the key is not present in the given map.
 
 ```clojure
-(get :price {:product "Milk" :amount "3"} "NotFound")
+(get {:product "Milk" :amount "3"} :price "NotFound")
 ;=> "NotFound"
 
-(get :price {:product "Milk" :amount "3" :price nil} "NotFound")
+(get {:product "Milk" :amount "3" :price nil} :price "NotFound")
 ;=> nil
 ```
 
@@ -150,15 +150,15 @@ We could use the loop that we just learned of:
 ```
 
 But not only is that a quite a handful of a function,
-but it is also non-optimal performance-wise.
+it is also non-optimal performance-wise.
 This is due the fact I mentioned before:
 loop is not [lazy](http://clojure-doc.org/articles/language/laziness.html).
 
 Thus I am not even going to explain to you how this monster of a function works.
-Instead we are going to directly jump to a proper version:
+Instead we are going to jump directly to a proper version:
 
 As mentioned before,
-Clojure's loop is flexible tool,
+Clojure's loop is a flexible tool,
 which is able to solve many problems.
 But instead of over relying on it,
 you should explore other options.
@@ -187,7 +187,7 @@ which we transform with map function and shopping->str that we defined before.
 
 The we use the [join](https://clojuredocs.org/clojure.core/map) function from the clojure.string namespace,
 which takes 2 or 3 parameters.
-We here the 3 parameter option,
+Here we have the 3 parameter option,
 where we provide the separator for the function.
 With this option it joins each item on a collection to single string and writes the separator in the between each item.
 
@@ -228,7 +228,7 @@ Remember to give it a try to see that your code works as intended.
 
 ## Reformating the Code
 
-So now we have reached the level of functionality that we set as our target in the beginning,
+So now that we have reached the level of functionality that we set as our target in the beginning,
 it is time to do some refactoring.
 You should always refactor your code to make it better,
 and clear out the nonsense that all of us accidentally create from time to time.
@@ -237,7 +237,7 @@ In our case there is few improvements that we could strive for.
 
 ### Reducing repetition with def
 
-We can see that we are multiple times using this same string prompting user for decision.
+We can see that we are using the same string prompting user for decision in multiple places.
 It seems a bit unnecessary to have it written like that multiple times.
 After all we are fans of [DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
@@ -271,7 +271,7 @@ We will also modify our main function to utilize this options variable.
 ```
 
 That is already much better,
-but lets also save the output file as a value with def.
+but let's also save the output file as a value with def.
 
 ```clojure
 (def output-file "./things-to-buy.txt")
@@ -294,13 +294,13 @@ And the necessary change to main function:
 ```
 
 This is already much better.
-Code is now less bloated and easier to read.
+The code is now less bloated and easier to read.
 That's great, right?
 
 ## a [case](https://clojuredocs.org/clojure.core/case) for less ifs
 
 In Clojure (and other programming as well) nested if loops are often frowned upon.
-This is because they often cause bugs and are pain in the ass to debug.
+This is because they often cause bugs and are a pain in the ass to debug.
 
 As a solution to that we have the [case](https://clojuredocs.org/clojure.core/case) macro
 
@@ -345,7 +345,7 @@ which is very similar to case.
 In case you are interested,
 please see the documentation since we won't go through cond just now (we will do so later though).
 
-So it seems obvious how could improve our code by utilizing the case,
+So it seems obvious how we could improve our code by utilizing case,
 doesn't it?
 
 ```clojure
