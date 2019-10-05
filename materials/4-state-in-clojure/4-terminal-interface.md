@@ -5,28 +5,28 @@ Firstly we will be needing a [read-line](https://clojuredocs.org/clojure.core/re
 
 ## [read-line](https://clojuredocs.org/clojure.core/read-line)
 
-read-line reads the [stdin](https://en.wikipedia.org/wiki/Standard_streams) (known as \*in\*) and returns that value.
+`read-line` reads the [stdin](https://en.wikipedia.org/wiki/Standard_streams) (known as \*in\*) and returns that value.
 In our case the stdin is the terminal as it very often is.
-read-line is fairly simple to use since it takes no arguments what so ever.
+`read-line` is fairly simple to use since it takes no arguments what so ever.
 
 ```clojure
 (read-line) ;; now write hello to your stdin
 ;=> "hello"
 ```
 
-There is not much more to say about the read-line function,
-so lets move on. Next we will meet loop.
+There is not much more to say about the `read-line` function,
+so lets move on. Next we will meet `loop`.
 
 ## [loop](https://clojuredocs.org/clojure.core/loop) and [recur](https://clojuredocs.org/clojure.core/recur)
 
-clojure's [special form](https://clojure.org/reference/special_forms) loop can be a bit tricky to explain,
+Clojure's [special form](https://clojure.org/reference/special_forms) `loop` can be a bit tricky to explain,
 but we will soon see how good of a job I will manage to do in it.
 
-loop is a [lexical context](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scope_vs._dynamic_scope) just like [let](https://clojuredocs.org/clojure.core/let),
+`loop` is a [lexical context](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scope_vs._dynamic_scope) just like [let](https://clojuredocs.org/clojure.core/let),
 with a significant difference.
-When combined with recur function loop it enables [tail recursion](https://en.wikipedia.org/wiki/Tail_call) in Clojure.
+When combined with `recur` function `loop` enables [tail recursion](https://en.wikipedia.org/wiki/Tail_call) in Clojure.
 [Recursion](https://en.wikipedia.org/wiki/Recursion) is a powerful technique that plays a crucial role in Functional Programming.
-Unfortunately JVM (that Clojure runs on top of) [does not have a very good support for recursion](https://purelyfunctional.tv/article/problems-with-the-jvm/),
+Unfortunately the JVM (on which Clojure is hosted) [does not have a very good support for recursion](https://purelyfunctional.tv/article/problems-with-the-jvm/),
 and using default recursion will easily lead to StackOverflowError.
 Thus we have loop/recur.
 
@@ -47,7 +47,7 @@ WOW! Thats a handful!
 Let's dissect it a bit and see what it actually is.
 
 hint: [do](https://clojuredocs.org/clojure.core/do) let's us evaluate multiple expressions and return the value of the last.
-This is often used with println,
+This is often used with `println`,
 but it has other uses as well.
 
 ```clojure
@@ -58,27 +58,27 @@ but it has other uses as well.
         (recur (inc num))))) ;; call recur inside the do statement
 ```
 
-So what does recur actually do?
+So what does `recur` actually do?
 [recur](https://clojuredocs.org/clojure.core/recur) is a [special form](https://clojure.org/reference/special_forms#recur),
-which allows us to to recall loop with new bindings.
+which allows us to to recall `loop` with new bindings.
 In other words we can start running the code again in loop-ish manner,
 but with new _num_ value.
 In our case we are rebinding num to num + 1.
-Just like let,
-loop as well can take multiple bindings and it is rather common.
+Just like `let`,
+`loop` as well can take multiple bindings and it is rather common.
 
-In good conscience I cannot tell about recur without mentioning,
+I cannot in good conscience tell you about `recur` without mentioning,
 that it can also be called outside a loop to recall a function that it is in with new bindings.
-This is rather rare and I have hard time to even come up with any examples.
+This is rather rare and I'm having a hard time coming up with any examples.
 But you should know it is possible.
 
 I suggest that you play around with loop/recur.
-It can feel a bit weird or imtidiating,
-but you will get hold of it quite fast.
+It can feel a bit weird or intimidating,
+but you will get ahold of it quite quickly.
 
-Below is few examples that might help you to get started:
+Below are a few examples that might help you to get started:
 
-hint: check [rest](https://clojuredocs.org/clojure.core/rest) and [first](https://clojuredocs.org/clojure.core/first)
+Hint: check [rest](https://clojuredocs.org/clojure.core/rest) and [first](https://clojuredocs.org/clojure.core/first)
 
 ```clojure
 (loop [a-vec []                       ;; bind empty vector to a-vec
@@ -89,10 +89,10 @@ hint: check [rest](https://clojuredocs.org/clojure.core/rest) and [first](https:
            (rest word))))             ;; and binding rest of the letter (except first) to word
 ```
 
-first and rest play crucial role in how we process collections in clojure.
-you will see them pretty much every where.
-rest returns all but the first element of a collection.
-first does exactly the opposite.
+`first` and `rest` play a crucial role in how we process collections in clojure.
+You will see them pretty much every where.
+`rest` returns all but the first element of a collection.
+`first` does exactly the opposite.
 
 ```clojure
 (first [:a :b :c])
@@ -113,35 +113,35 @@ Also notice that rest returns a seq regardless of the input type.
            (rest a-vec))))
 ```
 
-Here we double all the elements in a-vec and return them in reverse list.
+Here we double all the elements in a-vec and return them in a reversed list.
 Can you figure out why the list is being reversed?
 
-Hint: try to remember what conj does with with different collection types.
+Hint: try to remember what `conj` does with with different collection types.
 
-If you are looking for extra challenge,
+If you are looking for an extra challenge,
 try modifying this so that it does not reverse the list.
 
 ### About loop and laziness
 
-After you get a hold of loop,
+After you get the hang of `loop`,
 it might be tempting to use it for all of your collection manipulation and filtering needs.
 
-It indeed can preform the tasks of [filter](https://clojuredocs.org/clojure.core/filter),
+It can indeed perform the tasks of [filter](https://clojuredocs.org/clojure.core/filter),
 [map](https://clojuredocs.org/clojure.core/map),
 and [reduce](https://clojuredocs.org/clojure.core/reduce).
 
 (These are three stages of data manipulation that are present in almost all Functional Programming code)
 
-But even though loop can perform all of these tasks,
-you should avoid using it and favour others when possible.
-This is due to the fact that loop is not [lazy](http://clojure-doc.org/articles/language/laziness.html),
-thus by using loop you reduce Clojure's ability to optimize its performance.
+But even though `loop` can perform all of these tasks,
+you should avoid using it and favour other functions when possible.
+This is due to the fact that `loop` is not [lazy](http://clojure-doc.org/articles/language/laziness.html),
+thus by using `loop` you reduce Clojure's ability to optimize its performance.
 This is something that might not be an issue for you,
 since regardless what you do Clojure is rather performant,
 but it never hurts to write better code, right?
 
 With that being said,
-don't stress using loop too much.
+don't stress about whether you are using `loop` too much.
 It is often justified and it will soon become one of your very good friends.
 
 ## Basic terminal interface
@@ -151,7 +151,9 @@ This is kinda example,
 so we won't be using this exact interface in our shopping-list.
 But we will be building something very similar.
 
-So we will have loop,
+**WARNING:** If you are using VSCode with Calva, please do not enter the code below into your editor. It may [break Calva Jack-In ](https://github.com/BetterThanTomorrow/calva/issues/377).
+
+So we will have `loop`,
 where the bind value is read-line
 (yes this is totally possible, we can bind value to output of a function).
 
@@ -163,7 +165,7 @@ where the bind value is read-line
                (read-line)))))
 ```
 
-This function will prompt use for what ever input and repeat it until the user says _quit_.
+This function will prompt the user for an input, print out the input and continue this way until the user enters _quit_.
 I am sure you have seen similar solutions in other languages,
 since they are rather popular when learning to program.
 
