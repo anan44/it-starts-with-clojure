@@ -1,29 +1,29 @@
 # 4.7. No Need for Atoms
 
 Atom is useful tool and I wanted to tell you about it,
-so not knowing about it won't bother you like it did bother me.
+so that not knowing about it won't bother you like it did bother me.
 
-Even though atom is useful tool,
-we should not over use it.
+Even though `atom`s are useful,
+it should not be over used.
 Especially when the reality is the we rarely really need it.
-In many cases we can store the state in other ways.
-Recursion being the most common way to do so.
+In many cases we can store the state in other ways,
+recursion being the most common way to do so.
 
 As mentioned before Clojure does not handle classical recursion very well,
 thus we rely on loop/recur when utilizing recursion.
 
-We built this application using atom,
-since it was an easy way to demonstrate the functionality of atom.
-But fact we did build this application utilizing atom does not mean we had to so,
+We built this application using an `atom`,
+since it was an easy way to demonstrate the functionality of `atom`s.
+But the fact that we did build this application utilizing `atom`s does not mean we had to so,
 nor that we should do so.
 In fact this sort of application should be built using recursion.
 
-We will now refactor the application to work without atom.
+We will now refactor the application to work without `atom`s.
 
-Let's start by deleting the def shoppings block.
+Let's start by deleting the `def` shoppings form.
 We won't be needing that anymore.
 We can also delete the add-shopping function,
-since that only directly deals with the atom.
+since that only directly deals with the `atom`.
 Nor will we need add-product-to-shoppings,
 so let's delete that too.
 
@@ -49,7 +49,7 @@ Let's change the main function a bit:
                  (prompt options))))))
 ```
 
-So bit has changed here,
+So quite a bit has changed here,
 but not too much to make it unrecognizable.
 
 Let's walk through the changes we did.
@@ -58,12 +58,12 @@ We added another parameter to the loop.
 It now has bindings *shoppings* and *choice*.
 Because we changed the loop's bindings,
 we had to also change the recurs accordingly.
-So in the case the use selects 1,
-we are now recurring the loop with new shoppings vector that is result of old vector with new item added to it.
-The item is created directly by prompting product and amount inside the map.
-The default case recur now recurs with the same shoppings as we had on the current iteration,
+So in case the user selects 1,
+we are now recurring the loop with a new shoppings vector that is the result of old vector with new item added to it.
+The item is created directly by prompting for the product and amount inside the map.
+For the default case, `recur` now recurs with the same shoppings as we had on the current iteration,
 so the state won't change if this occurs.
-Lastly we also modified the final part where we save the list the file by referring to our shopping vector instead of an atom.
+Lastly we also modified the final part where we save the list to the file by referring to our shopping vector instead of an `atom`.
 
 As you can see we have now far less code,
 our state is handled by recursion and the code is easier to read,
@@ -134,17 +134,17 @@ All in all the final solution looks something like this:
 ## Last words on the topic
 
 I am sure some authors would disagree with me telling you about the atom this early.
-I indeed did have few deep conversations regarding the decision with my colleagues,
+I indeed did have a few deep conversations regarding this decision with my colleagues,
 since they too doubted it a bit.
 
-I truly hope that I have managed to convince you to not use atoms when not needed.
+I truly hope that I have managed to convince you to not use `atom`s when not needed.
 It can be very tempting but is not necessary very often.
 
-New programmers sometimes feel tempted to create atoms inside functions to create a state inside the lexical scope.
+New programmers sometimes feel tempted to create `atom`s inside functions to create a state inside the lexical scope.
 This is something I would strongly advice against.
 I have never met or heard about a situation where that would be a good idea.
 
-As a rule of thump always try solving your state issues with recursion if that fails,
-then look for other options such as atoms or databases or etc.
+As a rule of thumb always try solving your state issues with recursion. If that fails,
+then look for other options such as `atom`s or databases or etc.
 
-With these final warning we finalize the section on atoms and state in Clojure.
+With this final warning we finalize the section on `atom`s and state in Clojure.
