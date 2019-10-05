@@ -74,4 +74,34 @@ It  provides instant REPL and is especially nice for learning the language.
 Jacek Schae has written a [nice article](https://medium.com/@jacekschae/slick-clojure-editor-setup-with-atom-a3c1b528b722) about using Atom in Clojure development.
 In case you interested read follow his suggestions.
 
+## Structural Edting
+
+Practically all Clojure IDEs support something known as Structural Editing.
+It is a method of editing your code where we are able to move parentheses around with flexibility.
+This is common way of editing for all LISPs.
+In general there is usually two options for Structural editing.
+Namely Paredit and Parinfer.
+Almost all editors provide support for Paredit, but many also support Parinfer.
+
+The way how these features work in different editors vary a bit,
+but regardless of that the basic ideas are very similar.
+
+I will not walk you through how the these features work,
+since it dependent on your editor of choice.
+Nevertheless I want you to look for these features in your editor and play around with them a bit when you write your code.
+
+Using Structural Editing can feel a bit weird in the beginning,
+but you will quickly get grasp of it and it will enhance your coding experience when working with Clojure.
+
+In Calva you can try pressing 
+- ctrl + left/right arrow key
+- ctrl + shift + left/right arrow key
+
+See how these commands move the beginning and ending brackets of the form that your cursor is in.
+This a very helpful tool when you will be editing your Cloure code.
+
+Try experimenting with this feature while you code.
+
+With other editor is suggest that you google for the instructions for Structural Editing and Paredit.
+
 Next: [Chapter 2 - Little Bit of REPL](../2-little-bit-of-repl)
