@@ -17,12 +17,20 @@
                   (get-in ["data" "children"]))]
     (map post-parser posts)))
 
-(get-post-keys ["author" "score" "selftext"])
-
-(defn thing
+(defn only-good-posts
   []
-  (let [posts (get-post-keys ["author" "score" "title" "url" "selftext"])
-        good-posts (filter #(> (% "score") 25) posts)]
+  (let [posts (get-post-keys ["author" "score" "title" "url"])
+        good-posts (filter #(> (% "score") 15) posts)]
     good-posts))
 
-(thing)
+(defn links-posted
+  []
+  (let [posts (get-post-keys ["selftext" "url"])]
+    (reduce (fn [acc post]
+              (if (empty? (post "selftext"))
+                (conj acc (post "url"))
+                acc)) [] posts)))
+
+(defn main
+  [& args]
+  (println (links-posted)))
