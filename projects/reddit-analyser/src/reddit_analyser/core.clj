@@ -19,6 +19,27 @@
   [posts]
   (filter #(> (:score %) 15) posts))
 
+(defn average-score
+  [posts]
+  (float
+    (/ (reduce + (map :score posts))
+       (count posts))))
+
+; See also https://clojuredocs.org/clojure.core/frequencies
+(defn author-post-count
+  [posts]
+  (reduce (fn [acc v]
+            (update acc v (fnil inc 0)))
+          {}
+          (map :author posts)))
+
+(defn author-total-score
+  [posts]
+  (reduce (fn [acc m]
+            (update acc (:author m) (fnil (partial + (:score m)) 0)))
+          {}
+          posts))
+
 (defn links-posted
   [posts]
   (reduce (fn [acc post]
