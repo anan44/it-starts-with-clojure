@@ -7,30 +7,26 @@
 
 (def url "https://www.reddit.com/r/Clojure.json")
 
-
-(defn get-post-keys
-  [keys]
-  (let [post-parser #(select-keys (get % "data") keys)
-        posts (-> (client/get url header)
-                  (:body)
-                  (parse-string)
-                  (get-in ["data" "children"]))]
-    (map post-parser posts)))
+(defn get-posts
+  []
+  (let [body (:body (client/get url header))]
+    (->> (parse-string body true)
+         :data
+         :children
+         (map :data))))
 
 (defn only-good-posts
-  []
-  (let [posts (get-post-keys ["author" "score" "title" "url"])
-        good-posts (filter #(> (% "score") 15) posts)]
-    good-posts))
+  [posts]
+  (filter #(> (:score %) 15) posts))
 
 (defn links-posted
-  []
-  (let [posts (get-post-keys ["selftext" "url"])]
-    (reduce (fn [acc post]
-              (if (empty? (post "selftext"))
-                (conj acc (post "url"))
-                acc)) [] posts)))
+  [posts]
+  (reduce (fn [acc post]
+            (if (empty? (:selftext post))
+              (conj acc (:url post))
+              acc)) [] posts))
 
 (defn main
   [& args]
-  (println (links-posted)))
+  (let [posts (get-posts)]
+    (println (links-posted posts))))
