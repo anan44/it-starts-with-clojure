@@ -74,7 +74,7 @@ It  provides instant REPL and is especially nice for learning the language.
 Jacek Schae has written a [nice article](https://medium.com/@jacekschae/slick-clojure-editor-setup-with-atom-a3c1b528b722) about using Atom in Clojure development.
 In case you interested read follow his suggestions.
 
-## Structural Edting
+## Structural Editing
 
 Practically all Clojure IDEs support something known as Structural Editing.
 It is a method of editing your code where we are able to move parentheses around with flexibility.
@@ -93,7 +93,8 @@ Nevertheless I want you to look for these features in your editor and play aroun
 Using Structural Editing can feel a bit weird in the beginning,
 but you will quickly get grasp of it and it will enhance your coding experience when working with Clojure.
 
-In Calva you can try pressing 
+In Calva you can try pressing
+
 - ctrl + left/right arrow key
 - ctrl + shift + left/right arrow key
 
