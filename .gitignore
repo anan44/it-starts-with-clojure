@@ -3,4 +3,5 @@
 /sandbox
 *.idea/
 /teachers-notes
+*.iml
 
