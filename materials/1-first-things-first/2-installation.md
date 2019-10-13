@@ -59,13 +59,13 @@ Thus we will start by installing the said brew.
 
 The official instructions are available [here](https://brew.sh).
 
-But really the only thing oyu need to do is to execute this:
+But really the only thing you need to do is to execute this:
 
 ```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-That being done you have brew installed ony your Mac.
+That being done you have brew installed on your Mac.
 
 ### Install Java 1.8 on Mac
 
