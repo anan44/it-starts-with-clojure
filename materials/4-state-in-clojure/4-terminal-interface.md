@@ -15,7 +15,7 @@ In our case the stdin is the terminal as it very often is.
 ```
 
 There is not much more to say about the `read-line` function,
-so lets move on. Next we will meet `loop`.
+so let's move on. Next we will meet `loop`.
 
 ## [loop](https://clojuredocs.org/clojure.core/loop) and [recur](https://clojuredocs.org/clojure.core/recur)
 
