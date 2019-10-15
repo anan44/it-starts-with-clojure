@@ -64,3 +64,75 @@ try using the exact same versions as I am using here.
 
 In order to use this library,
 we'll have to add this snippet into our project's dependencies in project.clj file.
+
+Currently your project.clj should look something like this
+
+```clojure
+(defproject reddit-analyser "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :main ^:skip-aot reddit-analyser.core
+  :target-path "target/%s"
+  :profiles {:uberjar {:aot :all}})
+```
+
+This is how Leiningen projects are defined.
+There is information regarding the main namespace and other things required to build and run the project.
+We are not going to dive into details of all of this,
+because out of our scope for now.
+
+In order to use clj-http in our project we'll have to add it to the dependencies vector.
+
+Like this:
+
+```clojure
+(defproject reddit-analyser "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [clj-http "3.10.0"]]
+  :main ^:skip-aot reddit-analyser.core
+  :target-path "target/%s"
+  :profiles {:uberjar {:aot :all}})
+```
+
+But that is not all.
+As we can see from the [clj-http documentation](https://github.com/dakrone/clj-http#optional-dependencies),
+clj-http takes additional dependencies.
+These are the things that modify its behavior.
+One of these is [cheshire](https://github.com/dakrone/cheshire),
+which enables clj-http to communicate in .json instead of .edn.
+This is kinda behavior we almost always want,
+let's add that into the dependencies as well.
+It is a good habit to add this,
+since we really rarely wish to actually use edn in our http queries.
+Forgetting to use it will cause weird issues.
+
+So lets add [cheshire](https://github.com/dakrone/cheshire) to our dependencies.
+
+```clojure
+(defproject reddit-analyser "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [cheshire "5.9.0"]
+                 [clj-http "3.10.0"]]
+  :main ^:skip-aot reddit-analyser.core
+  :target-path "target/%s"
+  :profiles {:uberjar {:aot :all}})
+```
+
+Cheshire is defacto standard for JSON encoding and decoding in Clojure.
+You should think it as go to tool if and when you need such functionalities.
+
+With these dependencies being sorted out,
+we can move to the actual topic of this section: HTTP requests.
+
+## Making HTTP request with clj-http
