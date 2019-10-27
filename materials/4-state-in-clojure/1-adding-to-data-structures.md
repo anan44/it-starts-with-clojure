@@ -62,7 +62,7 @@ And regarding performance: It's fast.
 
 ## [conj](https://clojuredocs.org/clojure.core/conj)
 
-conj (short for conjoin) adds the element/elements to that part of collection,
+`conj` (short for conjoin) adds the element/elements to that part of collection,
 where it is most optimal from the performance perspective to do so.
 That means the outcomes differ based on the type of collection being used.
 With vectors the elements are added to the end,
@@ -71,7 +71,7 @@ On maps and sets the elements are kinda added where ever,
 since they don't guarantee the order of their elements.
 Keep this in mind when selecting the collection type that you will be using.
 With both lists and vectors it is possible to add elements to other places in the collection as well,
-but it is always "cheapest"/fastest performance-wise to add the elements where Clojure naturally does it with conj.
+but it is always "cheapest"/fastest performance-wise to add the elements where Clojure naturally does it with `conj`.
 
 ```clojure
 (conj [1 2 3] 4)
@@ -83,12 +83,12 @@ but it is always "cheapest"/fastest performance-wise to add the elements where C
 ;=> '(4 1 2 3)
 ```
 
-In most cases conj should be your goto tool for adding items to collections,
+In most cases `conj` should be your goto tool for adding items to collections,
 but there is other tools as well that have their use cases.
 
 ## [concat](https://clojuredocs.org/clojure.core/concat)
 
-concat returns a seq that is the combination of its arguments.
+`concat` returns a seq that is the combination of its arguments.
 It is rather straight forward to use,
 and it can be easily used to add items at beginning of vectors and end of lists,
 if that is necessary.
@@ -102,14 +102,14 @@ if that is necessary.
 ;=> (1 2 3 4)
 ```
 
-concat is very useful,
-but it is good to be aware that it might be a bit slower than conj.
+`concat` is very useful,
+but it is good to be aware that it might be a bit slower than `conj`.
 Yet in the most cases the speed should not be an issue to your application.
 
 ## [cons](https://clojuredocs.org/clojure.core/cons)
 
-cons adds an element to the front of the collection and returns it as a seq.
-cons is rather popular and it definitely has its uses.
+`cons` adds an element to the front of the collection and returns it as a seq.
+`cons` is rather popular and it definitely has its uses.
 But unless you really want to deal with seqs,
 AND you want the items added to beginning of a collection then you should consider other options.
 
@@ -121,7 +121,7 @@ AND you want the items added to beginning of a collection then you should consid
 (cons [1 2 3] 4)
 ```
 
-cons has its uses but it is a good idea to prefer previous functions when in doubt.
+`cons` has its uses but it is a good idea to prefer previous functions when in doubt.
 
 ## Adding to shopping list
 

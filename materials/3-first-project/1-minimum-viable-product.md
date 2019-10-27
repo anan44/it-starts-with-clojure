@@ -81,13 +81,13 @@ For now we are going to ignore the part with ns and :gen-class.
 Don't worry, you we will get comfortable with them too in some while.
 That being said,
 I believe that it is time to address the elephant in the room.
-You might have noticed some kind of **defn** form in sandbox project previously.
+You might have noticed some kind of `defn` form in sandbox project previously.
 Then we ignored it because we had more pressing matters,
 and it is not possible to cover everything at once.
 
 ### [defn](https://clojuredocs.org/clojure.core/defn)
 
-defn is perhaps the single most important form in the whole language.
+`defn` is perhaps the single most important form in the whole language.
 As you might have heard,
 Clojure is a Functional Programming (FP) language.
 That means obviously means that functions are at the center of everything.
@@ -151,7 +151,7 @@ Most other programming languages have explicit return statement.
 Instead of such a statement,
 Clojure functions return the output of the last thing evaluated.
 
-Ok thats again enough babbling and academics.
+Ok, thats again enough babbling and academics.
 Let's take the practical approach and write some functions.
 
 ### Defining sum function
@@ -161,7 +161,7 @@ how would we sum them up?
 In many other languages the obvious solution would be a for-loop.
 In Clojure we do also have similar structures,
 but we will not use them now.
-Instead we are going to be using [apply](https://clojuredocs.org/clojure.core/apply) function.
+Instead we are going to be using [`apply`](https://clojuredocs.org/clojure.core/apply) function.
 
 Let's define the following function:
 
@@ -178,7 +178,7 @@ and it calls the function using contents of that sequence as parameters.
 This is easier to understand when you see it like this:
 
 ```clojure
-;; these are practically the same
+;; These are practically the same
 (apply + [1 2 3])
 ;=> 6
 
@@ -186,12 +186,12 @@ This is easier to understand when you see it like this:
 ;=> 6
 ```
 
-Sequence is an interface for many kind of collections in clojure.
+Sequence is an interface for many kind of collections in Clojure.
 Vectors, Lists and many others are sequenceable.
 This means that they implement sequence interface,
 which is something majority of Clojure's functions rely on.
 
-We can check if something sequenceable with function _sequential?_
+We can check if something sequenceable with function `sequential?`
 
 ```clojure
 (sequential? [1 2 3])
@@ -211,7 +211,7 @@ Le's call our function to try it out.
 ```clojure
 (sum [1 2 3])
 ;=> Syntax error compiling at (core.clj:9:1).
-Unable to resolve symbol: sum in this context
+;   Unable to resolve symbol: sum in this context
 ```
 
 WHAT!! Didn't we just define sum?
@@ -219,7 +219,7 @@ WHAT!! Didn't we just define sum?
 Why is REPL unable resolve the [symbol](https://stackoverflow.com/questions/2320348/symbols-in-clojure)?
 (symbol refers to an identifier).
 Well the answer is simple,
-we need to evaluate the defn form before REPL knows about it.
+we need to evaluate the `defn` form before REPL knows about it.
 You might have written it to your file,
 but it won't be loaded to your REPL session before you explicitly evaluate it.
 
@@ -240,8 +240,9 @@ And congratulations for writing your first function.
 It is definitely the most important step towards becoming an actual Clojurist.
 
 **This pattern of writing and testing our functions is something you should always do when writing Clojure.**
+
 Always keep your REPL open and ready.
-Later on in this book we wont explicitly tell you to try out the functions we do,
+Later on in this book we won't explicitly tell you to try out the functions we do,
 but you should do so anyway.
 Build up the habit of doing so.
 Not only will it help you to understand what we are doing,
@@ -274,12 +275,12 @@ Let's change our code a bit to make it more clear what our function is able to d
   (apply + a-seq)`
 ```
 
-This wont actually change the functionality of our function at all,
+This won't actually change the functionality of our function at all,
 but it makes it more clear that it can take other things than Vectors as well.
 Also notice that we are calling the parameter _a-seq_ instead of _seq_.
 This is because we don't want to [shadow](https://en.wikipedia.org/wiki/Variable_shadowing)
 an existing function [seq](https://clojuredocs.org/clojure.core/seq) and cause unnecessary confusion.
-For the very same reason called the previous parameter a-vec (there is also a function called [vec](https://clojuredocs.org/clojure.core/vec)).
+For the very same reason called the previous parameter a-vec (there is also a function called [`vec`](https://clojuredocs.org/clojure.core/vec)).
 Alternatively,
 we could call the parameter _coll_,
 that would be suitable too and it is often seen in Clojure code.
@@ -292,32 +293,32 @@ it is time to move onwards.
 Reading from a file in Clojure is much easier than for example in Java or Python.
 It is actually hilarious how easy it is.
 
-Clojure provides us with a magnificent function known as a [slurp](https://clojuredocs.org/clojure.core/slurp).
-The power of slurp is rivaled only buy the playfulness of its name.
+Clojure provides us with a magnificent function known as a [`slurp`](https://clojuredocs.org/clojure.core/slurp).
+The power of `slurp` is rivaled only buy the playfulness of its name.
 So shall we give it a try?
 
-Slurp file path as its sole parameter.
+`slurp` takes a file path as its sole parameter.
 We will try it on the README file of your sum-em-up project.
 
 ```clojure
 (slurp "README.md")
 ;=> "# sum-em-up2
-
-FIXME: description
-
-## Installation..." ;; this actually goes on way more
+;
+;FIXME: description
+;
+;## Installation..." ;; this actually goes on way more
 ```
 
 As you can see from your own REPL,
-slurp returns the whole file as a string.
+`slurp` returns the whole file as a string.
 Depending on the language you come from,
 this might or might not be weird for you.
 Returning the whole thing as a single string leaves a lot of responsibility for the programmer.
 It is completely up to you to parse and process this file now as you please.
 
 Before we move on to with our project,
-I really have to demonstrate another cool feature of slurp to you.
-slurp is not limited to reading files.
+I really have to demonstrate another cool feature of `slurp` to you.
+`slurp` is not limited to reading files.
 Among many other things it can be used for reading websites.
 
 ```clojure
@@ -327,9 +328,9 @@ Among many other things it can be used for reading websites.
 ```
 
 If you need to read something from somewhere,
-slurp is usually your best pal.
+`slurp` is usually your best pal.
 
-Ok. Now we know slurp and know how to use it too.
+Ok. Now we know `slurp` and know how to use it too.
 Since our plan is to read bunch of numbers from file,
 it is fair enough to think that we need the said file.
 
@@ -383,11 +384,11 @@ So what does actually happen here?
 
 Since split is not from clojure.core or from our namespace sum-em-up.core,
 we have to specify to clojure where exactly is it located.
-That is done with **clojure.string/** .
+That is done with `clojure.string/` .
 After that we just write the name of the function we are calling.
 Next weird thing is **#"\s+"**.
 This something known as [Regex](https://en.wikipedia.org/wiki/Regular_expression) pattern.
-In clojure we can specify regex patterns by adding # in front of a string.
+In Clojure we can specify regex patterns by adding # in front of a string.
 As you might know,
 Regex is not Clojure specific thing,
 but a handy tool found in one form or another from almost all modern programming languages.
@@ -396,17 +397,18 @@ I strongly suggest you complete a short course on the topic at [RegexOne](https:
 It should not take you more than an hour.
 
 For those who are not familiar with Regex i will quickly explain what the Regex pattern \s+ means.
-**\s** stands for any white space character,
-those being space, tab (\t), carriage return (\r) and new lines (\n).
+`\s` stands for any white space character,
+those being space, tab (`\t`), carriage return (`\r`) and new lines (`\n`).
 \+ on the other hand means that here may be 1 or more of characters/elements described before it.
 
-In other words **#"\s+"** is a Clojure's way of describing a Regex pattern that says:
+In other words `#"\s+"` is a Clojure's way of describing a Regex pattern that says:
 
 "Match as many whitespace characters as you please,
 as long as there is at least one of them"
 
 So our function call above is asking split the string "1 2 3 4 5 10 300\n"
-from where ever there is any sorts of whitespaces, no matter how many there is.
+from where ever there is any sorts of whitespaces,
+no matter how many there is.
 This will nicely leave us with a vector of strings all representing numbers.
 Nice right.
 
@@ -419,8 +421,8 @@ we would get an error.
 ```clojure
 (sum ["1" "2" "3" "4" "5" "10" "300"])
 ;=> Syntax error (ClassCastException) compiling at (core.clj:13:1).
-class java.lang.
-String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+;class java.lang.
+;String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
 ```
 
 This is because for obvious reasons strings cannot be summed up.
@@ -464,41 +466,41 @@ To achieve this in Clojure we will use special syntax for Java interop.
 ```
 
 Great! It worked!
-So here we call a static method valueOf from class Long using a parameter "303".
+So here we call a static method `valueOf` from class Long using a parameter "303".
 
 That solves our first problem.
 Let's take a shot at the second problem.
 How do we apply this to a whole list of strings?
 
-For this the tool would be our good friend [map](https://clojuredocs.org/clojure.core/map) function.
-Map is a very flexible function that can be used in many ways,
+For this the tool would be our good friend [`map`](https://clojuredocs.org/clojure.core/map) function.
+`map` is a very flexible function that can be used in many ways,
 but here we are going to use the simplest and most common way.
 
-You should not confuse map function to the map data structure.
+You should not confuse `map` function to the `map` data structure`
 Even though the two share a name,
 they play rather different roles in the Language.
 
-We will give map 2 parameters:
+We will give `map` 2 parameters:
 A function and collection.
-What map will do is that it will apply the given function to each of the members of the collections,
+What `map` will do is that it will apply the given function to each of the members of the collections,
 and then returns us the collection of those results.
 Let's give it a shot.
 
 ```clojure
 (map Long/valueOf ["1" "2" "3" "4" "5" "10" "300"])
 ;=> Syntax error compiling at (core.clj:17:1).
-Unable to find static field: valueOf in class java.lang.Long
+;Unable to find static field: valueOf in class java.lang.Long
 ```
 
 WHAT!?!?
 This was not supposed to happen!
 Well actually it kinda was.
-map can only take Clojure functions as as parameters,
+`map` can only take Clojure functions as as parameters,
 thus Java static methods are not accepted.
 Well how will we solve this?
 
 Luckily there is an easy way out of this ditch.
-We can just simply wrap the static method call into a Clojure function and map will have no complaints.
+We can just simply wrap the static method call into a Clojure function and `map` will have no complaints.
 
 ```clojure
 (defn str->long
@@ -509,7 +511,7 @@ We can just simply wrap the static method call into a Clojure function and map w
 ;=> 1337
 ```
 
-So let's try our newly defined function with map.
+So let's try our newly defined function with `map`.
 
 ```clojure
 (map str->long ["1" "2" "3" "4" "5" "10" "300"])
@@ -527,11 +529,11 @@ so Leiningen will know in which order it should run our code.
 ## Building the main logic
 
 When we created the project with Leiningen using the app template,
-Leiningen created a function -main to our project.
+Leiningen created a function `-main` to our project.
 This is the starting point of our Clojure application.
 When we start running the project,
 it starts from the beginning of the main function.
-When the end of -main function is reached the program completes.
+When the end of `-main` function is reached the program completes.
 You might be familiar with this concept from other programming languages,
 since it is rather common pattern.
 
@@ -542,7 +544,6 @@ Before we will now gather all the parts we have prepared under the main function
   [& args]
   (println (sum (map str->long (clojure.string/split (slurp "numbers.txt") #"\s+")))))
 ```
-
 
 This is what we came up with.
 This is a great example of how Clojure (and all LISPs) are read from right to left.

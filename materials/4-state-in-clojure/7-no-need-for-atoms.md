@@ -54,10 +54,10 @@ but not too much to make it unrecognizable.
 
 Let's walk through the changes we did.
 
-We added another parameter to the loop.
+We added another parameter to the `loop`.
 It now has bindings *shoppings* and *choice*.
-Because we changed the loop's bindings,
-we had to also change the recurs accordingly.
+Because we changed the `loop`'s bindings,
+we had to also change the `recur`s accordingly.
 So in case the user selects 1,
 we are now recurring the loop with a new shoppings vector that is the result of old vector with new item added to it.
 The item is created directly by prompting for the product and amount inside the map.
@@ -69,7 +69,7 @@ As you can see we have now far less code,
 our state is handled by recursion and the code is easier to read,
 since there is less going on in general.
 
-If would like to,
+If we would like to,
 we could abstract the creation of single shopping to a dedicated function.
 
 Such a function would look something like this:
@@ -82,7 +82,7 @@ Such a function would look something like this:
 ```
 
 You are free to do so if you wish to.
-It could be argued that it would clarify the loop in main function,
+It could be argued that it would clarify the `loop` in main function,
 but it is also rather unnecessary,
 since this function does very little.
 
@@ -133,7 +133,7 @@ All in all the final solution looks something like this:
 
 ## Last words on the topic
 
-I am sure some authors would disagree with me telling you about the atom this early.
+I am sure some authors would disagree with me telling you about the `atom` this early.
 I indeed did have a few deep conversations regarding this decision with my colleagues,
 since they too doubted it a bit.
 
@@ -148,3 +148,5 @@ As a rule of thumb always try solving your state issues with recursion. If that 
 then look for other options such as `atom`s or databases or etc.
 
 With this final warning we finalize the section on `atom`s and state in Clojure.
+
+Next: [Chapter 5 - Requests for Data](../5-requests-for-data)

@@ -48,8 +48,8 @@ This will help you to get comfortable with your programming environment.
 [comment]: # (TODO: There is too much detail here. Needs to be leaned down)
 
 I might have guessed it.
-_str_ turns given arguments into string and concatenates them.
-str takes n number of arguments and always returns a single string.
+`str` turns given arguments into string and concatenates them.
+`str` takes n number of arguments and always returns a single string.
 If no arguments are provided,
 an empty string is returned.
 
@@ -75,7 +75,7 @@ Like this:
 Notice how the escape characters are still there in the return value.
 You will always see them in the string presentation of Clojure,
 but they will be gone when we output the data to somewhere.
-Let's try outputting the string to stdout with println function.
+Let's try outputting the string to stdout with `println` function.
 
 ```clojure
 (println "Tim \"tpope\" Pope")
@@ -86,10 +86,10 @@ Tim "tpope" Pope
 Notice how clojure returns _nil_ after printing Tim "tpope" Pope?
 This is because in clojure every form evaluates into something.
 Functions evaluate into their return values.
-println function (like print function) always return nil regardless of what is being printed.
+println function (like print function) always return _nil_ regardless of what is being printed.
 Unlike in Java or many other languages,
 Clojure does not support returning void.
-Many places that would in other langauges return void return _nil_ instead.
+Many places that would in other languages return void return _nil_ instead.
 It is good to keep in mind that nil is also a return value nevertheless.
 
 Clojure's strings are actually Java strings.
@@ -97,17 +97,19 @@ Much of Clojure code is closely connected to Java.
 This alone is a super interesting topic and many books have written whole chapters about it,
 but we won't let it sidetrack us any more than this now.
 
-If you are interested connection between Java and Clojure, read more from Clojure docs [Hosted on the JVM](https://clojure.org/about/jvm_hosted)
+If you are interested connection between Java and Clojure,
+ read more from Clojure docs [Hosted on the JVM](https://clojure.org/about/jvm_hosted)
 and [Java Interop](https://clojure.org/reference/java_interop).
 As before, there are both things I suggest you leave for later.
 
-In addition to println Clojure also provides handy function [prn](https://clojuredocs.org/clojure.core/prn).
+In addition to println Clojure also provides handy function [`prn`](https://clojuredocs.org/clojure.core/prn).
 prn is much like print, but it prints everything in machine readable format.
 
 ```clojure
 (prn "Tim \"tpope\" Pope")
 "Tim \"tpope\" Pope"
 ;=> nil
+```
 
 This can be especially handy while debugging.
 
@@ -117,8 +119,8 @@ Unlike in many other languages,
 Clojure's arithmetic operators are functions just like any other.
 They take arguments are return a value as result.
 
-Symbol + is a name of a sum function just like any other name.
-Function + takes n arguments and returns the sum of those arguments.
+Symbol `+` is a name of a sum function just like any other name.
+Function `+` takes n arguments and returns the sum of those arguments.
 
 ```clojure
 (+ 10 10 5)
@@ -136,7 +138,7 @@ Function + takes n arguments and returns the sum of those arguments.
 
 ## [-](http://clojuredocs.org/clojure.core/-)
 
-Subtraction function - takes n number of arguments.
+Subtraction function `-` takes n number of arguments.
 It subtracts all the rest of arguments from the first argument.
 If only one argument is provided,
 the negation of that number is returned.
@@ -157,7 +159,7 @@ or it throws an error.
 ## [*](http://clojuredocs.org/clojure.core/*)
 
 I hope at this point you are already starting to get a grasp on how arithmetic operators wok in clojure.
-Product function * takes n number of arguments and returns the product of these arguments.
+Product function `*` takes n number of arguments and returns the product of these arguments.
 If called without arguments 1 is returned.
 
 ```clojure
@@ -176,14 +178,14 @@ If called without arguments 1 is returned.
 
 ## [/](https://clojuredocs.org/clojure.core/_fs)
 
-Division operator / is a bit more interesting than it peers,
+Division operator `/` is a bit more interesting than it peers,
 since it nicely leeds us to diversity of Clojure's number formats.
 This is a sidetrack that we are going to briefly visit now.
 
-/ takes n number of arguments.
+`/` takes n number of arguments.
 First of the arguments is the numerator and the rest are denominators.
 The return value is the numerator divided by all the denominators.
-What makes / interesting is the format of the return values.
+What makes `/` interesting is the format of the return values.
 
 ```clojure
 (/ 10 5)
@@ -224,7 +226,7 @@ This can be proven by evaluating following form in REPL:
 ;=> java.lang.Long
 ```
 
-([type](https://clojuredocs.org/clojure.core/type) is a helpful function that return a type of given argument.)
+([`type`](https://clojuredocs.org/clojure.core/type) is a helpful function that return a type of given argument.)
 
 If the number is too large to fit to Long (>9223372036854775807),
 then BigInteger data type is used.
@@ -284,10 +286,10 @@ just follow the links to the official documentation.
 
 ### [nil](https://clojure.org/reference/data_structures#nil)
 
-nil is Clojure's equivalent of None type in python or Null type in Java, C# or Javascript.
+_nil_ is Clojure's equivalent of None type in python or Null type in Java, C# or Javascript.
 It is the representation of lack of data.
 
-You can check if piece of data is nil with function _nil?_
+You can check if piece of data is nil with function `nil?`
 
 ```clojure
 (type nil)
@@ -301,7 +303,7 @@ You can check if piece of data is nil with function _nil?_
 
 Like almost all the other languages Clojure has two boolean values,
 namely true and false.
-If the value in question is true or false can be checked with functions true? and false?.
+If the value in question is true or false can be checked with functions `true?` and `false?`.
 
 ```clojure
 (true? false)
@@ -324,7 +326,7 @@ so there is again no need to stress over it.
 
 ### [Keywords](https://clojure.org/reference/data_structures#Keywords)
 
-Clojure has an interesting data type known as Keywords,
+Clojure has an interesting data type known as _Keywords_,
 which is missing from most of the other languages.
 For now you can think of keywords mostly as weird cousin of string.
 It is popular especially as key values in maps,
@@ -363,7 +365,6 @@ java.lang.Long cannot be cast to clojure.lang.IFn
 ;=> clojure.lang.PersistentList
 ```
 
-
 You might also have noticed that we did not use commas to separate the values from each other.
 Unlike other languages Clojure's compiler does not require such separators.
 In fact Clojure's compiler will just ignore such commas even if you would provide them.
@@ -380,9 +381,7 @@ When writing lists in to your code, use a leading single quote.
 
 The error we had before:
 
-```text
-SOMETHING cannot be cast to clojure.lang.IFn
-```
+`SOMETHING cannot be cast to clojure.lang.IFn`
 
 is rather common sight in Clojure.
 It might seem cryptic at first,
@@ -404,7 +403,7 @@ Just like lists the vectors take multiple pieces of data to them and are extreme
 Now you might think,
 _Why does Clojure have two similar structures for list like structures?_
 Well there is kinda significant difference in the performance of lists and vectors under different circumstances.
-Then you might ask, _"Well which one should i use?"_
+Then you might ask, _"Well which one should I use?"_
 The rule of thump is:
 When in doubt, use vectors.
 

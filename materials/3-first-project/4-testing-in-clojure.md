@@ -21,7 +21,7 @@ You can see that Leiningen has provided us with an example how test should look 
 
 At the top of the file we have some imports.
 Clojure's imports are quite straight forward as seen here.
-In the same form as the test name space sum-em-up.core-test is declared we can see :require form.
+In the same form as the test name space sum-em-up.core-test is declared we can see `:require` form.
 
 ```clojure
 (ns sum-em-up.core-test
@@ -31,7 +31,7 @@ In the same form as the test name space sum-em-up.core-test is declared we can s
 
 This here says that we are requiring all the functions from name space clojure.test,
 and all functions from sum-em-up.core namespace.
-This way we don't have to write the full names of the functions (namespace/function-name),
+This way we don't have to write the full names of the functions (`namespace/function-name`),
 but instead we can refer to them with just the function name part.
 
 ```clojure
@@ -62,10 +62,10 @@ The code is rather simple:
     (is (= 1 0))))
 ```
 
-[deftest](https://clojuredocs.org/clojure.test/deftest) defines the test function that takes no arguments.
+[`deftest`](https://clojuredocs.org/clojure.test/deftest) defines the test function that takes no arguments.
 In side its body you can find [testing](https://clojuredocs.org/clojure.test/testing)
-form with [is](https://clojuredocs.org/clojure.test/is)
-forms and equality [=](https://clojuredocs.org/clojure.core/=) forms.
+form with [`is`](https://clojuredocs.org/clojure.test/is)
+forms and equality [`=`](https://clojuredocs.org/clojure.core/=) forms.
 
 So what does each of this do?
 
@@ -75,7 +75,7 @@ These are the functions that are being run when tests are being run.
 
 ### [testing](https://clojuredocs.org/clojure.test/testing)
 
-testing is used to define the context of what is being tested.
+`testing` is used to define the context of what is being tested.
 With string you can explain what is the feature you are testing,
 and then have the actual test forms following the string.
 The use of testing function is not mandatory when writing tests,
@@ -86,16 +86,16 @@ This helps us to better understand which test failed.
 
 ### [is](https://clojuredocs.org/clojure.test/is)
 
-is is the generic assertion macro in Clojure.
+`is` is the generic assertion macro in Clojure.
 All the tests are wrapped in it.
 Unlike in the example test,
-is can also take an additional message argument following the assertion form,
+`is` can also take an additional message argument following the assertion form,
 though we won't be using that here.
 
 ### [=](https://clojuredocs.org/clojure.core/=)
 
 Clojure's equality check.
-The = function does not check if the two arguments provided are the same,
+The `=` function does not check if the two arguments provided are the same,
 but rather if they are equal to each other.
 Can be used on most of Clojure's data types.
 
@@ -113,21 +113,21 @@ Some editor's might provide some tooling for running the tests,
 but I would recommend running the tests from command line using Leiningen.
 It should be easy and fast. Just run the following command in command line from the project directory.
 
-```text
+```clojure
 lein test
 
 ;=> lein test sum-em-up.core-test
-
-lein test :only sum-em-up.core-test/a-test
-
-FAIL in (a-test) (core_test.clj:7)
-FIXME, I fail.
-expected: (= 0 1)
-  actual: (not (= 0 1))
-
-Ran 1 tests containing 1 assertions.
-1 failures, 0 errors.
-Tests failed.
+;
+;lein test :only sum-em-up.core-test/a-test
+;
+;FAIL in (a-test) (core_test.clj:7)
+;FIXME, I fail.
+;expected: (= 0 1)
+;  actual: (not (= 0 1))
+;
+;Ran 1 tests containing 1 assertions.
+;1 failures, 0 errors.
+;Tests failed.
 ```
 
 As the description ominously indicated,
@@ -144,16 +144,16 @@ which will make our test fail.
 Let's try to fix this test.
 It should not be hard to make this test succeed.
 We simply have to turn this equality test to return true.
-If we change it to (= 1 1) the test should pass.
+If we change it to `(= 1 1)` the test should pass.
 After committing the changes,
 we can run the tests again and see them pass with flying colors.
 
-```text
+```clojure
 lein test
 ;=> lein test sum-em-up.core-test
-
-Ran 1 tests containing 1 assertions.
-0 failures, 0 errors.
+;
+;Ran 1 tests containing 1 assertions.
+;0 failures, 0 errors.
 ```
 
 Awesome we made our first test run and pass.
@@ -233,18 +233,18 @@ Would they work?
 
 After running the tests now we will be hit by the unforgiving reality that our function does not work with decimals.
 
-```text
+```clojure
 lein test
 ;=> lein test sum-em-up.core-test
-
-lein test :only sum-em-up.core-test/str->long-test
-
-ERROR in (str->long-test) (NumberFormatException.java:65)
-Casting text to numbers
-expected: (= 0.5 (str->long "0.5"))
-  actual: java.lang.NumberFormatException: For input string: "0.5"
- at java.lang.NumberFormatException.forInputString (NumberFormatException.java:65)
- ...
+;
+;lein test :only sum-em-up.core-test/str->long-test
+;
+;ERROR in (str->long-test) (NumberFormatException.java:65)
+;Casting text to numbers
+;expected: (= 0.5 (str->long "0.5"))
+;  actual: java.lang.NumberFormatException: For input string: "0.5"
+; at java.lang.NumberFormatException.forInputString (NumberFormatException.java:65)
+;...
 ```
 
 It seems like our code does not work with decimals,
@@ -260,7 +260,7 @@ Nevertheless, it is up to us to decide if our program should be able to deal wit
 If you feel so, try making the necessary changes to the code so it will be able to deal with decimals.
 And don't forget to write the tests for it too!
 
-_Hint: Try using writing str->decimal function. Use str->long as an example_
+__Hint: Try using writing str->decimal function. Use str->long as an example__
 
 So our final version of the test is now looking like this:
 
@@ -308,7 +308,7 @@ and that is one of the main reasons why we like them so much.
 Currently we have quite a bit of our business logic just inside the main function.
 The easiest way to get more of this code tested is to write more of the logic into pure functions.
 
-Let's get back to the our main function and take a good lok at it:
+Let's get back to the our main function and take a good look at it:
 
 ```clojure
 (defn -main
@@ -323,9 +323,9 @@ Let's get back to the our main function and take a good lok at it:
 
 So which parts of this code would be worth testing.
 
-Well file-name just uses [first](https://clojuredocs.org/clojure.core/first) function on args,
+Well file-name just uses [`first`](https://clojuredocs.org/clojure.core/first) function on args,
 and we can be quite sure that it works as intended since it comes straight from Clojure.core.
-Text on the other hand uses slurp that is not a pure function,
+Text on the other hand uses `slurp` that is not a pure function,
 but also comes from Clojure.core,
 so there is probably no need to test that either.
 str-coll does not come from clojure.core,

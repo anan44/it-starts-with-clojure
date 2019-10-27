@@ -72,7 +72,7 @@ Copy-pasting will do you no good.
 So what did we do here?
 
 Well we bind out puts of two prompt functions to _product_ and _amount_.
-Then we create a map where :product is product and :amount is amount.
+Then we create a map where `:product` is product and `:amount` is amount.
 Finally we call our add-shopping with this newly created map as parameter.
 
 Remember to try this in REPL.
@@ -87,7 +87,7 @@ and focus to creating that list from the interface.
 So we will create an interface,
 which will ask us if we want to add items or print the list.
 Since this is the main part of our code,
-we will be writing it directly to the -main function that runs when the program is being run.
+we will be writing it directly to the `-main` function that runs when the program is being run.
 
 ```clojure
 (defn -main
@@ -102,15 +102,15 @@ we will be writing it directly to the -main function that runs when the program 
             (recur (prompt "Enter a number:\n1. Add product\n2. Save shopping list")))))))
 ```
 
-So -main function always take arguments [& args],
+So `-main` function always take arguments `[& args]`,
 but we won't wont be using those for now.
-What we are interested here is the loop.
-So in loop we bind output of the prompt to _choice_.
+What we are interested here is the `loop`.
+So in `loop` we bind output of the prompt to _choice_.
 
 If the the choice is "1",
-we will call add-product-to-shoppings and recur the loop with the same prompt.
+we will call add-product-to-shoppings and `recur` the `loop` with the same prompt.
 Remember that add-product-to-shoppings takes no params.
-If the choice is not 1 we will proceed to the second if statement.
+If the choice is not 1 we will proceed to the second `if` statement.
 
 Here we will check if the choice is "2".
 If it is,
@@ -119,7 +119,7 @@ Please note that we don't actually save anything at this point.
 We will simply leave that as a future problem to be solved.
 
 Finally, if the choice is not "2" we will print a message informing the user of invalid input,
-and we will recur the loop again with the same message.
+and we will `recur` the `loop` again with the same message.
 
 All in all the functionality is rather simple,
 but the nested if-statements might look hostile.
@@ -142,8 +142,8 @@ To write to a file we use [spit](https://clojuredocs.org/clojure.core/spit).
 
 ### [spit](https://clojuredocs.org/clojure.core/spit)
 
-Spit is cousin of slurp that we met before.
-It does exactly the opposite of what slurp does.
+`split` is cousin of `slurp` that we met before.
+It does exactly the opposite of what `slurp` does.
 
 It can be used to write to different outputs,
 but we will now use it to write to a file.
@@ -170,7 +170,7 @@ If you look to the previous file you can see that a second line has appeared the
 ### Writing shopping list to file
 
 So now that we know how to write a shopping list to a file,
-let's modify our -main function to do so.
+let's modify our `-main` function to do so.
 
 ```clojure
 (defn -main
@@ -187,12 +187,14 @@ let's modify our -main function to do so.
 
 ```
 
-So we added do statement and a spit function inside it it.
-Also note that the previous println is inside this function as well.
+So we added `do` statement and a `spit` function inside it it.
+Also note that the previous `println` is inside this function as well.
 
 Let's run this version.
-Write few products and quatities when the application prompts you.
-After you are done select the option for saving the shopping list.
+Write few products and quantities,
+when the application prompts you.
+After you are done,
+select the option for saving the shopping list.
 
 You can see that a file is indeed created on you computer.
 But unfortunately the file does not look very human friendly.
@@ -203,7 +205,8 @@ things-to-by.txt should look something like this (depending what you wrote):
 [{:product "Milk", :amount "3"} {:product "Cola", :amount "15"}]
 ```
 
-Nevertheless it does work, and you can kind of read it,
+Nevertheless it does work,
+and you can kind of read it,
 thus it meets the requirements of MVP.
 
 In the next section we will refactor the code a bit.

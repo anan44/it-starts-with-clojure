@@ -39,7 +39,7 @@ For this we will use two functions:
   (str (:product x) " * " (:amount x) "\n"))
 ```
 
-shopping->str takes a single shopping map and turns it to a string.
+`shopping->str` takes a single shopping map and turns it to a string.
 (Using this kind of arrow style definition is very popular in Clojure)
 Here we use keywords as functions to retrieve the matching element from the map.
 This also a very frequent practice in Clojure.
@@ -65,7 +65,7 @@ which will result in an output of the corresponding value from the map.
 Map can also be used as a function that takes a parameter of keyword,
 which will result in an output of the corresponding value from the map.
 
-Finally we have also explicit get function that takes parameters map and keyword,
+Finally we have also explicit `get` function that takes parameters map and keyword,
 which will result in an output of the corresponding value.
 
 But that's not all.
@@ -81,7 +81,7 @@ It just is very common due the practicality it provides.
 
 ("product" {"product" "Milk" "amount" "3"})
 ;=> Syntax error (ClassCastException) compiling at...
-class java.lang.String cannot be cast to class clojure.lang.IFn...
+;class java.lang.String cannot be cast to class clojure.lang.IFn...
 ```
 
 So a string cannot be used as a function,
@@ -100,8 +100,8 @@ Let's explore few more cases while we are at it.
 You probably have some prior experience in programming,
 so I guess you might know why this is troublesome.
 There is no way for us to know,
-if we actually had a value :price that just happened to be nil,
-or if we just completely lacked the value referred as :price.
+if we actually had a value `:price` that just happened to be `nil`,
+or if we just completely lacked the value referred as `:pric``.
 
 ### [get](https://clojuredocs.org/clojure.core/get)
 
@@ -128,7 +128,7 @@ we can get back to our solution:
   (str (:product x) " * " (:amount x)))
 ```
 
-So here we are retrieving values :product and :amount from x,
+So here we are retrieving values `:product` and `:amount` from x,
 after which we proceed to build a single string as an output.
 
 The next step for us is to call this function on each item on our shoppings vector.
@@ -158,7 +158,7 @@ Thus I am not even going to explain to you how this monster of a function works.
 Instead we are going to jump directly to a proper version:
 
 As mentioned before,
-Clojure's loop is a flexible tool,
+Clojure's `loop` is a flexible tool,
 which is able to solve many problems.
 But instead of over relying on it,
 you should explore other options.
@@ -179,13 +179,13 @@ The far better solution looks like this:
 As you can quickly see,
 it is far shorter and there is much less happening in this solution.
 But additionally it provides us with the benefits of the laziness,
-which we get kind of "for free" for using the [map](https://clojuredocs.org/clojure.core/map) functions.
+which we get kind of "for free" for using the [`map`](https://clojuredocs.org/clojure.core/map) functions.
 
 So what does actually happen here?
 Well our function takes a single parameter shoppings,
-which we transform with map function and shopping->str that we defined before.
+which we transform with `map` function and `shopping->str` that we defined before.
 
-The we use the [join](https://clojuredocs.org/clojure.core/map) function from the clojure.string namespace,
+The we use the [`join`](https://clojuredocs.org/clojure.core/map) function from the clojure.string namespace,
 which takes 2 or 3 parameters.
 Here we have the 3 parameter option,
 where we provide the separator for the function.
@@ -206,7 +206,8 @@ That way it is much more fun to handle it in the main function.
 
 ```
 
-All that is left to improve the quality of our output document is to include our new logic.
+All that is left to improve the quality of our output document,
+is to include our new logic.
 
 ```clojure
 (defn -main
@@ -221,8 +222,6 @@ All that is left to improve the quality of our output document is to include our
         (do (println "Invalid choice!!! Try again")
             (recur (prompt "Enter a number:\n1. Add product\n2. Save shopping list")))))))
 ```
-
-So we pass in
 
 Remember to give it a try to see that your code works as intended.
 
@@ -241,7 +240,7 @@ We can see that we are using the same string prompting user for decision in mult
 It seems a bit unnecessary to have it written like that multiple times.
 After all we are fans of [DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-So let's define options with def:
+So let's define options with `def`:
 
 ```clojure
 (def options "Enter a number:\n1. Add product\n2. Save shopping list")
@@ -271,7 +270,7 @@ We will also modify our main function to utilize this options variable.
 ```
 
 That is already much better,
-but let's also save the output file as a value with def.
+but let's also save the output file as a value with `def`.
 
 ```clojure
 (def output-file "./things-to-buy.txt")
@@ -299,12 +298,12 @@ That's great, right?
 
 ## a [case](https://clojuredocs.org/clojure.core/case) for less ifs
 
-In Clojure (and other programming as well) nested if loops are often frowned upon.
+In Clojure (and other programming as well) nested `if` statements are often frowned upon.
 This is because they often cause bugs and are a pain in the ass to debug.
 
-As a solution to that we have the [case](https://clojuredocs.org/clojure.core/case) macro
+As a solution to that we have the [`case`](https://clojuredocs.org/clojure.core/case) macro
 
-case takes an expression and n number of clauses.
+`case` takes an expression and n number of clauses.
 When run the case will execute the clause that matches the expression.
 
 ```clojure
@@ -340,12 +339,12 @@ To avoid this we can provide a default clause:
 
 Note that default can be pretty much anything.
 
-You should also know that Clojure also has a [cond](https://clojuredocs.org/clojure.core/cond) macro,
-which is very similar to case.
+You should also know that Clojure also has a [`cond`](https://clojuredocs.org/clojure.core/cond) macro,
+which is very similar to `case`.
 In case you are interested,
-please see the documentation since we won't go through cond just now (we will do so later though).
+please see the documentation since we won't go through `cond` just now (we will do so later though).
 
-So it seems obvious how we could improve our code by utilizing case,
+So it seems obvious how we could improve our code by utilizing `case`,
 doesn't it?
 
 ```clojure
@@ -361,7 +360,7 @@ doesn't it?
           (recur (prompt options))))))
 ```
 
-So here we replaced the if statements with cases "1" and "2",
+So here we replaced the `if` statements with cases "1" and "2",
 also we provided the default case in case the user misspells the the answer.
 
 This solution is much more elegant,

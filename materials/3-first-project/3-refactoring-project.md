@@ -12,7 +12,7 @@ To make code more friendly idiomatic and friendly for eyes it is a good idea to 
 Our code is mostly already in good order regarding this,
 but there is still room for improvement.
 
-One of the main issues with our code now is the -main function.
+One of the main issues with our code now is the `-main` function.
 
 ```clojure
 (defn -main
@@ -45,18 +45,16 @@ Well at least we don't have to be scrolling sideways with our editor,
 but other than that it is still quite much a mess.
 
 In other programming languages we would often try to solve similar issues with saving the results of each function to a variables.
-Even though clojure does provide possibility to save values to variables with [def](https://clojuredocs.org/clojure.core/def),
+Even though clojure does provide possibility to save values to variables with [`def`](https://clojuredocs.org/clojure.core/def),
 it is not meant for this kind of usage.
 We will not even try that.
-(we will cover def later, so don't wonder about it now.)
+(we will cover `def` later, so don't wonder about it now.)
 
-So how will we solve this? Well the go-to tool for this sort of situation is [let](https://clojuredocs.org/clojure.core/let) function.
+So how will we solve this? Well the go-to tool for this sort of situation is [`let`](https://clojuredocs.org/clojure.core/let) function.
 
 ## [Let us be friends](https://clojurebridge.org/community-docs/docs/clojure/let/)
 
-[comment]: #(TODO: re write the let part.)
-
-Let is a special form that binds values to names.
+`let` is a special form that binds values to names.
 These are referred as lexical bindings in Clojure.
 Many other languages refer similar concepts as local variables.
 So with let we can create bindings that stop existing after the let form ends.
@@ -70,12 +68,12 @@ I think it is easier to show than to explain how this actually works.
 (let [y 15]
   (+ y x))
 ;=> Syntax error compiling at (core.clj:17:3).
-Unable to resolve symbol: x in this context
+;Unable to resolve symbol: x in this context
 ```
 
-Values bind with let are usable inside the let form,
-but outside of it.
-Let form always return the last form within it,
+Values bind with `let` are usable inside the `let` form,
+but not outside of it.
+`let` form always return the last form within it,
 much like functions in Clojure.
 
 ```clojure
@@ -85,7 +83,7 @@ much like functions in Clojure.
 ;=> 25
 ```
 
-Let is not limited to single binding.
+`let` is not limited to single binding.
 In fact we could bind as many values as we please.
 
 ```clojure
@@ -98,15 +96,15 @@ In fact we could bind as many values as we please.
 Also values that have been bind first are usable when binding following values.
 Due to this it is never necessary nor a good practice to have nested let forms.
 
-I hope the examples above gave you some perspective on the essence of let.
+I hope the examples above gave you some perspective on the essence of `let`.
 It is a tool that you will be using more and more when you dive deeper to the rabbit hole of Clojure.
 
 ## Refactoring with let
 
-We are now familiar with let,
-and we can start using it to clean up our -main function.
+We are now familiar with `let`,
+and we can start using it to clean up our `-main` function.
 
-So what we are going to do is to bind temporary results with let to make whole thing clearer.
+So what we are going to do is to bind temporary results with `let` to make whole thing clearer.
 
 ```clojure
 (defn -main
@@ -146,13 +144,13 @@ Just simply print out the value/values that you think might be something else th
     (println total)))
 ```
 
-Even though using let can make wonders to the readability of your code,
+Even though using `let` can make wonders to the readability of your code,
 there is also a golden line.
 Not every single tiny value needs to be bind with let.
 It could easily be argued that we might have gone a bit over the edge with our example here.
 In the end you will be the judge of what is the right amount of binding for readability of your code.
 Experiment with different approaches while writing Clojure,
-and in time you will find the balance between too little and too much let.
+and in time you will find the balance between too little and too much `let`.
 
 In addition to let Clojure also offers something called [Threading Macros](https://clojure.org/guides/threading_macros).
 They can be used to achieve similar results in code clarity.
@@ -174,9 +172,9 @@ It would be much better if we could define the file name when running the applic
 Luckily this is possible.
 
 It is possible to define functions that take unlimited number of arguments.
-Our -main function is such a function.
+Our `-main` function is such a function.
 This functionality is rather simple.
-We use **& args** to specify that there might be more arguments.
+We use `& args` to specify that there might be more arguments.
 The word used after & can be anything you wish.
 
 ```clojure
@@ -191,7 +189,7 @@ The word used after & can be anything you wish.
 
 Main takes no mandatory arguments,
 but it can be provided with unlimited number of arguments that will all be saved to args.
-Let's change a our -main function a bit more,
+Let's change a our `-main` function a bit more,
 so it will receive the name file we wish to read the numbers from.
 
 ```clojure
@@ -215,7 +213,7 @@ lein run ourFileName
 lein run numbers.txt
 ```
 
-That should cover our refactorings for now.
+That should cover our refactoring for now.
 There would for sure be room for more improvements,
 but for now this should be enough.
 

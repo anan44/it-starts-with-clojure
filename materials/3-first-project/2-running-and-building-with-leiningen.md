@@ -11,7 +11,7 @@ This is the defacto basic way of running Clojure code from command line.
 
 Navigate to the root of our sum-em-up project and run the bellow command from the command line.
 
-```text
+```clojure
 lein run
 ;=> 325
 ```
@@ -46,13 +46,11 @@ If it is not then it is not hard to install.
 So how do we create an uberjar?
 Navigate again to the root of our project and execute:
 
-```text
-lein uberjar
-```
+`lein uberjar`
 
 After this we can execute this with following command:
 
-```text
+```clojure
 java -jar target/uberjar/sum-em-up2-0.1.0-SNAPSHOT-standalone.jar
 ;=> 325
 ```
