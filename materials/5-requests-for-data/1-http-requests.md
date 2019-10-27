@@ -2,7 +2,7 @@
 
 As usual start by initializing a new project with Leiningen:
 
-```sh
+```bash
 lein new app reddit-analyser
 ```
 
@@ -57,9 +57,9 @@ Depending when you are doing this you should see something like this as Leininge
 [clj-http "3.10.0"]
 ```
 
-Clojure is rather heavily leaning to backwards compatibility,
+Clojure ecosystem is rather heavily leaning to backwards compatibility,
 so there is a very good chance that our codes are going to work with newer versions as well.
-But for reason you will run into weird bugs that you cannot explain,
+But for some reason you will run into weird bugs that you cannot explain,
 try using the exact same versions as I am using here.
 
 In order to use this library,
@@ -103,14 +103,14 @@ Like this:
 
 But that is not all.
 As we can see from the [clj-http documentation](https://github.com/dakrone/clj-http#optional-dependencies),
-clj-http takes additional dependencies.
+clj-http can take additional dependencies.
 These are the things that modify its behavior.
 One of these is [cheshire](https://github.com/dakrone/cheshire),
-which enables clj-http to communicate in .json instead of .edn.
+which enables clj-http to communicate in JSON instead of EDN.
 This is kinda behavior we almost always want,
 let's add that into the dependencies as well.
 It is a good habit to add this,
-since we really rarely wish to actually use edn in our http queries.
+since we really rarely wish to actually use EDN in our HTTP queries.
 Forgetting to use it will cause weird issues.
 
 So lets add [cheshire](https://github.com/dakrone/cheshire) to our dependencies.
@@ -129,10 +129,66 @@ So lets add [cheshire](https://github.com/dakrone/cheshire) to our dependencies.
   :profiles {:uberjar {:aot :all}})
 ```
 
-Cheshire is defacto standard for JSON encoding and decoding in Clojure.
+Cheshire is defacto the standard for JSON encoding and decoding in Clojure.
 You should think it as go to tool if and when you need such functionalities.
+
+In order to make the dependencies work,
+it might be necessary for you to restart your REPL.
 
 With these dependencies being sorted out,
 we can move to the actual topic of this section: HTTP requests.
 
 ## Making HTTP request with clj-http
+
+Let's start by opening our reddit_analyser.core.clj file,
+and require clause to our [`ns`](https://clojuredocs.org/clojure.core/ns) statement:
+
+```clojure
+(ns reddit-analyser.core
+  (:require [clj-http.client :as client])
+  (:gen-class))
+```
+
+(Remember to evaluate this statement in your REPL before using the dependencies)
+
+Here we are using :as keyword to give alias `client` for `clj-http.client`.
+Please note that after using :as the dependency cannot be referred with its default name.
+
+Basic HTTP queries with clj-http are rather straight forward:
+
+```clojure
+(client/get "http://www.example.com/")
+;=>:cached nil,
+;:request-time 332,
+;:repeatable? false,
+;:protocol-version {:name "HTTP", :major 1, :minor 1},
+;:streaming? true,
+;:http-client #object[org.apache.http.impl.client.InternalHttpClient
+;                     0x7e7180e9
+;                     "org.apache.http.impl.client.InternalHttpClient@7e7180e9"],
+;:chunked? false,
+;:reason-phrase "OK",
+;:headers {"X-Cache" "HIT",
+;          "Server" "ECS (bsa/EB24)",
+;          "Content-Type" "text/html; charset=UTF-8",
+;          "Connection" "close",
+;          "Accept-Ranges" "bytes",
+;          "Expires" "Sun, 03 Nov 2019 20:35:50 GMT",
+;          "Etag" "\"3147526947\"",
+;          "Date" "Sun, 27 Oct 2019 20:35:50 GMT",
+;          "Vary" "Accept-Encoding",
+;          "Last-Modified" "Thu, 17 Oct 2019 07:18:26 GMT",
+;          "Cache-Control" "max-age=604800"},
+;:orig-content-encoding nil,
+;:status 200,
+;...
+```
+
+You can see that we we are getting a super long map as a return value.
+This map has ton of data for us.
+Much of it is regarding the request itself,
+but it can be useful.
+Usually the part we are interested in is the body of the response.
+This can logically be found from behind the keyword `:body`
+In this particular case we are making a get request for normal HTML website,
+so our body is a string of HTML code.
