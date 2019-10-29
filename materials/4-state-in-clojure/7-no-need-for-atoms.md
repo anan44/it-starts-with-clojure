@@ -5,7 +5,7 @@ so that not knowing about it won't bother you like it did bother me.
 
 Even though `atom`s are useful,
 it should not be over used.
-Especially when the reality is the we rarely really need it.
+Especially when the reality is that we rarely really need it.
 In many cases we can store the state in other ways,
 recursion being the most common way to do so.
 
@@ -14,7 +14,7 @@ thus we rely on loop/recur when utilizing recursion.
 
 We built this application using an `atom`,
 since it was an easy way to demonstrate the functionality of `atom`s.
-But the fact that we did build this application utilizing `atom`s does not mean we had to so,
+But the fact that we did build this application utilizing `atom`s does not mean we had to do so,
 nor that we should do so.
 In fact this sort of application should be built using recursion.
 

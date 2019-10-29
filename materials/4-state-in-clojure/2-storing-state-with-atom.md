@@ -68,7 +68,7 @@ Altering a value in an atom might feel a bit tricky,
 in the beginning but it is quite simple actually.
 To alter a value we need to provide the atom a function that will take the current value as a parameter,
 and then the return value will be stored as the new value for the atom.
-This whole thing will be done using [`swap``](https://clojuredocs.org/clojure.core/swap!) function.
+This whole thing will be done using [`swap!`](https://clojuredocs.org/clojure.core/swap!) function.
 Notice that exclamation mark is part of the function name.
 Exclamation mark is often used to notify that the function has side effects.
 
@@ -96,7 +96,7 @@ The number can also be decreased by using `inc`'s counterpart [`dec`](https://cl
 ;=> 2
 ```
 
-If we wa`t to add number to our atom that is easy too.
+If we want to add a number to our atom that is easy, too.
 As mentioned before,
 `swap!` can also take additional arguments that will be passed to the function
 
