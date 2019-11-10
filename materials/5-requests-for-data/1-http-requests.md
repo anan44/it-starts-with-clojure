@@ -113,7 +113,7 @@ It is a good habit to add this,
 since we really rarely wish to actually use EDN in our HTTP queries.
 Forgetting to use it will cause weird issues.
 
-So lets add [cheshire](https://github.com/dakrone/cheshire) to our dependencies.
+So let's add [cheshire](https://github.com/dakrone/cheshire) to our dependencies.
 
 ```clojure
 (defproject reddit-analyser "0.1.0-SNAPSHOT"
@@ -192,3 +192,92 @@ Usually the part we are interested in is the body of the response.
 This can logically be found from behind the keyword `:body`
 In this particular case we are making a get request for normal HTML website,
 so our body is a string of HTML code.
+
+Let's try retrieving the body part
+
+```clojure
+(-> (client/get "http://www.example.com")
+    :body)
+;"<!doctype html>
+; <html>
+; <head>
+;     <title>Example Domain</title>
+;
+;     <meta charset=\"utf-8\" />
+;     <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" />
+;     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+;     <style type=\"text/css\">
+;...
+````
+
+Also notice how we are using the thread macro we learned about earlier.
+It is a good practice to keep your code more readable.
+
+But in reality we don't want to be making requests only to example.com,
+so let's move forward to making requests to reddit.
+
+Reddit has absolutely magnificent API.
+In short you can get data from any page on Reddit as JSON just by adding .json to the end of the url.
+For more details and options I'll recommend you'll take a look at the official [documentation](https://www.reddit.com/dev/api/).
+
+Let's make a call to the reddit:
+
+```clojure
+(-> (client/get "https://www.reddit.com/r/Clojure.json")
+    :body)
+```
+
+This call might work, or it might not.
+It pretty much depends on the time of the day when you are trying it.
+This is due to the fact that reddit uses an unusual authentication method for their API.
+
+Instead of using [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) like most of the internet,
+they are actually identifying API users based on [user-agents](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+
+Most http clients have their default user-agent headers,
+which means that unless you change your user-agent header,
+you will be using the same header as thousands of others.
+Reddit has some limitations on how frequently users are allowed to use their API,
+so if we don't provide our own user-header,
+we will be sharing the same limits with everyone else who did not change their user-agent header.
+
+To overcome this obstacle,
+all we have to do is to provide our own unique user-agent header.
+
+Setting headers with clj-http is rather straight forward
+
+```clojure
+(client/get "https://www.reddit.com/r/Clojure.json" {:headers {"User-agent" "mega-secret-1337"}})
+;{:cached nil,
+; :request-time 356,
+; :repeatable? false,
+; :protocol-version {:name "HTTP", :major 1, :minor 1},
+; :streaming? true,
+; :http-client #object[org.apache.http.impl.client.InternalHttpClient
+;                      0x5150a5ba
+;                      "org.apache.http.impl.client.InternalHttpClient@5150a5ba"],
+;...
+```
+
+Here we we are providing client/get with additional argument in form of a map.
+In this map we could provide [all sorts of configurations](https://github.com/dakrone/clj-http#quickstart) to your request.
+In our case we are adding User-agent to the header with value mega-secret-1337.
+At reddit I recommend that you use what ever nonsense piece of text here to avoid collisions with other users.
+
+Before we finnish this part,
+let's refactor this query a bit
+
+It works as intended,
+but it is a bit lengthy one liner.
+
+```clojure
+(def header {:headers {"User-agent" "mega-secret-1337"}})
+
+(def url "https://www.reddit.com/r/Clojure.json")
+
+(client/get url header)
+```
+
+It is a good practice to define our base url and headers up front,
+since we often use the same values again and again.
+Furthermore, it makes the actual business logic much clearer to read.
