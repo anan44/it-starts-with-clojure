@@ -198,7 +198,7 @@ Let's try retrieving the body part
 ```clojure
 (-> (client/get "http://www.example.com")
     :body)
-;"<!doctype html>
+;=>"<!doctype html>
 ; <html>
 ; <head>
 ;     <title>Example Domain</title>
@@ -248,7 +248,7 @@ Setting headers with clj-http is rather straight forward
 
 ```clojure
 (client/get "https://www.reddit.com/r/Clojure.json" {:headers {"User-agent" "mega-secret-1337"}})
-;{:cached nil,
+;=>{:cached nil,
 ; :request-time 356,
 ; :repeatable? false,
 ; :protocol-version {:name "HTTP", :major 1, :minor 1},
@@ -281,3 +281,5 @@ but it is a bit lengthy one liner.
 It is a good practice to define our base url and headers up front,
 since we often use the same values again and again.
 Furthermore, it makes the actual business logic much clearer to read.
+
+Next: [Filtering Data](2-filtering-data.md)

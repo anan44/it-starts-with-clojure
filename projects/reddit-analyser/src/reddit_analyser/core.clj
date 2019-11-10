@@ -3,6 +3,11 @@
             [cheshire.core :refer [parse-string]])
   (:gen-class))
 
+
+(-> (client/get "http://www.example.com/"))
+
+(client/get "https://www.reddit.com/r/Clojure.json" {:headers {"User-agent" "mega-secret-1337"}})
+
 (def header {:headers {"User-agent" "munjuttu"}})
 
 (def url "https://www.reddit.com/r/Clojure.json")
