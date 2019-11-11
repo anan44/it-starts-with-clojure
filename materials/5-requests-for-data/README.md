@@ -22,9 +22,9 @@ Our solution will have following requirements:
 
 1. Get 100 most recent posts from /r/Clojure from Reddit.
 
-2. Print out the posts where only links were posted.
+2. Print out only the good posts that have score higher than 25.
 
-3. Print out only the good posts that have score higher than 25.
+3. Print out the posts where only links were posted.
 
 4. Print out the average score of a post.
 

@@ -22,7 +22,7 @@ It works somewhat like this:
 
 ```clojure
 (filter odd? [1 2 3 4 5 6 7 8 9])
-;=>(1 3 5 7 9)
+;=> (1 3 5 7 9)
 ```
 
 [`odd?`](https://clojuredocs.org/clojure.core/odd_q) is a clojure function that returns true if the number in question is odd number.
@@ -34,13 +34,48 @@ It applies the given predicate function to each value in the collection and remo
 The out put is always a sequence.
 So do not expect to get vector back if you input a vector.
 
+## Predicates
+
 Filter itself are very much straight forward, and there is not much to talk about them. But they do lead us to the concept of [predicates](https://www.tutorialspoint.com/clojure/clojure_predicates.htm).
 
 Predicates are functions that evaluate to true or false.
-In clojure these are commonly the functions with question marks at the end of them.
+In Clojure these are commonly the functions with question marks at the end of them.
 
-Clojure naturally offers many predicates,
+Clojure core naturally offers many predicates,
 but we should not let that limit us,
 since it is really easy to write our own predicates as well.
 
-NEXT WRITE LARGER THAN 5
+Let's write our own example predicate:
+
+```clojure
+(defn larger-than-5?
+  [x]
+  (> x 5))
+```
+
+This function returns true if the number given is larger than 5:
+
+```clojure
+(larger-than-5? 6)
+;=> true
+(larger-than-5? 3)
+;=> false
+```
+
+After this we can effortlessly use our new predicate with filter:
+
+```clojure
+(filter larger-than-5? [1 2 3 4 5 6 7 8 9])
+;=> (6 7 8 9)
+```
+
+## Real Data, Real Issues
+
+Now we are familiar with `filter`,
+but before we get to filtering we'll have to work with some data structures.
+
+Most of our tasks we set to ourselves are related to the posts and the data regarding them.
+The API does provide us with this all the data we need, but it is a bit nested,
+so we have to use our data skills to access the data effectively.
+
+NEXT ACCESS THE POSTS DATA

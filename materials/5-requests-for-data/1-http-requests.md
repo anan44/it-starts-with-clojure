@@ -271,15 +271,74 @@ It works as intended,
 but it is a bit lengthy one liner.
 
 ```clojure
-(def header {:headers {"User-agent" "mega-secret-1337"}})
+(def options {:headers {"User-agent" "mega-secret-1337"}})
 
 (def url "https://www.reddit.com/r/Clojure.json")
 
-(client/get url header)
+(client/get url options)
 ```
 
 It is a good practice to define our base url and headers up front,
 since we often use the same values again and again.
 Furthermore, it makes the actual business logic much clearer to read.
+
+Our newly learned knowledge regarding http requests will help us to accomplish the first part of our requirements for Reddit Analyser:
+**1. Get 100 most recent posts from /r/Clojure from Reddit.**
+
+Observant reader might now notice that our query only returns 25 most recent posts.
+To fix this we will be adding an query parameter to your url.
+
+According to [Reddit API documentation](https://www.reddit.com/dev/api/),
+we can adjust the number of posts returned by using query parameter limit.
+If we will modify our URL,
+we can achieve this with ease.
+
+Let's change our code a bit.
+We only have to change our URL,
+and we will be good to go.
+
+```clojure
+(def url "https://www.reddit.com/r/Clojure.json?limit=100")
+
+(def options {:headers {"User-agent" "mega-secret-1337"}})
+
+(client/get url options)
+;=> {:cached nil,
+; :request-time 1204,
+; :repeatable? false,
+; :protocol-version {:name "HTTP", :major 1, :minor 1},
+;...
+```
+
+This would totally work,
+but this is not how we are supposed to use query parameters with clj-http.
+It is always a good idea to use tools as they are supposed to be used.
+In this particular example it does not really matter if we do this right way or wrong way,
+but for the sake of future programming I am going to teach you the right way instead.
+
+The options map that we are providing to our get function takes many other options as well.
+In addition to `:headers` we can also provide `:query-params`,
+in which we can provide the values we wish to.
+
+Let's make the following changes to our code:
+
+```clojure
+(def options {:headers {"User-agent" "mega-secret-1337"}
+              :query-params {:limit 100}})
+
+(def url "https://www.reddit.com/r/Clojure.json")
+
+(client/get url options)
+;=> {:cached nil,
+; :request-time 1204,
+; :repeatable? false
+; :protocol-version {:name "HTTP", :major 1, :minor 1},
+;...
+```
+
+This simple code will already return us the 100 most recent posts,
+but the posts but we also receive a ton of unnecessary data that we are not really interested in.
+In the next section we are going to look into accessing this data more effectively,
+and filtering it down to the details that we are actually interested in
 
 Next: [Filtering Data](2-filtering-data.md)
