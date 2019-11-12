@@ -71,11 +71,155 @@ After this we can effortlessly use our new predicate with filter:
 
 ## Real Data, Real Issues
 
-Now we are familiar with `filter`,
-but before we get to filtering we'll have to work with some data structures.
+Now we are familiar with `filter`.
+Before we get to filtering,
+we'll have to work with some data structures.
 
 Most of our tasks we set to ourselves are related to the posts and the data regarding them.
-The API does provide us with this all the data we need, but it is a bit nested,
-so we have to use our data skills to access the data effectively.
+The API does provide us with all this data,
+but it is a bit nested so we'll have to do some data parsing to access the data effectively.
 
-NEXT ACCESS THE POSTS DATA
+### Parsing JSON
+
+Before we can access JSON data from response body affectively,
+we will have parse it from string into sensible data structures.
+Such as vectors and maps.
+In order to do the said parsing,
+we'll be using external dependency cheshire.
+We already added the necessary dependencies for cheshire to our project in the beginning of this chapter.
+Now we will have add a require statement for it into our code,
+and use it into our advantage.
+
+In the begin of our core file we should have the ns form.
+It should look currently something like this:
+
+```clojure
+(ns reddit-analyser.core
+  (:require [clj-http.client :as client])
+  (:gen-class))
+```
+
+We'll make the changes so that it will look like this:
+
+```clojure
+(ns reddit-analyser.core
+  (:require [clj-http.client :as client]
+            [cheshire.core :refer [parse-string]])
+  (:gen-class))
+```
+
+Don't forget to eval the ns form in your REPL after making the changes,
+otherwise you might be up for bad time (errors).
+
+Now that we have the require clause under control,
+we can try our new tools.
+
+Let's start by accessing body of our response.
+This is simply done by using `:body` with our statement from previous part:
+
+```clojure
+(:body (client/get url options))
+;=> "{\"kind\": \"Listing\", \"data\": {\"modhash\": \"\", \"dist\": 100,...
+```
+
+As you can see,
+we are able to access the body,
+but it is all just one massive string.
+That is not very informative nor fun to use.
+
+Our new friend cheshire offers funky tool as `parse-string` that we just imported to the project.
+It is able to parse data structures from JSON strings.
+Let's give it a try:
+
+```clojure
+(parse-string (:body (client/get url options)))
+;=>
+;{"kind" "Listing",
+; "data" {"modhash" "",
+;         "dist" 100,
+;...
+```
+
+As you can se we get out the same JSON data,
+but this time in Clojure data structures.
+This is already something we can work with,
+and if you come from Languages like Java or C#,
+you might actually be rather impressed with this already.
+This is not a trivial trick with strongly typed languages
+
+You might also notice that the maps in this structure use strings as keys.
+This is fine,
+but it is not very idiomatical Clojure.
+In Clojure we like to use `:keywords`as key values.
+It not only looks better,
+but provides some convenience when using the maps.
+
+Luckily for us,
+the parse-string takes additional parameter that we can use.
+By passing additional `true` value as parameter,
+we'll inform the function that we would prefer using keywords instead of strings.
+
+Let's give it a shot:
+
+```clojure
+(parse-string (:body (client/get url options)) true)
+;=>
+;{:kind "Listing",
+; :data {:modhash "",
+;        :dist 100,
+;...
+```
+
+Thats cool, right?
+At least I think it is very cool.
+
+### Parsing data
+
+We have already previously learned how data from maps is access,
+so this should not be nothing fundamentally new.
+We will just use our skills from previous chapters to real world data.
+
+Now that we have nicely parsed the whole body into sensible data structures,
+it is time to get more familiar with it.
+I'll recommend you spend few minutes looking how the body works.
+It has a ton of data,
+but it is rather neatly structured so it is rather easy to work with.
+If you understand at least a bit what the body contains,
+the following content will be more interesting to you,
+since you won't be just blindly following my instructions.
+
+_Few minutes pass_.
+Now that you have gotten familiar with the body's content,
+we will start accessing it a bit more.
+
+We are most interested in the posts themselves.
+As you should now know,
+the posts themselves are inside data->children.
+This section then again contains kind and data.
+This last data is the actual details regarding single post.
+
+So next we wish to have a collection of only this data.
+
+Since fetching the data and parsing the data into our required format is going to take some work,
+let's define it all into single function `get-posts`.
+
+```clojure
+(defn get-posts
+  []
+  (let [body (:body (client/get url options))]
+    (->> (parse-string body true)
+         :data
+         :children
+         (map :data))))
+```
+
+Here we first create a lexical context where `body`refers to body of the response.
+After this we use the [thread-last ->>](https://clojuredocs.org/clojure.core/-%3E%3E) macro.
+It is an awesome tool similar to thread macro,
+but instead of passing the argument to first position,
+it passes it into the last.
+Like thread macro,
+this might feel really intimidating (I know it did for me).
+
+
+NEXT WRITE ABOUT THREAD MACROS TO PREVIOUS PART
