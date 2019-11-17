@@ -207,19 +207,82 @@ let's define it all into single function `get-posts`.
 (defn get-posts
   []
   (let [body (:body (client/get url options))]
-    (->> (parse-string body true)
-         :data
-         :children
-         (map :data))))
+    (map :data (:children (:data (parse-string body true))))))
 ```
 
-Here we first create a lexical context where `body`refers to body of the response.
-After this we use the [thread-last ->>](https://clojuredocs.org/clojure.core/-%3E%3E) macro.
-It is an awesome tool similar to thread macro,
-but instead of passing the argument to first position,
-it passes it into the last.
-Like thread macro,
-this might feel really intimidating (I know it did for me).
+Here we have all the logic required for fetching all the posts and parsing them into one collection.
+In this implementation we have a rather much happening on single line.
+Let's use the tools we have already learned to make it a bit more readable.
+`let`should do the job for now.
 
+```clojure
+(defn get-posts
+  []
+  (let [body (:body (client/get url options))
+        parsed-body (parse-string body true)
+        children (:children (:data parsed-body))]
+    (map :data children)))
+```
 
-NEXT WRITE ABOUT THREAD MACROS TO PREVIOUS PART
+It is a bit more code,
+but that is a price we often have to pay for clarity.
+
+With this we have the posts data parsed into nice format for our next tasks.
+
+### Only good posts filter
+
+A bit earlier we learned the basics of filtering.
+Next we will use those skills to our real data from Reddit.
+
+There is a lot of posts in every sub-reddit,
+but we are busy people with no time to read them all.
+What if we would only be interested in posts that community has validated as "good posts".
+We could assume that a post with Score over 15 is probably a good post.
+
+So how would we get around filtering out all the posts that have score less than 15?
+
+Let's start by defining a predicate for defining if a post is good or not.
+Let's call this predicate function `good-post?`.
+It should look like something like this:
+
+```clojure
+(defn good-post?
+  [post]
+  (> (:score post) 15))
+```
+
+It is a simple function that returns true if the post in question has a score over 15,
+otherwise it false will be returned.
+
+With this done,
+let's use this predicate to filter down our posts.
+
+```clojure
+(defn only-good-posts
+  [posts]
+  (filter good-post? posts))
+```
+
+Easiest way to see if our function works,
+is to see if the count of posts is reduced below 100.
+
+```clojure
+(count (only-good-posts (get-posts)))
+;=> 74
+```
+
+Your number will most likely differ from mine since you are doing this on different time.
+
+If you wish to see what posts remain after filtering you can call the functions without `count`:
+
+```clojure
+(only-good-posts (get-posts))
+```
+
+This concludes our part regarding filters.
+At this point I recommend that you will take a small break from this guide,
+and build a few filters of your own to this reddit data.
+
+You should grasp how it works after no time!
+
+Next: [Reducing complexity](3-reducing-complexity.md)

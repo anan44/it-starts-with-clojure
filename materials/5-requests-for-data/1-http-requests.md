@@ -196,8 +196,7 @@ so our body is a string of HTML code.
 Let's try retrieving the body part
 
 ```clojure
-(-> (client/get "http://www.example.com")
-    :body)
+(:body (client/get "http://www.example.com"))
 ;=>"<!doctype html>
 ; <html>
 ; <head>
@@ -210,9 +209,6 @@ Let's try retrieving the body part
 ;...
 ````
 
-Also notice how we are using the thread macro we learned about earlier.
-It is a good practice to keep your code more readable.
-
 But in reality we don't want to be making requests only to example.com,
 so let's move forward to making requests to reddit.
 
@@ -223,8 +219,7 @@ For more details and options I'll recommend you'll take a look at the official [
 Let's make a call to the reddit:
 
 ```clojure
-(-> (client/get "https://www.reddit.com/r/Clojure.json")
-    :body)
+(:body (client/get "https://www.reddit.com/r/Clojure.json"))
 ```
 
 This call might work, or it might not.
