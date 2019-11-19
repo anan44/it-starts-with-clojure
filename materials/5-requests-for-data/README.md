@@ -24,13 +24,13 @@ Our solution will have following requirements:
 
 2. Print out only the good posts that have score higher than 25.
 
-3. Print out the posts where only links were posted.
+3. Print out the average score of a post.
 
-4. Print out the average score of a post.
+4. Print out the number of posts per author.
 
-5. Print out the number of posts per author.
+5. Print out total score of each author.
 
-6. Print out total score of each author.
+6. Print out all links posted
 
 7. Software can be requested to perform all the requested operations based on arguments given to it.
 
