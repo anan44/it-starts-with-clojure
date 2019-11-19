@@ -1,7 +1,6 @@
 # Requests for Data
 
-In this chapter we are going to be making some [http requests](https://www.tutorialspoint.com/http/http_requests.htm),
-and playing with some data sets that we get from the web.
+In this chapter we will be playing with some real life data and making some [http requests](https://www.tutorialspoint.com/http/http_requests.htm).
 This is a rather common part for modern applications,
 so you probably might have done something similar in your previous programming adventures.
 
