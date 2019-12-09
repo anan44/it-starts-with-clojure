@@ -63,3 +63,27 @@ There is also a dedicated beginners channel that you might wanna checkout!
 There are many Clojure user groups.
 You can find more a bout them from the link above.
 If such an old-school approach suits you better you might want to check them out.
+
+## [1. HTTP Requests](1-http-requests.md)
+
+We will learn how to make http requests in Clojure using clj-http library
+
+## [2. Filtering Data](2-filtering-data.md)
+
+We will learn about predicates and filters with real world data.
+
+## [3. Reducing Complexity](3-reducing-complexity.md)
+
+We will learn about reduce and how to effectively iterate data with it.
+
+## [4. Reducing with Our Rules](4-reducing-with-our-rules.md)
+
+We will learn how to use our own functions with reduce to create more custom fit solutions.
+
+## [5. Partial Meetings](5-partial-meetings.md)
+
+We will learn about partial and how to make use of it.
+
+## [6. Give Me Links](6-give-me-links.md)
+
+We will combine skills we learned in this section and before to get list of all the links posted to Reddit.
