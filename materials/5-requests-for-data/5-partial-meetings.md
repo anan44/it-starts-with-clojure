@@ -1,18 +1,19 @@
 # Partial meetings
 
 In order to perform the task of calculating the total score of each author,
-we are going to again define a helper function and utilize it with `reduce`.
+we are going to define a helper function to utilize it with `reduce`.
 
 We'll use [`partial`](https://clojuredocs.org/clojure.core/partial) while defining our helper function.
-`partial` is a handy tool for defining new functions based on the old ones.
-It is especially commonly used together with iterators such as `map`or `filter`.
-Like `fnil` it returns a new functions that is based on the function given as an argument.
+`partial` is a handy tool for defining new functions based on existing ones.
+It is especially commonly used together with iterators such as `map` or `filter`.
+Like `fnil`,
+`partial` returns a new functions that is based on the function given as an argument.
 
 So what does `partial` do?
-Well it is fairly simple.
+It is fairly simple function.
 `partial` takes a function and n number of arguments.
 It then returns a function where these arguments are hard coded,
-but remaining arguments are still to be provided by user.
+but remaining arguments are still to be provided by user when invoking the new function.
 
 Let's look at this in action:
 
@@ -25,11 +26,12 @@ Let's look at this in action:
 ```
 
 Number of arguments has to be less or equal to what the provided function takes,
-or it will naturally result in exception.
+or it will naturally result in an exception.
 
 So why is partial used?
 We well we often have cases where we would like to always use the same parameter or parameters,
-or we would like to use a function the function as a parameter to another function that has requirements number of arguments.
+or we would like to use a function as a parameter to another function,
+which has limitations regarding the number of arguments the provided function should accept.
 Such is the case here.
 
 Our helper function looks something like this:
@@ -41,8 +43,9 @@ Our helper function looks something like this:
 ```
 
 That is a quite a lot happening on a single line of code.
-Let's try breaking it up, so it is easier to focus on one argument at a time.
-(This is often a handy trick when slapped in the face with large one liners)
+Let's try breaking it up,
+so it is easier to focus on one argument at a time.
+(This is often a handy trick when slapped in the face with long one liner functions)
 
 ```clojure
 (defn total-score-helper
@@ -62,7 +65,7 @@ which is obviously the author of the post.
 
 Then comes the difficult part.
 
-When reading LISPs such as Clojure,
+When reading LISP such as Clojure,
 it is good to start from the inner most parentheses.
 In (:score x) we get the score on the post given.
 We then use that in partial together with `+` function.
@@ -71,7 +74,7 @@ which with single argument will return score plus the score of this post.
 Then that function we are passing to `fnil` with default 0.
 
 So essentially the function takes a number and then adds score of post to it.
-This is then the the function we use together with `update`.
+This is then the function we use together with `update`.
 All of this might seem overly complicated for now for,
 but it rather safe way to iterate and sum things together in comparison to traditional for and while loops.
 Furthermore,
@@ -87,7 +90,7 @@ Next we should test try our helper function.
 ;=> {"Rich" 15, "Bob" 12}
 ```
 
-Great it seems to be working wonders.
+Great! The function seems to be working wonders.
 Now we only have to tie it together with `reduce`:
 
 ```clojure
