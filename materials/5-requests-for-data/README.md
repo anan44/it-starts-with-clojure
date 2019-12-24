@@ -87,3 +87,11 @@ We will learn about partial and how to make use of it.
 ## [6. Give Me Links](6-give-me-links.md)
 
 We will combine skills we learned in this section and before to get list of all the links posted to Reddit.
+
+## [7. Console UI](7-console-ui.md)
+
+We will build a console UI with recursion
+
+## [8. Function With No Name](8-function-with-no-name.md)
+
+Refactoring much of our code with anonymous functions and other useful tools

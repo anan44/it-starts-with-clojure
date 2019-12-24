@@ -195,4 +195,4 @@ After you are done with writing some tests,
 and you feel like moving forward,
 we can jump to the next section
 
-Next: [Idiomatic Refactoring](8-idiomatic-refactoring.md)
+Next: [Function with no name](8-function-with-no-name.md)

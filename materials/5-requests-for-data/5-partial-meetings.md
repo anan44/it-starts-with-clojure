@@ -1,4 +1,4 @@
-# Partial meetings
+# 5.5. Partial meetings
 
 In order to perform the task of calculating the total score of each author,
 we are going to define a helper function to utilize it with `reduce`.

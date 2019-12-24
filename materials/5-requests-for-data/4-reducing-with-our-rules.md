@@ -1,4 +1,4 @@
-# Reducing with our rules
+# 5.4 Reducing with our rules
 
 Even though Clojure's core functions are plenty and powerful,
 our business logic requirements are often rather specific,
