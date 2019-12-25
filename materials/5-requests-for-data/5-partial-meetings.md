@@ -50,10 +50,9 @@ so it is easier to focus on one argument at a time.
 ```clojure
 (defn total-score-helper
   [acc x]
-  (update
-    acc
-    (:author x)
-    (fnil (partial + (:score x)) 0)))
+  (update acc
+          (:author x)
+          (fnil (partial + (:score x)) 0)))
 ```
 
 So here we again have `acc` (accumulator) and `x` (a single post),

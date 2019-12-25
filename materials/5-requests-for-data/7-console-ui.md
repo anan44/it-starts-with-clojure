@@ -116,13 +116,13 @@ Currently our code looks something like this:
 
 (defn only-good-posts
   [posts]
-  (filter #(> (:score %) 15) posts))
+  (filter good-post? posts))
 
 (defn average-score
   [posts]
-  (float
-    (/ (reduce + (map :score posts))
-       (count posts))))
+  (let [post-count (count posts)
+        total-score (reduce + (map :score posts))]
+    (float (/ total-score post-count)))))
 
 (defn post-count-helper
   [acc x]
@@ -135,10 +135,9 @@ Currently our code looks something like this:
 
 (defn total-score-helper
   [acc x]
-  (update
-    acc
-    (:author x)
-    (fnil (partial + (:score x)) 0)))
+  (update acc
+          (:author x)
+          (fnil (partial + (:score x)) 0))))
 
 (defn author-total-score
   [posts]
