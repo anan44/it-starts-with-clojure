@@ -3,21 +3,17 @@
             [cheshire.core :refer [parse-string]])
   (:gen-class))
 
-
-(-> (client/get "http://www.example.com/"))
-
-(client/get "https://www.reddit.com/r/Clojure.json" {:headers {"User-agent" "mega-secret-1337"}})
-
-(def header {:headers {"User-agent" "munjuttu"}})
+(def options {:headers      {"User-agent" "mega-secret-1337"}
+              :query-params {:limit 100}})
 
 (def url "https://www.reddit.com/r/Clojure.json")
 
 (defn get-posts
   []
-  (let [body (:body (client/get url header))]
+  (let [body (:body (client/get url options))]
     (->> (parse-string body true)
-         :data
-         :children
+         (:data)
+         (:children)
          (map :data))))
 
 (defn only-good-posts
@@ -26,22 +22,20 @@
 
 (defn average-score
   [posts]
-  (float
-    (/ (reduce + (map :score posts))
-       (count posts))))
+  (let [post-count (count posts)
+        total-score (reduce + (map :score posts))]
+    (float (/ total-score post-count))))
 
-; See also https://clojuredocs.org/clojure.core/frequencies
 (defn author-post-count
   [posts]
-  (reduce (fn [acc v]
-            (update acc v (fnil inc 0)))
-          {}
-          (map :author posts)))
+  (frequencies (map :author posts)))
 
 (defn author-total-score
   [posts]
   (reduce (fn [acc m]
-            (update acc (:author m) (fnil (partial + (:score m)) 0)))
+            (update acc
+                    (:author m)
+                    (fnil (partial + (:score m)) 0)))
           {}
           posts))
 
@@ -50,9 +44,34 @@
   (reduce (fn [acc post]
             (if (empty? (:selftext post))
               (conj acc (:url post))
-              acc)) [] posts))
+              acc))
+          []
+          posts))
 
-(defn main
+(def ui-choices
+  "1: All posts
+2: Only good posts
+3: Average score
+4: Author post count
+5: Author total score
+6: Links posted
+Enter choice:\n")
+
+(defn run-ui
+  [choice posts]
+  (if (empty? choice)
+    (println "done.")
+    (do (clojure.pprint/pprint (case choice
+                                 "1" posts
+                                 "2" (only-good-posts posts)
+                                 "3" (average-score posts)
+                                 "4" (author-post-count posts)
+                                 "5" (author-total-score posts)
+                                 "6" (links-posted posts)
+                                 (println ui-choices)))
+        (run-ui (read-line) posts))))
+
+(defn -main
   [& args]
-  (let [posts (get-posts)]
-    (println (links-posted posts))))
+  (do (println ui-choices)
+      (run-ui (read-line) (get-posts))))
