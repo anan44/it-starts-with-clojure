@@ -90,8 +90,12 @@ We will combine skills we learned in this section and before to get list of all 
 
 ## [7. Console UI](7-console-ui.md)
 
-We will build a console UI with recursion
+We will build a console UI with recursion.
 
-## [8. Function With No Name](8-function-with-no-name.md)
+## [8. Function with No Name](8-function-with-no-name.md)
 
-Refactoring much of our code with anonymous functions and other useful tools
+We learn about Anonymous Functions in Clojure and how to get rid of unnecessary helper functions.
+
+## [9. Meet threading](9-meet-threading-macros.md)
+
+We learn of threading macros and how to use the to simplify our code.

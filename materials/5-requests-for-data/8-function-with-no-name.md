@@ -1,4 +1,4 @@
-# 5.8. Function with no name
+# 5.8. Function with No Name
 
 In many parts of this chapter we have been using helper functions.
 This is not an unusual pattern,
@@ -369,4 +369,4 @@ That concludes this section on Anonymous Functions (or Lambdas as some people pr
 But do not worry.
 We still have some refactoring left to do before we are truly finished.
 
-Next: [Meet Threading](9-meet-threading.md)
+Next: [Meet Threading](9-meet-threading-macros.md)

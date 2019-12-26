@@ -23,6 +23,12 @@ In the progress we will learn how perform basic I/O operations with Clojure.
 We will build a super simple application for writing down a shopping list in command line.
 While doing so we'll learn about state, loops, and few other things.
 
+## [5. Requests for Data](./5-requests-for-data)
+
+We will build an application for fetching and parsing data from reddit API.
+In the progress we will learn about data manipulation techniques and HTTP request in Clojure.
+Furthermore, we we will meet Anonymous Functions and many other handy tools to make our code cleaner.
+
 ### Additional reading suggestions
 
 - [Living Clojure](https://www.oreilly.com/library/view/living-clojure/9781491909270/)
