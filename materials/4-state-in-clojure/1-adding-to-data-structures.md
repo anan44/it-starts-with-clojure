@@ -118,7 +118,6 @@ AND you want the items added to beginning of a collection then you should consid
 ;=> (1 2 3 4)
 (seq? (cons 1 [2 3 4]))
 ;=> true
-(cons [1 2 3] 4)
 ```
 
 `cons` has its uses but it is a good idea to prefer previous functions when in doubt.
