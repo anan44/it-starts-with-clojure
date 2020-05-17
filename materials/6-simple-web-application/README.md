@@ -20,7 +20,7 @@ and we tend to see more modular web application patched together from various co
  Since we want to focus on creating web application and the basic we components,
  we won't be creating anything super cool and fancy,
  which would distract us from the main components.
- 
+
  When we are familiar with the basic components,
  we can build something more useful and cool.
 
