@@ -43,3 +43,4 @@ but we will add a small twist to this while we build the application.
 We will try a bit different approach with each endpoint,
 so you will be familiariesed with different techniques.
 
+## [1. Setting up](1-setting-up.md)
