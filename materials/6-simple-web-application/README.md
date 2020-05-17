@@ -14,6 +14,14 @@ Most other languages have their goto web framework (like Spring, Ruby On Rails, 
 but in Clojure relying on such a framework is not as common,
 and we tend to see more modular web application patched together from various components.
 
-## Our project
+## Our project - Calculator API
 
-(TODO Describe the project here)
+ We are going to create extremely simple calculator API.
+ Since we want to focus on creating web application and the basic we components,
+ we won't be creating anything super cool and fancy,
+ which would distract us from the main components.
+ 
+ When we are familiar with the basic components,
+ we can build something more useful and cool.
+
+Our solution will have following requirements:
