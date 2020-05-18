@@ -44,3 +44,7 @@ We will try a bit different approach with each endpoint,
 so you will be familiariesed with different techniques.
 
 ## [1. Setting up](1-setting-up.md)
+
+We will cover boring parts of setting up the web application such as boiler plates and dependencies.
+We will also scratch the surface of Clojure Web Development components such as Ring, Reitit and Muuntaja.
+This helps you to setup your own web applications and gives a nice template to use for your Clojure Web Projects

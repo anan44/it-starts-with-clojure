@@ -295,5 +295,8 @@ With this being done we have covered the boring boilerplate for our simple web a
 There is plenty of more boilerplate we could add here,
 but for the sake of keeping this exercise focused and precise we will not cover more than necerssary.
 
+We have now setup a rather default Clojure Web Development stack.
+You can use this a starting point if you ever wish to take an easy start for Clojure Web Development project of your own
+
 Next up: [First endpoint](2-first-endpoint.md)
 
