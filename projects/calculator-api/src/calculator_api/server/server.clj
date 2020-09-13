@@ -32,18 +32,18 @@
                                                 y (-> req :parameters :body :y)]
                                             (response/ok {:total (- x y)})))}}]
 
-   ["/plusthing" {:post {:coercion rcs/coercion
+   ["/plusthing" {:post {:coercion   rcs/coercion
                          :parameters {:body {:x number?
                                              :y number?}}
-                         :responses {200 {:body {:total number?}}}
-                         :handler (fn [req]
-                                    (let [x (-> req :parameters :body :x)
-                                          y (-> req :parameters :body :y)]
-                                      (response/ok {:total (+ x y)})))}}]])
+                         :responses  {200 {:body {:total number?}}}
+                         :handler    (fn [req]
+                                       (let [x (-> req :parameters :body :x)
+                                             y (-> req :parameters :body :y)]
+                                         (response/ok {:total (+ x y)})))}}]])
 
 (def hello-routes
   ["/hello" {:get {:handler (fn [_]
-                              (response/ok {:message "Hello World!"}))}}])
+                              (response/ok {:message "Hello Reitit!"}))}}])
 
 (def app
   (ring/ring-handler
