@@ -150,7 +150,9 @@ Manipulate your `(ns calculator-api.server.server)` so it will look like this:
 
 ```clojure
 (ns calculator-api.server.server
-  (:require [ring.middleware.params :as params]
+  (:require [ring.adapter.jetty :as jetty]
+            [ring.middleware.params :as params]
+            [ring.util.http-response :as response]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [muuntaja.core :as m]
             [reitit.ring.coercion :as coercion]
