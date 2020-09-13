@@ -303,14 +303,19 @@ This obviously sucks so we almost always want to set this as false.
 Our `stop` function on the other hand checks if the @running-server is not nil,
 in other words if it is running or not.
 If the server is running it is stopped.
-
+You might be wondering what is going on with `(.stop @running-server)` and why is there a dot before stop?
+This is the notation for Clojure's Java interop that was briefly mentioned before.
+Here we call `.stop()` method on class stored in @running-server atom.
+Same call in Java would would look like this `RunningServer.stop()`.
+At this point we will still postpone the Clojure's Java interop for further sections,
+so you dont need to know more than this for now.
 
 With this being done we have covered the boring boilerplate for our simple web application.
 There is plenty of more boilerplate we could add here,
 but for the sake of keeping this exercise focused and precise we will not cover more than necerssary.
 
 We have now setup a rather default Clojure Web Development stack.
-You can use this a starting point if you ever wish to take an easy start for Clojure Web Development project of your own
+You can use this a starting point if you ever wish to take an easy start for Clojure Web Development project of your own.
 
 Next up: [First endpoint](2-first-endpoint.md)
 
