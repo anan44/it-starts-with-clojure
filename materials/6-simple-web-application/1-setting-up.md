@@ -14,9 +14,9 @@ This kind of approach is great,
 since it allows us to build web applications in more flexible manner.
 We can with ease utilize what ever components we like and build our stack as we wish.
 As great as this is,
-it does come with a tiny down side.
+it does come with a tiny downside.
 Getting into Web Development with Clojure by yourself can be intimidating,
-since it might be hard to know what kind of components should you use in yourstack.
+since it might be hard to know what kind of components should you use in your stack.
 Also this forces us to (at least briefly) to deal with things that most of the frameworks do for us.
 This might be especially weird if you are coming from Java Spring, Python Django or Ruby on Rails background.
 
@@ -74,7 +74,7 @@ Add following statement into your `:dependencies`
 Metosin is a Finnish company,
 which has written a ton of quality packages for Clojure.
 If you ever find yourself looking for a package,
-it is might worth it to see if they have created a package your needs.
+it is might worth it to see if they have created a package for your needs.
 
 Reitit is a really fast data-driven router for Clojure.
 It goes together perfectly with Ring,
@@ -160,7 +160,7 @@ Manipulate your `(ns calculator-api.server.server)` so it will look like this:
 Great!
 Let's talk about this a tiny bit.
 At this point you don't need to really understand everything here,
-but I guess it is still beneficial to have a slightest glue what this is about.
+but I guess it is still beneficial to have a slightest glue what this is all about.
 
 First of all we should note that ring here does not refer directly to ring library,
 but instead it refers to reitit.ring.
@@ -170,7 +170,7 @@ reitit.ring is reitit abstraction that helps us to deal with ring.
 It is actually rather rare that we would directly deal with ring,
 simply because it is easier to work with higher level abstractions.
 
-app is an outcome of us passing a ring-router, default-handler (optional) and options (optional that we dont use here) into ring-handler.
+app is an outcome of us passing a ring-router, default-handler (optional) and options (optional) that we dont use here into ring-handler.
 At this point there is not reason to get too deeply into ring-handler.
 It simply returns us a ring handler supporting both syncronious and asyncronious request handling.
 In other words it will deal with our http requests.
@@ -179,11 +179,11 @@ Default-handler deals with requests that do not match any of our route & method 
 So if user requests for unknown route http status 404 is returned.
 If method used in request is specified for a route http status 405 is returned.
 
-We are often much more interested in the ring router that we pass to ring-handler.
+Usually we are mostly interested in the ring router that we pass to ring-handler.
 ring/router creates a router out of raw route data and optional options map.
 Here we use options to define the middleware and pass in muuntaja.
 
-Muuntaja is format negotiation, encoding and decoding library.
+**Muuntaja** is format negotiation, encoding and decoding library.
 Here we pass a muuntaja instance.
 It checks the request headers and makes sure that our response is the user expects it to be.
 If the requests headers request for json response,
@@ -194,7 +194,7 @@ then that is what the application returns.
 Finally we pass in bunch of middleware.
 
 **wrap-params** from ring.middleware.params parses the url encoded params from query string and from body.
-Without this we would have to perse the params by ourselves,
+Without this we would have to parse the params by ourselves,
 which is obviously something that we don't want to do since it is boring and error prone.
 We will go into more details regarding this in a moment,
 but for now you will want to remember to put this into your application.
@@ -208,7 +208,7 @@ This is also a really common middleware to use,
 since it is a significant quality of life improvement.
 But also something we kind of just put there and can forget about.
 
-Finally we have **coerce-exceptions-middleware, coerce-request-middleware and coerce-response-middleware** from reitit.ring.coercion.
+Finally we have **coerce-exceptions-middleware**, **coerce-request-middleware** and **coerce-response-middleware** from reitit.ring.coercion.
 Reitit describes coercion as follows:
 _Coercion is a process of transforming parameters (and responses) from one format into another._
 I describe coercion as follows:
@@ -243,6 +243,13 @@ Preferably att the very bottom of the file.
     (reset! running-server (jetty/run-jetty #'app {:port  3000
                                                    :join? false})))
   (println "Server running in port 3000"))
+
+(defn stop
+  []
+  (when-not (nil? @running-server)
+    (.stop @running-server)
+    (reset! running-server nil))
+  (println "Server stopped"))
 ```
 
 Here we have few new Clojure core functions.
@@ -254,18 +261,20 @@ except it can only be run once per REPL.
 If we try to evaluate it again,
 it does nothing.
 It is a great tool if you want to make sure that certain function is run only once while you are developing.
+Outside development environment it does not make much of a difference,
+since your code probably won't be running same `def` blocks twice.
 
 #### [`when`](https://clojuredocs.org/clojure.core/when)
 
 `when`is just like [ìf`](https://clojuredocs.org/clojure.core/if),
 except it does not take a false case.
-It runs the the provided code,
-if the test evaluates true.
+If the test evaluates true.
+it runs the the provided code,
 If the test evaluates false,
-then the code is not run.
+it does not run the code.
 
 Ok.
-Let's get back to buisness.
+Let's get back to business.
 
 Here we create an `atom` running-server with `defonce`.
 The initial value for the atom is `nil`.
@@ -290,6 +299,11 @@ Thread blocking is also beyond this exercise.
 Nevertheless you should know that unless you explicitely set this false,
 you will not be able to use REPL after starting the server.
 This obviously sucks so we almost always want to set this as false.
+
+Our `stop` function on the other hand checks if the @running-server is not nil,
+in other words if it is running or not.
+If the server is running it is stopped.
+
 
 With this being done we have covered the boring boilerplate for our simple web application.
 There is plenty of more boilerplate we could add here,
