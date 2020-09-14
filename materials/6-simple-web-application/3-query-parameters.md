@@ -150,6 +150,11 @@ since decimals cannot be parsed into `long`.
 We will not care about this now,
 but we might fix it later.
 
+Reminder:
+In order to utilize query parameters like we just did it is necessary to have `params/wrap-params` set into middleware.
+We did this already in the first section,
+you should have this part covered.
+
 That completes the brief introduction into query parameters in Ring & Reitit.
 
 Next up: [Body Parameters](4-body-parameters.md)
