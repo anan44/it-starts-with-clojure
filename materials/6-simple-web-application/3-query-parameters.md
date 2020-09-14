@@ -117,6 +117,8 @@ There is a lot of familiar stuff there.
 Route Path`"/addition"`,
 HTTP method `:get`,
 and handler `fn` we already met in the previous section.
+You might notice that we did not use the keyword `:handler` to specify our handler function.
+`:handler` is actually not required if only handler function is provided.
 Major differences here are inside the handler.
 This time we have named our single parameter `request`.
 Some people call this `req` but we won't be doing that since we like to be precise.
@@ -133,7 +135,7 @@ we can create the ok response with total by using `response/ok` and standard map
 Most of this should be familiar to you from the prior chapters.
 New stuff should be `request` & `:query-params` and perhaps `Long/parseLong`.
 `Long/parseLong` is very similar `Long/valueOf`,
-so I wanted to show it you. 
+so I wanted to show it you.
 The difference is in the other return Java's `long` and the other Java's `Long`.
 From Clojure perspective this does not make much of a difference.
 
