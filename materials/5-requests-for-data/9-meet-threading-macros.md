@@ -263,3 +263,5 @@ But hey,
 that is Clojure for you!
 
 Next we will be learning how to create a simple web backend with Clojure.
+
+Next: [Chapter 6 - Simple Web Application](../6-simple-web-application)
