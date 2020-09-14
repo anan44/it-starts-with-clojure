@@ -145,4 +145,130 @@ In the end it is up to you to decide which way you prefer.
 
 Now that we have written `hello-routes` we need to connect it to our router.
 To achieve this all we need to do is to add `hello-routes` into the empty vector inside `ring/router` in our app.
-Like shown 
+
+Like this:
+
+```clojure
+(def app
+  (ring/ring-handler
+    (ring/router
+      [hello-routes]
+      {:data {:muuntaja   m/instance
+              :middleware [params/wrap-params
+                           muuntaja/format-middleware
+                           coercion/coerce-exceptions-middleware
+                           coercion/coerce-request-middleware
+                           coercion/coerce-response-middleware]}})
+    (ring/create-default-handler)))
+```
+
+Again this is a just a normal data structure,
+so nothing would stop us from writing the definition directly inside `ring/router`,
+and it can often be seen to be done in this way.
+With that being said,
+I would advice strongly against doing so.
+It might feel like fast & furious to do so.
+After all you would be writing less code.
+But in doing so we would make application pain in the ass to refactor into multiple files if it grows larger.
+Few lines of code is a small price to pay for clarity and easier future refactoring.
+Good code is always easier to change.
+
+## Changing namespaces
+
+With this being done we are almost ready to start our server in REPL and see if all this works.
+Since we are writing all this code outside core.clj,
+we need to first switch our namespace to server.clj.
+
+To switch namespace we can call write following call to REPL:
+
+```clojure
+(in-ns 'calculator-api.server.server)
+```
+
+This works OK,
+but it is rather annoying especially in larger projects with multiple namespaces.
+Thus I would recommend using shortcuts in your IDE.
+All reasonable Clojure IDEs offer a handy way for switching the namespaces.
+
+In Calva this is done with:
+`ctrl+alt+v n`(linux + windows)
+`cmd+alt+v n` (mac os)
+
+In Cursive this is done with:
+`ctrl-shift-n` (linux + windows)
+`cmd-shift-n` (mac os)
+
+These shortcuts might change so if these are not working check the command from menus.
+
+## Starting server
+
+Now that we have successfully switched the namespace in our REPL,
+we can start our server.
+This can be done following function call:
+
+```clojure
+(start)
+```
+
+After the server is running,
+you can navigate to `http://localhost:3000/hello`in your browser.
+If everything worked well,
+you should be seeing something like this:
+
+```json
+{"message":"Hello Reitit!"}
+```
+
+Testing HTTP calls can be done in browser,
+but after very simple HTTP Get calls we will soon hit a wall with our browser.
+To dive deeper we need to use either [curl](https://curl.haxx.se/) or some other tool.
+
+If you are using mac or linux computer you should already have curl installed by default.
+For windows you might have to download it.
+
+With curl we can call fo this same path with following command:
+
+```sh
+curl --request GET --url http://localhost:3000/hello
+```
+
+If you don't have much love command line tools,
+I would recommend that you give a try to one of the following:
+
+- [Insomnia Core](https://insomnia.rest/)
+- [Postman](https://www.postman.com/)
+- [Visual Studio Code REST Client plugin](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+## Muuntaja in action
+
+Let's checkout what muuntaja can do.
+This part is will not involve any coding,
+but I want to show it to you since it is quite cool.
+
+As you noticed our application responded with JSON,
+even though we returned Clojure data structure.
+It is thanks to muuntaja that our application transforms this data into JSON,
+instead of responding in [EDN](https://github.com/edn-format/edn).
+
+But what if the some of the applications using our API would be written in Clojure,
+and would prefer receiving EDN instead of JSON?
+Well Muuntaja can service that need too.
+
+Try adding accept: application/edn header to your http request.
+
+```sh
+curl --request GET \
+  --url http://localhost:3000/hello \
+  --header 'accept: application/edn'
+```
+
+You should receive a response like this:
+
+```edn
+{:message "Hello Reitit!"}
+```
+
+This finishes this section.
+In the next section we will start building a simple calculator API.
+
+Next up: [Query Parameters](3-query-parameters.md)
