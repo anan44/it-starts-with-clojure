@@ -288,6 +288,28 @@ you can see that the response nicely states that the value failed to be not-zero
 }
 ```
 
+## Middleware for request coercion
+
+You might have been wondering where do the coercion exception responses come from?
+They contain detailed information regarding what went wrong with our request,
+yet they seem to be appearing out of thin air.
+
+Well they are not actually appearing out of nowhere.
+The responses are actually provided by `coercion/coerce-exceptions-middleware` that we added to our app earlier.
+From the top of the file you can see that that the `coercion` is actually `reitit.ring.coercion`.
+Try removing this middleware and see what kind of responses you get when making bad requests.
+
+Furthermore, the coercion itself does require some middleware.
+If you remove the middleware `coercion/coerce-request-middleware` from your app,
+you can see that the bad request go straight through,
+and you are again faced with the ugly java.lang.NullPointerException.
+
+So when using coercion in your web application,
+do not forget to add the necessary middleware.
+These are actually surprisingly easy to forget,
+since you only need to add them once and then you can forget about them.
+This might or might not have happened to me more than once.
+
 With this we conclude our section on request coercion.
 
 Next up: [Response Coercion](6-response-coercion.md)
