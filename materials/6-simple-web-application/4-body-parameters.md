@@ -89,4 +89,4 @@ That kinda sucks.
 
 In the next part we will see if we could do something about those.
 
-Next up: [Request Coercion](5-request-coercion.md)
+Next up: [Request Coercion](5-path-parameters.md)

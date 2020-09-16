@@ -1,4 +1,4 @@
-# 6.5. Request Coercion
+# 6.6. Request Coercion
 
 Previously we successfully utilized `:body-params` to read values from the request body.
 It worked nicely as long as the values were provided.
@@ -313,4 +313,4 @@ This might or might not have happened to me more than once.
 
 With this we conclude our section on request coercion.
 
-Next up: [Response Coercion](6-response-coercion.md)
+Next up: [Response Coercion](7-response-coercion.md)
