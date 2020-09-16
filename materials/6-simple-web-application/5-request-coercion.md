@@ -155,8 +155,6 @@ See what happens.
 
 ## Don't divide by zero
 
-___ FIX THIS!!! ____
-
 Our spec works quite ok,
 but it could be a bit better.
 We all know that arithmetically considered,
@@ -184,6 +182,7 @@ Like this:
 
 We will wrap `number?` and our `not-zero?` function into `and`,
 and use this as a predicate.
+And then wrap that and call into a function.
 The only problem is that Clojure has not `not-zero?` function.
 Luckily it does have [`complement`](https://clojuredocs.org/clojure.core/complement).
 `complement` turns any predicate into exact opposite version of itself.
@@ -193,13 +192,13 @@ So our solution will look like something like this:
 
 ```clojure
 ["/division" {:post {:description "Returns x divided by y."
-   :coercion    rcs/coercion
-   :parameters  {:body {:x number?
-                        :y (and number? (complement zero?))}}
-   :handler     (fn [req]
-                  (let [x (-> req :parameters :body :x)
-                        y (-> req :parameters :body :y)]
-                    (response/ok {:quotient (/ x y)})))}}]
+                     :coercion    rcs/coercion
+                     :parameters  {:body {:x number?
+                                          :y #(and (number? %) ((complement zero?) %))}}
+                     :handler     (fn [req]
+                                    (let [x (-> req :parameters :body :x)
+                                          y (-> req :parameters :body :y)]
+                                      (response/ok {:quotient (/ x y)})))}}]
 ```
 
 Let's replace our old solution with this and try calling our endpoint again with zero.
@@ -250,7 +249,7 @@ Again formatted response should be something like this:
 This is already almost perfect.
 Except now the predicate says ":clojure.spec.alpha/unknown".
 That is kind of a bummer,
-since now the users don't really know what was wrong with their request.
+since now the users won't really know what was wrong with their request.
 
 We can fix this simply by creating a predicate function with suitable name,
 and using that in our spec.
