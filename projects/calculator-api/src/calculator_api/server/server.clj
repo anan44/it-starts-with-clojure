@@ -8,38 +8,45 @@
             [reitit.coercion.spec :as rcs]
             [reitit.ring :as ring]))
 
+(defn not-zero-number?
+  [x]
+  (and (number? x) ((complement zero?) x)))
+
 (def math-routes
   ["/math"
-   ["/plus" {:get (fn [req]
-                    (let [params (:query-params req)
-                          x (Long/parseLong (get params "x"))
-                          y (Long/parseLong (get params "y"))]
-                      {:status 200
-                       :body   {:total (+ x y)}}))}]
+   ["/addition" {:get (fn [request]
+                        (let [params (:query-params request)
+                              x (Long/parseLong (get params "x"))
+                              y (Long/parseLong (get params "y"))]
+                          (response/ok {:total (+ x y)})))}]
 
-   ["/minus" {:post {:handler (fn [req]
-                                (let [x (-> req :body-params :x)
-                                      y (-> req :body-params :y)]
-                                  (response/ok {:total (- x y)})))}}]
-
-
-   ["/minusproper" {:post {:description ""
-                           :coercion    rcs/coercion
-                           :parameters  {:body {:x number?
-                                                :y number?}}
-                           :handler     (fn [req]
-                                          (let [x (-> req :parameters :body :x)
-                                                y (-> req :parameters :body :y)]
-                                            (response/ok {:total (- x y)})))}}]
-
-   ["/plusthing" {:post {:coercion   rcs/coercion
-                         :parameters {:body {:x number?
-                                             :y number?}}
-                         :responses  {200 {:body {:total number?}}}
-                         :handler    (fn [req]
+   ["/subtraction" {:post {:description "Returns x subtracted by y"
+                           :handler     (fn [request]
+                                          (let [x (-> request :body-params :x)
+                                                y (-> request :body-params :y)]
+                                            (response/ok {:difference (- x y)})))}}]
+   ["/subtract/:y/from/:x" {:get {:description "Returns x subracted by y"
+                                  :handler     (fn [request]
+                                                 (let [x (-> request :path-params :x Long/parseLong)
+                                                       y (-> request :path-params :y Long/parseLong)]
+                                                   (response/ok {:difference (- x y)})))}}]
+   ["/division" {:post {:description "Returns x divided by y."
+                        :coercion    rcs/coercion
+                        :parameters  {:body {:x number?
+                                             :y not-zero-number?}}
+                        :handler     (fn [req]
                                        (let [x (-> req :parameters :body :x)
                                              y (-> req :parameters :body :y)]
-                                         (response/ok {:total (+ x y)})))}}]])
+                                         (response/ok {:quotient (/ x y)})))}}]
+   ["/multiplication" {:post {:description "Returns x multiplied by y"
+                              :coercion    rcs/coercion
+                              :parameters  {:body {:x number?
+                                                   :y number?}}
+                              :responses   {200 {:body {:product number?}}}
+                              :handler     (fn [req]
+                                             (let [x (-> req :parameters :body :x)
+                                                   y (-> req :parameters :body :y)]
+                                               (response/ok {:product (* x y)})))}}]])
 
 (def hello-routes
   ["/hello" {:get {:handler (fn [_]
