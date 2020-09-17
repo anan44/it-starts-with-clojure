@@ -200,10 +200,11 @@ Our application should now look something like this:
 
 This software was great for teaching these concepts to you,
 but it also is a bit of a mess.
+But this time we might just let that slide.
+Not every application has to be pretty or useful,
+especially when we are learning.
 
-Let's spend bit more time to refactor it.
-Just to achieve some piece of mind,
-if nothing more.
+Before we leave this mess behind,
+let's learn how to test this kind of application.
 
-Next: [Refactoring](8-refactoring.md)
-
+Next: [Testing Web Applications](8-testing-web-applications.md)
