@@ -29,7 +29,7 @@ We will build an application for fetching and parsing data from reddit API.
 In the progress we will learn about data manipulation techniques and HTTP request in Clojure.
 Furthermore, we we will meet Anonymous Functions and many other handy tools to make our code cleaner.
 
-## [6 Simple Web Applicaiton](./6-simple-web-application)
+## [6. Simple Web Applicaiton](./6-simple-web-application)
 
 We will build a simple web application by utilizing Ring and Reitit.
 In the progress we will learn how to work with key components of Clojure web development.
