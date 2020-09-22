@@ -101,7 +101,7 @@ You probably have some prior experience in programming,
 so I guess you might know why this is troublesome.
 There is no way for us to know,
 if we actually had a value `:price` that just happened to be `nil`,
-or if we just completely lacked the value referred as `:pric``.
+or if we just completely lacked the value referred as `:price`.
 
 ### [get](https://clojuredocs.org/clojure.core/get)
 
