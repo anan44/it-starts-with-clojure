@@ -7,7 +7,7 @@ No one should give up on Clojure due to poor IDE as I did in 2015.
 
 For programming in general there is a ton of great editors available.
 Some of them are better suited for some languages than others.
-As an example of this, writing Java without IntelliJ IDEA is quite much easier than doing the said task with [Atom](https://atom.io/).
+As an example of this, writing Java with IntelliJ IDEA is quite much easier than doing the said task with [Atom](https://atom.io/).
 In other words different tools are suitable for different tasks.
 Due to the fact that Clojure is a LISP it requires an editor with a bit different capabilities than most other languages.
 Also due to the fact that it is not Object Oriented Programming (OOP) language,
@@ -67,7 +67,7 @@ But some people are really passionate about Vim so this option has to be pointed
 
 Editor especially made for Clojure.
 Worth testing out.
-It  provides instant REPL and is especially nice for learning the language. 
+It provides instant REPL and is especially nice for learning the language.
 
 ### [Atom](https://atom.io/)
 
