@@ -5,6 +5,7 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring "1.8.1"]
+                 [ring/ring-mock "0.4.0"]
                  [metosin/reitit "0.4.2"]
                  [metosin/ring-http-response "0.9.1"]]
 
