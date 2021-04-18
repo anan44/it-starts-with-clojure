@@ -12,6 +12,20 @@
   [x]
   (and (number? x) ((complement zero?) x)))
 
+(defn predict
+  []
+  (Thread/sleep 3000)
+  (rand-int 1000000))
+
+(def experimental-routes
+  ["/experimental-math"
+   ["/predict" {:get {:description "Returns the one number you really need. WARNING: Calculation takes time!"
+                      :coercion    rcs/coercion
+                      :responses   {200 {:body {:prediction number?}}}
+                      :handler     (fn [_]
+                                     (let [prediction (predict)]
+                                       (response/ok {:prediction prediction})))}}]])
+
 (def math-routes
   ["/math"
    ["/addition" {:get (fn [request]
@@ -56,7 +70,8 @@
   (ring/ring-handler
     (ring/router
       [hello-routes
-       math-routes]
+       math-routes
+       experimental-routes]
       {:data {:muuntaja   m/instance
               :middleware [params/wrap-params
                            muuntaja/format-middleware

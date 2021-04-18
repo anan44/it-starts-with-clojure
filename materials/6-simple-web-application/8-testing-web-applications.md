@@ -91,7 +91,7 @@ unorganized tests are pain in the ass to work with.
 Ok let's get to the point:
 
 ```clojure
-(deftest math-routes
+(deftest math
   (testing "GET /math/addition"
     (testing "x and y are added up"
       (let [response (test-app (-> (mock/request :get "/math/addition")
@@ -128,7 +128,7 @@ So let's move to the next endpoint.
 Testing routes with path params is very straight forward.
 There really is not much to it.
 We will write are mock request to that particular route and check the response.
-Remember to write this block inside the `(deftest math-routes)` just after previous test.
+Remember to write this block inside the `(deftest math)` just after previous test.
 
 ```clojure
 (testing "GET /math/subtract/:y/from/:x"
@@ -229,7 +229,7 @@ We will also do our destructuring magic on the first test we route.
 At this point the tests should look something like this:
 
 ```clojure
-(deftest math-routes
+(deftest math
   (testing "GET /math/addition"
     (testing "x and y are added up"
       (let [{:keys [status body]} (test-app (-> (mock/request :get "/math/addition")

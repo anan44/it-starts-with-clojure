@@ -29,6 +29,7 @@ Our solution will have following requirements:
 1. API has /hello endoint that returns a message: Hello World!
 
 2. API has endpoints for following arithmetic operations.
+
    - addition
    - subtraction
    - multiplication
@@ -78,6 +79,10 @@ We will also go through some useful middleware that is necessary for coercion.
 We will continue our adventures with Coercion.
 This time we meet Response Coercion and learn what that is all about or why would you want to use it?
 
-## [8. Refactoring](8-refactoring.md)
+## [8. Testing Web Applications](8-testing-web-applications.md)
 
-TODO
+We will get familiar with easy patters for testing web applications
+
+## [9. Mocking](9-mocking.md)
+
+We will learn how to mock functions in Clojure

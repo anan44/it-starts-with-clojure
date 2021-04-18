@@ -13,8 +13,8 @@
 (def test-app
   (ring/ring-handler
     (ring/router
-      [math-routes]
-
+      [math-routes
+       experimental-routes]
       {:data {:coercion   rcs/coercion
               :muuntaja   m/instance
               :middleware [params/wrap-params
@@ -24,7 +24,7 @@
                            coercion/coerce-request-middleware
                            coercion/coerce-response-middleware]}})))
 
-(deftest math-routes
+(deftest math
   (testing "GET /math/addition"
     (testing "x and y are added up"
       (let [{:keys [status body]} (test-app (-> (mock/request :get "/math/addition")
@@ -64,3 +64,13 @@
                                                 (mock/json-body {:x 25 :y 3})))]
         (is (= 200 status))
         (is (= {:product 75} body))))))
+
+(deftest experimental
+  (testing "GET /experimental-math/predict"
+    (testing "prediction is returned"
+      (with-redefs
+        [calculator-api.server.server/predict (constantly 42)]
+        (let [{:keys [status body]} (test-app (-> (mock/request :get "/experimental-math/predict")))]
+          (is (= 200 status))
+          (is (= {:prediction 42} body)))))))
+
