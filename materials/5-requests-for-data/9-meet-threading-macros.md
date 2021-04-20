@@ -1,4 +1,4 @@
-# 5.9. Final Refactoring
+# 5.9. Meet Threading
 
 We are almost done with this application,
 but there is still few more places that require some polishing up.
