@@ -72,7 +72,7 @@ That being done you have brew installed on your Mac.
 ```bash
 brew update
 brew tap adoptopenjdk/openjdk
-brew cask install adoptopenjdk8
+brew install --cask homebrew/cask-versions/adoptopenjdk8
 ```
 
 ### Install Clojure on Mac
