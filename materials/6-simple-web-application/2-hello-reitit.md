@@ -218,6 +218,41 @@ you should be seeing something like this:
 ```json
 {"message":"Hello Reitit!"}
 ```
+## Alternative to the above
+
+If for some reason that doesn't work for you, don't worry about it. Here's another way to start your server.
+
+Your core.clj file should look like this:
+
+```clojure
+(ns calculator-api.core
+  (:gen-class))
+
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& args]
+  (println "Hello, World!"))
+```
+
+We want to add our (start) function over here. It's in another file and in another namespace(remember that, always!). To import it over here, we can do just like we did with the dependencies in the last step.
+
+```clojure
+(ns calculator-api.core
+  (:gen-class))
+
+(require '[calculator-api.server.server])
+
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& args]
+  (println "Hello, World!")
+  (calculator-api.server.server/start))
+
+```
+
+So, what did we do here? We imported the namespace we created before, and that allows us to use functions from another namespace in this one. 
+
+## Testing
 
 Testing HTTP calls can be done in browser,
 but after very simple HTTP Get calls we will soon hit a wall with our browser.
